@@ -1,0 +1,39 @@
+{{- /* Project custom homepage: profile + activity feed + recent posts.
+      `.` is the home Page (passed in by layouts/index.html). */ -}}
+<article class="flex flex-col items-center text-center">
+  {{ partial "profile.html" }}
+  {{ with .Content }}
+    <section class="prose max-w-2xl dark:prose-invert">{{ . | emojify }}</section>
+  {{ end }}
+</article>
+
+{{- with site.Data.news }}
+  <section class="home-news mt-14">
+    <h2 class="mb-1 text-2xl font-extrabold">Latest activity</h2>
+    <p class="mb-6 text-sm text-neutral-500 dark:text-neutral-400">Papers, talks, conferences &amp; more.</p>
+    <ol class="news-timeline">
+      {{ range sort . "date" "desc" }}
+        <li class="news-item news--{{ .category | lower }}">
+          <span class="news-dot" aria-hidden="true"></span>
+          <div class="news-card">
+            <div class="news-meta">
+              <span class="news-chip">{{ .category }}</span>
+              <time datetime="{{ time.Format "2006-01-02" .date }}">{{ time.Format "Jan 2, 2006" .date }}</time>
+            </div>
+            <h3 class="news-title">
+              {{- $t := .title -}}
+              {{- with .url }}{{ if ne . "#" }}<a href="{{ . }}">{{ $t }}</a>{{ else }}{{ $t }}{{ end }}{{ else }}{{ $t }}{{ end -}}
+            </h3>
+            {{ with .summary }}<p class="news-summary">{{ . }}</p>{{ end }}
+          </div>
+        </li>
+      {{ end }}
+    </ol>
+  </section>
+{{- end }}
+
+{{- if .Site.Params.homepage.showRecent | default false }}
+  <section class="mt-14">
+    {{ partial "recent-articles.html" . }}
+  </section>
+{{- end }}

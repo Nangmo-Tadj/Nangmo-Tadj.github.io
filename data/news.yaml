@@ -1,0 +1,33 @@
+# ---------------------------------------------------------------------------
+# Activity / news feed shown on the homepage.
+# To add an item, copy a block below and put it at the TOP (newest first).
+#   date:     YYYY-MM-DD (unquoted)
+#   category: Paper | Talk | Conference | Award | Preprint | Teaching | Misc
+#   title:    the headline
+#   summary:  one line of context (optional)
+#   url:      link to paper / slides / event (optional)
+# ---------------------------------------------------------------------------
+
+- date: 2026-07-15
+  category: Preprint
+  title: "A from-scratch Kohn–Sham DFT solver for teaching"
+  summary: "New preprint accompanying the DFT-from-scratch series — code and benchmarks."
+  url: "#"
+
+- date: 2026-06-02
+  category: Conference
+  title: "Poster at the Computational Physics Summer School 2026"
+  summary: "Presented early results on efficient self-consistency mixing."
+  url: "#"
+
+- date: 2026-04-20
+  category: Talk
+  title: "Invited seminar: “Statistics traps in computational science”"
+  summary: "Group seminar on permutation tests and honest uncertainty reporting."
+  url: "#"
+
+- date: 2026-02-10
+  category: Paper
+  title: "First-author paper accepted (placeholder)"
+  summary: "Replace with your real publication — title, venue, and DOI link."
+  url: "#"

@@ -14,7 +14,7 @@ copyright = "© Wilfried Tadjeugue. Content licensed CC BY 4.0 unless noted."
 
 [params.author]
   name = "Wilfried Tadjeugue"
-  image = "img/author.jpg"  # drop a square photo at assets/img/author.jpg (optional)
+  image = "img/author.png"  # replace assets/img/author.png with your real square photo
   headline = "PhD student · Computational Physics · Science communicator"
   bio = "I build and explain computational physics from first principles — currently developing a DFT code from scratch — and write about the statistics behind good science."
   links = [

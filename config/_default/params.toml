@@ -1,7 +1,7 @@
 # -- Theme Options --
 # Full reference: https://jpanther.github.io/congo/docs/configuration/
 
-colorScheme = "congo"          # try: congo, avocado, cherry, fire, ocean, sapphire, slate
+colorScheme = "ocean"          # blue accent. Other options: congo(violet), sapphire, cherry, fire, avocado, slate
 defaultAppearance = "light"    # light or dark
 autoSwitchAppearance = true    # follow the visitor's OS preference
 
@@ -25,10 +25,10 @@ fingerprintAlgorithm = "sha256"
   showScrollToTop = true
 
 [homepage]
-  layout = "profile"          # avatar + bio + social links landing page
-  showRecent = true           # show a "recent" feed under the profile
-  recentLimit = 5
-  showRecentItems = 5
+  layout = "custom"           # project layout: profile + activity feed + recent posts
+  showRecent = true           # show a "recent posts" feed under the activity
+  recentLimit = 4
+  showRecentItems = 4
 
 [article]
   showDate = true
