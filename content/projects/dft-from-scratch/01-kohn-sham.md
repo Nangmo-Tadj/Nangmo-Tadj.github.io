@@ -19,10 +19,10 @@ renders. Replace the prose with your own explanations as you develop the series.
 For \(N\) interacting electrons, the time-independent Schrödinger equation is
 
 $$
-\left[ -\frac{1}{2}\sum_{i=1}^{N}\nabla_i^2
-  + \sum_{i} v_\text{ext}(\mathbf{r}_i)
-  + \sum_{i<j}\frac{1}{|\mathbf{r}_i-\mathbf{r}_j|} \right]
-  \Psi = E\,\Psi .
+\left[ -\frac{1}{2}\sum_{i=1}^{N}\nabla_i^2 +
+\sum_{i} v_\text{ext}(\mathbf{r}_i) +
+\sum_{i<j}\frac{1}{|\mathbf{r}_i-\mathbf{r}_j|} \right]
+\Psi = E\,\Psi .
 $$
 
 The wavefunction \(\Psi(\mathbf{r}_1,\dots,\mathbf{r}_N)\) lives in a \(3N\)-dimensional space.
@@ -36,8 +36,8 @@ density** \(n(\mathbf{r})\) — a function of just three variables — not of th
 wavefunction:
 
 $$
-E[n] = T_s[n] + \int v_\text{ext}(\mathbf{r})\,n(\mathbf{r})\,d\mathbf{r}
-       + E_\text{H}[n] + E_\text{xc}[n].
+E[n] = T_s[n] + \int v_\text{ext}(\mathbf{r})\,n(\mathbf{r})\,d\mathbf{r} +
+E_\text{H}[n] + E_\text{xc}[n].
 $$
 
 ## The Kohn–Sham trick
@@ -54,9 +54,9 @@ $$
 The effective potential ties everything together and depends on the density itself:
 
 $$
-v_\text{eff}(\mathbf{r}) = v_\text{ext}(\mathbf{r})
-  + \underbrace{\int \frac{n(\mathbf{r}')}{|\mathbf{r}-\mathbf{r}'|}\,d\mathbf{r}'}_{\text{Hartree}}
-  + \underbrace{\frac{\delta E_\text{xc}[n]}{\delta n(\mathbf{r})}}_{\text{exchange–correlation}} .
+v_\text{eff}(\mathbf{r}) = v_\text{ext}(\mathbf{r}) +
+\underbrace{\int \frac{n(\mathbf{r}')}{|\mathbf{r}-\mathbf{r}'|}\,d\mathbf{r}'}_{\text{Hartree}} +
+\underbrace{\frac{\delta E_\text{xc}[n]}{\delta n(\mathbf{r})}}_{\text{exchange–correlation}} .
 $$
 
 Because \(v_\text{eff}\) depends on \(n\), and \(n\) depends on the \(\psi_i\) we're solving for, this

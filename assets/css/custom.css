@@ -1,0 +1,285 @@
+/* =========================================================================
+   Custom elegance layer for Congo
+   Loaded after the theme bundle, so these rules win by source order.
+   Uses Congo's own --color-* variables (RGB triplets) to stay theme-aware.
+   ========================================================================= */
+
+:root {
+  --float-shadow:
+    0 1px 2px rgba(24, 24, 27, 0.04),
+    0 8px 24px rgba(24, 24, 27, 0.06),
+    0 2px 8px rgba(var(--color-primary-500), 0.04);
+  --float-shadow-hover:
+    0 2px 4px rgba(24, 24, 27, 0.06),
+    0 18px 40px rgba(24, 24, 27, 0.12),
+    0 4px 14px rgba(var(--color-primary-500), 0.14);
+  --card-radius: 1rem;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ------------------------------------------------------------------ *
+ * Page canvas: soft tinted gradient instead of flat fill             *
+ * (body carries the `flex` class → specificity beats bg-neutral)     *
+ * ------------------------------------------------------------------ */
+body.flex {
+  background-color: rgb(var(--color-neutral-50));
+  background-image:
+    radial-gradient(60rem 40rem at 12% -8%, rgba(var(--color-primary-500), 0.10), transparent 60%),
+    radial-gradient(52rem 38rem at 100% 0%, rgba(var(--color-secondary-500), 0.08), transparent 55%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.dark body.flex {
+  background-color: rgb(var(--color-neutral-800));
+  background-image:
+    radial-gradient(60rem 40rem at 12% -8%, rgba(var(--color-primary-500), 0.18), transparent 60%),
+    radial-gradient(52rem 38rem at 100% 0%, rgba(var(--color-secondary-500), 0.12), transparent 55%);
+}
+
+/* ------------------------------------------------------------------ *
+ * Sticky glass header                                                *
+ * ------------------------------------------------------------------ */
+body > header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: saturate(1.6) blur(12px);
+  -webkit-backdrop-filter: saturate(1.6) blur(12px);
+  background: rgba(var(--color-neutral-50), 0.72);
+  border-bottom: 1px solid rgba(var(--color-neutral-300), 0.6);
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.dark body > header {
+  background: rgba(var(--color-neutral-800), 0.72);
+  border-bottom-color: rgba(var(--color-neutral-600), 0.5);
+}
+
+/* Nav links: animated underline + colour shift */
+header nav a,
+header a {
+  transition: color 0.2s var(--ease);
+}
+header nav a:not(.button):hover {
+  color: rgb(var(--color-primary-600));
+}
+.dark header nav a:not(.button):hover {
+  color: rgb(var(--color-primary-400));
+}
+
+/* ------------------------------------------------------------------ *
+ * Floating article cards (list pages + homepage "recent")            *
+ * ------------------------------------------------------------------ */
+.article-card {
+  max-width: 46rem;
+  margin-top: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(var(--color-neutral-200), 0.9);
+  border-radius: var(--card-radius);
+  background: rgba(var(--color-neutral), 0.75);
+  box-shadow: var(--float-shadow);
+  backdrop-filter: blur(4px);
+  transition:
+    transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease),
+    border-color 0.35s var(--ease),
+    background 0.35s var(--ease);
+  will-change: transform;
+}
+.dark .article-card {
+  border-color: rgba(var(--color-neutral-700), 0.9);
+  background: rgba(var(--color-neutral-900), 0.45);
+}
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--float-shadow-hover);
+  border-color: rgba(var(--color-primary-500), 0.55);
+  background: rgba(var(--color-neutral), 0.95);
+}
+.dark .article-card:hover {
+  background: rgba(var(--color-neutral-900), 0.7);
+}
+.article-card__title {
+  background-image: linear-gradient(rgb(var(--color-primary-500)), rgb(var(--color-primary-500)));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 2px;
+  transition: background-size 0.3s var(--ease), color 0.2s var(--ease);
+}
+.article-card:hover .article-card__title {
+  color: rgb(var(--color-primary-700));
+  background-size: 100% 2px;
+}
+.dark .article-card:hover .article-card__title {
+  color: rgb(var(--color-primary-300));
+}
+.article-card__summary { color: rgb(var(--color-neutral-600)); }
+.dark .article-card__summary { color: rgb(var(--color-neutral-300)); }
+
+/* "Read more" affordance: hidden until hover */
+.article-card__more {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgb(var(--color-primary-600));
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.article-card:hover .article-card__more {
+  opacity: 1;
+  transform: translateX(0);
+}
+.dark .article-card__more { color: rgb(var(--color-primary-400)); }
+
+/* ------------------------------------------------------------------ *
+ * Homepage profile: gradient name + floating avatar                  *
+ * ------------------------------------------------------------------ */
+.profile h1,
+main article > section h1:first-child {
+  letter-spacing: -0.02em;
+}
+/* avatar (shown once you add assets/img/author.jpg) */
+.rounded-full.w-36,
+img.w-36.rounded-full {
+  box-shadow:
+    0 0 0 4px rgba(var(--color-neutral), 1),
+    0 0 0 6px rgba(var(--color-primary-500), 0.35),
+    0 18px 40px rgba(24, 24, 27, 0.18);
+  animation: floaty 6s ease-in-out infinite;
+}
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rounded-full.w-36, img.w-36.rounded-full { animation: none; }
+}
+
+/* Social/author links: subtle lift */
+.author-links a,
+main .text-2xl a {
+  display: inline-block;
+  transition: transform 0.2s var(--ease), color 0.2s var(--ease);
+}
+.author-links a:hover,
+main .text-2xl a:hover {
+  transform: translateY(-3px);
+  color: rgb(var(--color-primary-600));
+}
+
+/* ------------------------------------------------------------------ *
+ * Prose polish: links, code, quotes, tables                          *
+ * ------------------------------------------------------------------ */
+/* inline links get an animated underline */
+.prose a:not(.article-card__title) {
+  text-decoration: none;
+  background-image: linear-gradient(rgba(var(--color-primary-500), 0.9), rgba(var(--color-primary-500), 0.9));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 1px;
+  transition: background-size 0.25s var(--ease), color 0.2s var(--ease);
+  padding-bottom: 1px;
+}
+.prose a:not(.article-card__title):hover {
+  background-size: 100% 2px;
+  color: rgb(var(--color-primary-700));
+}
+.dark .prose a:not(.article-card__title):hover { color: rgb(var(--color-primary-300)); }
+
+/* code blocks float a little */
+.prose pre,
+.highlight > pre,
+pre.chroma {
+  border-radius: 0.85rem;
+  border: 1px solid rgba(var(--color-neutral-300), 0.6);
+  box-shadow: var(--float-shadow);
+  padding: 1rem 1.15rem;
+}
+.dark .prose pre,
+.dark .highlight > pre,
+.dark pre.chroma {
+  border-color: rgba(var(--color-neutral-700), 0.7);
+}
+.highlight { border-radius: 0.85rem; overflow: hidden; }
+
+/* inline code as a soft pill */
+.prose :not(pre) > code {
+  background: rgba(var(--color-primary-500), 0.10);
+  color: rgb(var(--color-primary-700));
+  padding: 0.12em 0.4em;
+  border-radius: 0.4rem;
+  font-weight: 500;
+}
+.dark .prose :not(pre) > code {
+  background: rgba(var(--color-primary-400), 0.16);
+  color: rgb(var(--color-primary-300));
+}
+
+/* blockquotes: accent bar + tinted panel */
+.prose blockquote {
+  border-inline-start: 3px solid rgb(var(--color-primary-500));
+  border-radius: 0 0.75rem 0.75rem 0;
+  background: rgba(var(--color-primary-500), 0.06);
+  padding: 0.75rem 1.25rem;
+  font-style: normal;
+  box-shadow: var(--float-shadow);
+}
+.dark .prose blockquote { background: rgba(var(--color-primary-400), 0.10); }
+
+/* tables float and rows highlight */
+.prose table {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: var(--float-shadow);
+  border: 1px solid rgba(var(--color-neutral-200), 0.9);
+}
+.dark .prose table { border-color: rgba(var(--color-neutral-700), 0.9); }
+.prose thead { background: rgba(var(--color-primary-500), 0.08); }
+.prose tbody tr { transition: background 0.2s var(--ease); }
+.prose tbody tr:hover { background: rgba(var(--color-primary-500), 0.05); }
+
+/* KaTeX display equations: gentle floating panel */
+.prose .katex-display {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Table of contents: quiet card */
+.toc {
+  border: 1px solid rgba(var(--color-neutral-200), 0.9);
+  border-radius: 0.85rem;
+  background: rgba(var(--color-neutral), 0.6);
+  padding: 0.75rem 0.9rem;
+  box-shadow: var(--float-shadow);
+}
+.dark .toc {
+  border-color: rgba(var(--color-neutral-700), 0.9);
+  background: rgba(var(--color-neutral-900), 0.4);
+}
+
+/* Badges / tags → pills with lift */
+.badge,
+a[href*="/tags/"] {
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+a[href*="/tags/"]:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--float-shadow);
+}
+
+/* Buttons: soft float */
+.button, a.button {
+  border-radius: 0.65rem;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+.button:hover, a.button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--float-shadow-hover);
+}
+
+/* Section rules on list pages: fade them out, cards carry the structure */
+main section > hr.border-dotted { opacity: 0.35; }
