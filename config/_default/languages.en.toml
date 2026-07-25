@@ -1,0 +1,29 @@
+locale = "en"
+label = "English"
+direction = "ltr"
+weight = 1
+
+title = "Wilfried Tadjeugue"
+copyright = "© Wilfried Tadjeugue. Content licensed CC BY 4.0 unless noted."
+
+[params]
+  dateFormat = "2 January 2006"
+  description = "PhD student in computational physics — research, statistical analysis of science, programming videos, and hands-on manuscripts (including a DFT code built from scratch)."
+  # Homepage "recent" + list pages pull from these sections:
+  mainSections = ["blog", "projects", "videos"]
+
+[params.author]
+  name = "Wilfried Tadjeugue"
+  image = "img/author.jpg"  # drop a square photo at assets/img/author.jpg (optional)
+  headline = "PhD student · Computational Physics · Science communicator"
+  bio = "I build and explain computational physics from first principles — currently developing a DFT code from scratch — and write about the statistics behind good science."
+  links = [
+    { email = "mailto:wilfriedtadjeugue@gmail.com" },
+    { github = "https://github.com/Nangmo-Tadj" },
+    # --- Fill these in when ready (placeholders) ---
+    { google-scholar = "https://scholar.google.com/citations?user=REPLACE_ME" },
+    { orcid = "https://orcid.org/0000-0000-0000-0000" },
+    { linkedin = "https://linkedin.com/in/REPLACE_ME" },
+    { youtube = "https://youtube.com/@REPLACE_ME" },
+    { researchgate = "https://www.researchgate.net/profile/REPLACE_ME" },
+  ]

@@ -1,0 +1,24 @@
+# -- Site-wide configuration --
+# NOTE: update baseURL once you know your final address.
+#   * GitHub Pages (project site):  https://nangmo-tadj.github.io/personal_web_site/
+#   * GitHub Pages (user site):     https://nangmo-tadj.github.io/   (repo must be named nangmo-tadj.github.io)
+#   * Custom domain:                https://your-domain.com/
+baseURL = "https://nangmo-tadj.github.io/personal_web_site/"
+
+theme = "congo"
+
+defaultContentLanguage = "en"
+
+enableRobotsTXT = true
+summaryLength = 30
+
+# Pretty, human-readable taxonomy names
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]  # JSON output powers the search index
+
+[imaging]
+  anchor = "Center"
