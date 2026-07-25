@@ -1,9 +1,7 @@
 # -- Site-wide configuration --
-# NOTE: update baseURL once you know your final address.
-#   * GitHub Pages (project site):  https://nangmo-tadj.github.io/personal_web_site/
-#   * GitHub Pages (user site):     https://nangmo-tadj.github.io/   (repo must be named nangmo-tadj.github.io)
-#   * Custom domain:                https://your-domain.com/
-baseURL = "https://nangmo-tadj.github.io/personal_web_site/"
+# User site served at the account root. (CI overrides this with the Pages URL at build time.)
+# For a custom domain later, change this to https://your-domain.com/
+baseURL = "https://nangmo-tadj.github.io/"
 
 theme = "congo"
 
