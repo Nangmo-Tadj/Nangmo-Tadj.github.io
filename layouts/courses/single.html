@@ -1,0 +1,51 @@
+{{ define "main" }}
+{{ $course := .CurrentSection }}
+{{ $lessons := $course.RegularPages.ByWeight }}
+{{ $cur := -1 }}
+{{ range $i, $p := $lessons }}{{ if eq $p.RelPermalink $.RelPermalink }}{{ $cur = $i }}{{ end }}{{ end }}
+
+<div class="lesson-layout">
+  <aside class="lesson-nav">
+    <a class="lesson-nav__course" href="{{ $course.RelPermalink }}">&larr; {{ $course.Title }}</a>
+    <ol class="lesson-nav__list">
+      {{ range $i, $p := $lessons }}
+        <li class="{{ if eq $p.RelPermalink $.RelPermalink }}is-active{{ end }}">
+          <a href="{{ $p.RelPermalink }}">
+            <span class="lesson-nav__num">{{ add $i 1 }}</span>
+            <span class="lesson-nav__name">{{ $p.Title }}</span>
+          </a>
+        </li>
+      {{ end }}
+    </ol>
+  </aside>
+
+  <article class="lesson-main">
+    {{ partial "breadcrumbs.html" . }}
+    <h1 class="lesson-title">{{ .Title }}</h1>
+    <div class="lesson-meta">
+      {{ if ge $cur 0 }}<span>Lesson {{ add $cur 1 }} of {{ len $lessons }}</span>{{ end }}
+      {{ with .Params.duration }}<span>⏱ {{ . }}</span>{{ end }}
+      {{ if .Params.date }}<span>{{ .Date | time.Format "Jan 2, 2006" }}</span>{{ end }}
+    </div>
+
+    <div class="prose max-w-none dark:prose-invert lesson-content">{{ .Content }}</div>
+
+    <nav class="lesson-pager">
+      {{ if gt $cur 0 }}
+        {{ $prev := index $lessons (sub $cur 1) }}
+        <a class="lesson-pager__link lesson-pager__prev" href="{{ $prev.RelPermalink }}">
+          <span class="lesson-pager__dir">&larr; Previous</span>
+          <span class="lesson-pager__name">{{ $prev.Title }}</span>
+        </a>
+      {{ else }}<span></span>{{ end }}
+      {{ if and (ge $cur 0) (lt $cur (sub (len $lessons) 1)) }}
+        {{ $next := index $lessons (add $cur 1) }}
+        <a class="lesson-pager__link lesson-pager__next" href="{{ $next.RelPermalink }}">
+          <span class="lesson-pager__dir">Next &rarr;</span>
+          <span class="lesson-pager__name">{{ $next.Title }}</span>
+        </a>
+      {{ end }}
+    </nav>
+  </article>
+</div>
+{{ end }}

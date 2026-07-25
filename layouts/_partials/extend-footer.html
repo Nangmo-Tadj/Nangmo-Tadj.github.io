@@ -1,0 +1,29 @@
+{{- /* Lightweight image lightbox for galleries and zoomable figures. */ -}}
+<script>
+(function () {
+  var imgs = document.querySelectorAll('.gallery img, img.zoomable, [data-zoom] img');
+  if (!imgs.length) return;
+  var ov = document.createElement('div');
+  ov.className = 'lightbox';
+  ov.setAttribute('role', 'dialog');
+  ov.setAttribute('aria-modal', 'true');
+  ov.innerHTML = '<button class="lightbox__close" aria-label="Close">&times;</button><img alt="">';
+  document.body.appendChild(ov);
+  var full = ov.querySelector('img');
+  function open(src, alt) {
+    full.src = src; full.alt = alt || '';
+    ov.classList.add('is-open');
+    document.documentElement.style.overflow = 'hidden';
+  }
+  function close() {
+    ov.classList.remove('is-open');
+    document.documentElement.style.overflow = '';
+  }
+  imgs.forEach(function (im) {
+    im.classList.add('is-zoomable');
+    im.addEventListener('click', function () { open(im.currentSrc || im.src, im.alt); });
+  });
+  ov.addEventListener('click', close);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
+</script>

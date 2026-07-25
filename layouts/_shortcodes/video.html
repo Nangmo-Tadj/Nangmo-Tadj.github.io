@@ -1,0 +1,25 @@
+{{- /* Responsive video (16:9).
+      YouTube:     {{< video youtube="VIDEO_ID" caption="..." >}}
+      Vimeo:       {{< video vimeo="VIDEO_ID" >}}
+      Self-hosted: {{< video src="/video/demo.mp4" poster="/img/covers/dft.jpg" caption="..." >}} */ -}}
+{{- $yt := .Get "youtube" -}}
+{{- $vimeo := .Get "vimeo" -}}
+{{- $src := .Get "src" -}}
+{{- $caption := .Get "caption" -}}
+<figure class="media-video">
+  <div class="media-video__frame">
+    {{- if $yt -}}
+      <iframe src="https://www.youtube-nocookie.com/embed/{{ $yt }}" title="{{ $caption | default "Video" }}" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {{- else if $vimeo -}}
+      <iframe src="https://player.vimeo.com/video/{{ $vimeo }}" title="{{ $caption | default "Video" }}" loading="lazy" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    {{- else if $src -}}
+      <video controls preload="metadata"{{ with .Get "poster" }} poster="{{ . }}"{{ end }}>
+        <source src="{{ $src }}" type="{{ .Get "type" | default "video/mp4" }}" />
+        Your browser does not support the video tag.
+      </video>
+    {{- else -}}
+      {{- warnf "video shortcode in %q needs one of: youtube, vimeo, src" .Page.File.Path -}}
+    {{- end -}}
+  </div>
+  {{- with $caption }}<figcaption class="media-caption">{{ . }}</figcaption>{{ end -}}
+</figure>

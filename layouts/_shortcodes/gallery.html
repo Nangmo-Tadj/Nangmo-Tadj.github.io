@@ -1,0 +1,11 @@
+{{- /* Photo gallery with lightbox.
+      Usage:
+        {{< gallery cols="3" >}}
+        ![Caption A](/img/gallery/fig1.jpg)
+        ![Caption B](/img/gallery/fig2.jpg)
+        {{< /gallery >}}
+      cols: 2 | 3 | 4  (default 3). Click any image to zoom. */ -}}
+{{- $cols := .Get "cols" | default "3" -}}
+<div class="gallery gallery--{{ $cols }}">
+  {{ .Inner | markdownify }}
+</div>

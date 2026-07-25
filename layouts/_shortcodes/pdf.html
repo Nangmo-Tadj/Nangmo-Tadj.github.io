@@ -1,0 +1,24 @@
+{{- /* Document / PDF card with download + optional inline preview.
+      {{< pdf src="/docs/notes.pdf" title="Lecture notes" desc="12 pages · 2 MB" preview="true" >}} */ -}}
+{{- $src := .Get "src" -}}
+{{- $title := .Get "title" | default "Document" -}}
+{{- $desc := .Get "desc" -}}
+{{- $preview := eq (.Get "preview") "true" -}}
+<div class="doc-card">
+  <div class="doc-card__row">
+    <span class="doc-card__badge">PDF</span>
+    <span class="doc-card__meta">
+      <span class="doc-card__title">{{ $title }}</span>
+      {{ with $desc }}<span class="doc-card__desc">{{ . }}</span>{{ end }}
+    </span>
+    <span class="doc-card__actions">
+      <a class="doc-card__btn" href="{{ $src }}" target="_blank" rel="noopener">Open ↗</a>
+      <a class="doc-card__btn doc-card__btn--solid" href="{{ $src }}" download>Download</a>
+    </span>
+  </div>
+  {{- if $preview }}
+  <div class="doc-card__preview">
+    <iframe src="{{ $src }}" title="{{ $title }} preview" loading="lazy"></iframe>
+  </div>
+  {{- end }}
+</div>

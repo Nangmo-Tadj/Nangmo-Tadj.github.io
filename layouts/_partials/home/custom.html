@@ -1,39 +1,97 @@
-{{- /* Project custom homepage: profile + activity feed + recent posts.
-      `.` is the home Page (passed in by layouts/index.html). */ -}}
-<article class="flex flex-col items-center text-center">
-  {{ partial "profile.html" }}
-  {{ with .Content }}
-    <section class="prose max-w-2xl dark:prose-invert">{{ . | emojify }}</section>
-  {{ end }}
-</article>
+{{- /* Bold landing homepage: hero + feature grid + featured course + activity + recent.
+      `.` is the home Page. New components are styled by custom classes in custom.css. */ -}}
+{{- $author := site.Language.Params.Author -}}
+{{- $avatar := "" -}}
+{{- with $author.image }}{{ with resources.Get . }}{{ $avatar = (.Resize "240x webp q90").RelPermalink }}{{ end }}{{ end -}}
 
-{{- with site.Data.news }}
-  <section class="home-news mt-14">
-    <h2 class="mb-1 text-2xl font-extrabold">Latest activity</h2>
-    <p class="mb-6 text-sm text-neutral-500 dark:text-neutral-400">Papers, talks, conferences &amp; more.</p>
-    <ol class="news-timeline">
-      {{ range sort . "date" "desc" }}
-        <li class="news-item news--{{ .category | lower }}">
-          <span class="news-dot" aria-hidden="true"></span>
-          <div class="news-card">
-            <div class="news-meta">
-              <span class="news-chip">{{ .category }}</span>
-              <time datetime="{{ time.Format "2006-01-02" .date }}">{{ time.Format "Jan 2, 2006" .date }}</time>
-            </div>
-            <h3 class="news-title">
-              {{- $t := .title -}}
-              {{- with .url }}{{ if ne . "#" }}<a href="{{ . }}">{{ $t }}</a>{{ else }}{{ $t }}{{ end }}{{ else }}{{ $t }}{{ end -}}
-            </h3>
-            {{ with .summary }}<p class="news-summary">{{ . }}</p>{{ end }}
-          </div>
-        </li>
-      {{ end }}
-    </ol>
-  </section>
+{{/* ---------------- HERO ---------------- */}}
+<section class="hero">
+  <span class="hero__bg" aria-hidden="true"></span>
+  <div class="hero__inner">
+    {{- with $avatar }}<img class="hero__avatar" src="{{ . }}" width="120" height="120" alt="{{ $author.name }}">{{ end }}
+    <h1 class="hero__name">{{ $author.name | default site.Title }}</h1>
+    {{- with $author.headline }}<p class="hero__headline">{{ . | markdownify }}</p>{{ end }}
+    {{- with $author.bio }}<p class="hero__bio">{{ . | markdownify }}</p>{{ end }}
+    <div class="hero__cta">
+      <a class="btn-hero btn-hero--solid" href="{{ "courses/" | relURL }}">Explore courses</a>
+      <a class="btn-hero" href="{{ "blog/" | relURL }}">Read the blog</a>
+    </div>
+    <div class="hero__links">{{ partial "author-links.html" . }}</div>
+  </div>
+</section>
+
+{{/* ---------------- EXPLORE (feature grid) ---------------- */}}
+<section class="home-section">
+  <h2 class="home-section__title">Explore</h2>
+  <div class="feature-grid">
+    <a class="feature feature--a" href="{{ "research/" | relURL }}">
+      <span class="feature__icon">🔬</span>
+      <span class="feature__title">Research</span>
+      <span class="feature__desc">Electronic-structure theory &amp; the numerics behind it.</span>
+    </a>
+    <a class="feature feature--b" href="{{ "courses/" | relURL }}">
+      <span class="feature__icon">🎓</span>
+      <span class="feature__title">Courses</span>
+      <span class="feature__desc">Hands-on “formations” mixing text, code, video &amp; docs.</span>
+    </a>
+    <a class="feature feature--c" href="{{ "blog/" | relURL }}">
+      <span class="feature__icon">✍️</span>
+      <span class="feature__title">Blog</span>
+      <span class="feature__desc">Essays on the statistics behind good science.</span>
+    </a>
+    <a class="feature feature--d" href="{{ "videos/" | relURL }}">
+      <span class="feature__icon">🎬</span>
+      <span class="feature__title">Videos</span>
+      <span class="feature__desc">Programming &amp; computational-physics screencasts.</span>
+    </a>
+  </div>
+</section>
+
+{{/* ---------------- FEATURED COURSE ---------------- */}}
+{{- with (site.GetPage "/courses/dft") }}
+<section class="home-section">
+  <h2 class="home-section__title">Featured course</h2>
+  <a class="course-feature" href="{{ .RelPermalink }}">
+    <span class="course-feature__media" style="background-image:url('{{ (.Params.cover | default "/img/covers/dft.jpg") | relURL }}')" aria-hidden="true"></span>
+    <span class="course-feature__body">
+      <span class="course-feature__eyebrow">Computational physics</span>
+      <span class="course-feature__title">{{ .Title }}</span>
+      <span class="course-feature__desc">{{ .Params.summary | default .Description }}</span>
+      <span class="course-feature__cta">Start the course <span aria-hidden="true">→</span></span>
+    </span>
+  </a>
+</section>
 {{- end }}
 
+{{/* ---------------- LATEST ACTIVITY ---------------- */}}
+{{- with site.Data.news }}
+<section class="home-section home-news">
+  <h2 class="home-section__title">Latest activity</h2>
+  <p class="home-section__sub">Papers, talks, conferences &amp; more.</p>
+  <ol class="news-timeline">
+    {{ range sort . "date" "desc" }}
+      <li class="news-item news--{{ .category | lower }}">
+        <span class="news-dot" aria-hidden="true"></span>
+        <div class="news-card">
+          <div class="news-meta">
+            <span class="news-chip">{{ .category }}</span>
+            <time datetime="{{ time.Format "2006-01-02" .date }}">{{ time.Format "Jan 2, 2006" .date }}</time>
+          </div>
+          <h3 class="news-title">
+            {{- $t := .title -}}
+            {{- with .url }}{{ if ne . "#" }}<a href="{{ . }}">{{ $t }}</a>{{ else }}{{ $t }}{{ end }}{{ else }}{{ $t }}{{ end -}}
+          </h3>
+          {{ with .summary }}<p class="news-summary">{{ . }}</p>{{ end }}
+        </div>
+      </li>
+    {{ end }}
+  </ol>
+</section>
+{{- end }}
+
+{{/* ---------------- RECENT POSTS ---------------- */}}
 {{- if .Site.Params.homepage.showRecent | default false }}
-  <section class="mt-14">
-    {{ partial "recent-articles.html" . }}
-  </section>
+<section class="home-section">
+  {{ partial "recent-articles.html" . }}
+</section>
 {{- end }}

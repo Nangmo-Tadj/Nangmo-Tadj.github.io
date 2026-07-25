@@ -1,0 +1,4 @@
+{{- /* Grid container for {{< card >}} items. Trailing trim keeps output free of a final
+      newline so the nested cards stay in one HTML block.
+      {{< cards cols="3" >}} ... {{< /cards >}}  (cols: 2|3|4, default auto) */ -}}
+{{- $cols := .Get "cols" | default "auto" -}}<div class="ui-cards ui-cards--{{ $cols }}">{{ .Inner | chomp }}</div>{{- "" -}}
