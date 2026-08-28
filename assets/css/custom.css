@@ -566,8 +566,8 @@ a.button {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 1.75rem 1.5rem;
+  gap: 0.4rem;
+  padding: 1.5rem 1.5rem 1.25rem;
   border-radius: var(--radius-lg);
   border: 1px solid var(--hairline);
   background: var(--surface);
@@ -604,22 +604,19 @@ a.button {
   color: rgb(var(--color-neutral-500));
 }
 .dark .pillar__desc { color: rgb(var(--color-neutral-400)); }
+/* The arrow used to appear on hover, below a description that padded the
+   card out. With the description gone there is nothing to fill that space,
+   so the arrow sits under the title and stays visible — it only slides. */
 .pillar__more {
-  margin-top: auto;
-  padding-top: 0.75rem;
+  padding-top: 0.35rem;
   font-family: var(--font-head);
   font-size: 0.88rem;
   font-weight: 600;
   color: rgb(var(--color-primary-600));
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  transition: transform 0.3s var(--ease);
 }
-.pillar:hover .pillar__more { opacity: 1; transform: translateX(0); }
+.pillar:hover .pillar__more { transform: translateX(3px); }
 .dark .pillar__more { color: rgb(var(--color-primary-300)); }
-@media (hover: none) {
-  .pillar__more { opacity: 1; transform: none; }
-}
 
 /* ------------------------------------------------------------------ *
  * Activity timeline (homepage news + data-driven feeds)               *
@@ -1258,6 +1255,12 @@ a.ui-card:hover {
   font-size: 0.76rem;
   font-weight: 700;
 }
+/* On the active row the badge would be a second tint of the same hue stacked
+   on the first. It becomes a solid counter instead. */
+.lesson-nav__list li.is-active .lesson-nav__num {
+  background: rgb(var(--color-primary-700));
+  color: #fff;
+}
 .lesson-title {
   margin: 0.75rem 0 0;
   font-size: clamp(1.8rem, 4vw, 2.5rem);
@@ -1514,12 +1517,20 @@ body > div > footer {
   font-size: 0.9rem;
 }
 
-/* Article table of contents */
+/* Article table of contents.
+   The card is ours; the "Table of Contents" summary inside it is Congo's and
+   carries its own bg-neutral-100 — a second panel drawn on top of the first,
+   which read as a seam across the top of the box. The summary sits on the
+   card, not on a slab of its own. */
 .toc {
   border-radius: var(--radius);
   border: 1px solid var(--hairline);
   background: var(--surface);
   box-shadow: var(--shadow-sm);
+}
+.toc > details > summary,
+.toc summary {
+  background: transparent !important;
 }
 
 /* Congo's profile avatar, when the profile homepage layout is used */

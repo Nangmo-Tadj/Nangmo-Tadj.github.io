@@ -43,7 +43,7 @@ content/
   _index.md            home (hero + pillars + activity, rendered by the custom layout)
   about.md             about / bio
   research/            RESEARCH & PUBLICATIONS
-    _index.md            hub: intro + publication list (from data/publications.yaml)
+    _index.md            hub: the publication list (from data/publications.yaml)
     interests.md         longer write-up
     projects/            long-form manuscripts with code
       dft-from-scratch/    the flagship DFT series

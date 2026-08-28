@@ -5,7 +5,6 @@
 
   <header class="page-head">
     <h1 class="page-head__title">{{ .Title }}</h1>
-    <p class="page-head__lead">{{ i18n "section.outreach.tagline" }}</p>
     {{- with .Content }}<div class="page-head__intro prose dark:prose-invert">{{ . }}</div>{{ end }}
   </header>
 
@@ -53,7 +52,6 @@
     <section class="section-block">
       <header class="section-block__head">
         <h2 class="section-block__title">{{ i18n "outreach.engagement" }}</h2>
-        <p class="section-block__sub">{{ i18n "outreach.engagementSub" }}</p>
       </header>
       <div class="ui-cards ui-cards--3">
         {{- range . }}

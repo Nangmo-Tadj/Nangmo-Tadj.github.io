@@ -2,7 +2,6 @@
 {{ if .Params.catalog }}
   {{/* ---------------- COURSE CATALOG (/outreach/courses/) ---------------- */}}
   <header class="page-head">
-    <span class="page-head__eyebrow">{{ i18n "outreach.coursesSub" }}</span>
     <h1 class="page-head__title">{{ .Title }}</h1>
     {{ with .Content }}<div class="page-head__intro prose dark:prose-invert">{{ . }}</div>{{ end }}
   </header>

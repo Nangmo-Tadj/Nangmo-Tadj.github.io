@@ -57,7 +57,6 @@
 <section class="home-section">
   <header class="home-section__head">
     <h2 class="home-section__title">{{ i18n "home.explore" }}</h2>
-    <p class="home-section__sub">{{ i18n "home.exploreSub" }}</p>
   </header>
   <div class="pillar-grid">
     {{- range slice
@@ -69,7 +68,6 @@
         <a class="pillar pillar--{{ $item.mod }}" href="{{ .RelPermalink }}">
           <span class="pillar__icon" aria-hidden="true">{{ $item.icon }}</span>
           <span class="pillar__title">{{ .Title }}</span>
-          <span class="pillar__desc">{{ i18n (printf "section.%s.tagline" $item.key) | default .Description }}</span>
           <span class="pillar__more">{{ i18n "home.readMore" }} <span aria-hidden="true">&rarr;</span></span>
         </a>
       {{- end }}
@@ -82,7 +80,6 @@
 <section class="home-section home-news">
   <header class="home-section__head">
     <h2 class="home-section__title">{{ i18n "home.latest" }}</h2>
-    <p class="home-section__sub">{{ i18n "home.latestSub" }}</p>
   </header>
   <ol class="news-timeline">
     {{- range first 5 (sort . "date" "desc") }}

@@ -3,7 +3,6 @@
 
   <header class="page-head">
     <h1 class="page-head__title">{{ .Title }}</h1>
-    <p class="page-head__lead">{{ i18n "section.research.tagline" }}</p>
     {{- with .Content }}<div class="page-head__intro prose dark:prose-invert">{{ . }}</div>{{ end }}
   </header>
 
@@ -11,7 +10,6 @@
   <section class="section-block">
     <header class="section-block__head">
       <h2 class="section-block__title">{{ i18n "research.publications" }}</h2>
-      <p class="section-block__sub">{{ i18n "research.publicationsSub" }}</p>
     </header>
 
     {{- if $pub }}
@@ -50,7 +48,6 @@
     <section class="section-block">
       <header class="section-block__head">
         <h2 class="section-block__title">{{ i18n "research.code" }}</h2>
-        <p class="section-block__sub">{{ i18n "research.codeSub" }}</p>
       </header>
       <div class="ui-cards ui-cards--2">
         {{- range $subsections }}
