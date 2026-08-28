@@ -246,28 +246,29 @@ a.button {
 /* ------------------------------------------------------------------ *
  * Chips & small links                                                 *
  * ------------------------------------------------------------------ */
+/* Category labels. These always sit inside a card that already has a surface
+   of its own, so a filled pill drew a second box inside the first. Weight,
+   letter-spacing and colour carry the label on their own. */
 .chip {
   display: inline-flex;
   align-items: center;
-  padding: 0.2rem 0.6rem;
-  border-radius: var(--pill);
-  border: 1px solid var(--hairline);
-  background: rgba(var(--color-neutral-100), 0.8);
-  color: rgb(var(--color-neutral-600));
+  color: rgb(var(--color-neutral-500));
   font-family: var(--font-head);
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   line-height: 1.4;
 }
-.chip--primary {
-  border-color: rgba(var(--color-primary-500), 0.28);
-  background: rgba(var(--color-primary-500), 0.12);
-  color: rgb(var(--color-primary-700));
+.chip--primary { color: rgb(var(--color-primary-700)); }
+.dark .chip { color: rgb(var(--color-neutral-400)); }
+.dark .chip--primary { color: rgb(var(--color-primary-300)); }
+/* A dot keeps two adjacent labels from reading as one phrase. */
+.chip + .chip::before {
+  content: "·";
+  margin-inline-end: 0.5rem;
+  color: rgb(var(--color-neutral-400));
 }
-.dark .chip { background: rgba(255, 255, 255, 0.06); color: rgb(var(--color-neutral-300)); }
-.dark .chip--primary { background: rgba(var(--color-primary-500), 0.18); color: rgb(var(--color-primary-200)); }
 
 .pill-link {
   display: inline-flex;
@@ -676,17 +677,14 @@ a.button {
 }
 .news-chip {
   display: inline-flex;
-  padding: 0.15rem 0.6rem;
-  border-radius: var(--pill);
-  background: rgba(var(--color-primary-500), 0.12);
   color: rgb(var(--color-primary-700));
   font-family: var(--font-head);
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.dark .news-chip { background: rgba(var(--color-primary-500), 0.2); color: rgb(var(--color-primary-200)); }
+.dark .news-chip { color: rgb(var(--color-primary-300)); }
 .news-title {
   margin: 0.45rem 0 0;
   font-family: var(--font-head);
@@ -1106,12 +1104,10 @@ a.ui-card:hover {
   flex: none;
   display: grid;
   place-items: center;
-  width: 2.2rem;
-  height: 2.2rem;
-  border-radius: 50%;
-  background: rgba(var(--color-primary-500), 0.13);
+  width: 1.75rem;
   color: rgb(var(--color-primary-700));
   font-family: var(--font-head);
+  font-size: 1.15rem;
   font-weight: 800;
 }
 .dark .course-toc__num { color: rgb(var(--color-primary-200)); }
@@ -1248,19 +1244,12 @@ a.ui-card:hover {
   flex: none;
   display: grid;
   place-items: center;
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 50%;
-  background: rgba(var(--color-primary-500), 0.14);
-  font-size: 0.76rem;
-  font-weight: 700;
+  width: 1.25rem;
+  color: rgb(var(--color-primary-700));
+  font-size: 0.8rem;
+  font-weight: 800;
 }
-/* On the active row the badge would be a second tint of the same hue stacked
-   on the first. It becomes a solid counter instead. */
-.lesson-nav__list li.is-active .lesson-nav__num {
-  background: rgb(var(--color-primary-700));
-  color: #fff;
-}
+.dark .lesson-nav__num { color: rgb(var(--color-primary-300)); }
 .lesson-title {
   margin: 0.75rem 0 0;
   font-size: clamp(1.8rem, 4vw, 2.5rem);
@@ -1356,15 +1345,14 @@ main article.mt-6.flex:hover {
   flex: none;
   display: grid;
   place-items: center;
-  width: 2.6rem;
-  height: 2.6rem;
-  border-radius: var(--radius-sm);
-  background: rgba(var(--color-secondary-500), 0.16);
+  width: 2.2rem;
   color: rgb(var(--color-secondary-700));
   font-family: var(--font-head);
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 800;
+  letter-spacing: 0.06em;
 }
+.dark .doc-card__badge { color: rgb(var(--color-secondary-300)); }
 .dark .doc-card__badge { color: rgb(var(--color-secondary-300)); }
 .doc-card__meta { display: flex; flex-direction: column; min-width: 0; }
 .doc-card__title { font-family: var(--font-head); font-weight: 700; }
