@@ -27,19 +27,3 @@ copyright = "© Wilfried Tadjeugue. Content licensed CC BY 4.0 unless noted."
     { email = "mailto:wilfriedtadjeugue@gmail.com" },
     { github = "https://github.com/Nangmo-Tadj" },
   ]
-
-# -- Hero copy (English). Everything here is yours to write. --
-[params.hero]
-  eyebrow = ""
-  titleLead = ""
-  titleAccent = ""
-  tagline = ""
-  ctaPrimary = "Research & publications"
-  ctaSecondary = "Outreach & engagement"
-
-# [[params.hero.stats]] blocks render the three cards under the hero.
-# None are defined, so the row does not appear. Add them when you have
-# figures you can stand behind:
-# [[params.hero.stats]]
-#   value = "12"
-#   label = "Peer-reviewed articles"

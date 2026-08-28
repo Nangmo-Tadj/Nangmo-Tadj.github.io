@@ -28,19 +28,3 @@ copyright = "© Wilfried Tadjeugue. Contenus sous licence CC BY 4.0 sauf mention
     { email = "mailto:wilfriedtadjeugue@gmail.com" },
     { github = "https://github.com/Nangmo-Tadj" },
   ]
-
-# -- Bandeau d'accueil (français). Tout ceci est à vous d'écrire. --
-[params.hero]
-  eyebrow = ""
-  titleLead = ""
-  titleAccent = ""
-  tagline = ""
-  ctaPrimary = "Recherche & publications"
-  ctaSecondary = "Vulgarisation & engagement"
-
-# Les blocs [[params.hero.stats]] affichent les trois cartes sous le bandeau.
-# Aucun n'est défini, donc la rangée n'apparaît pas. Ajoutez-les quand vous
-# aurez des chiffres que vous pouvez assumer :
-# [[params.hero.stats]]
-#   value = "12"
-#   label = "Articles à comité de lecture"

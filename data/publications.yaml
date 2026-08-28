@@ -2,7 +2,7 @@
 # EMPTY ON PURPOSE — nothing is published under your name until you write it
 # here yourself. The page shows an empty state while this file has no entries.
 #
-# Schema for one entry:
+# Schema for one entry, under `items:`:
 #
 # - year: 2026
 #   type: article | preprint | proceedings | thesis | software | chapter
@@ -13,3 +13,5 @@
 #     - { label: "DOI", url: "https://doi.org/..." }
 #   en: { title: "...", summary: "..." }
 #   fr: { title: "...", summary: "..." }
+
+items: []

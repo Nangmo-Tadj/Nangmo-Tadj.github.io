@@ -1,10 +1,15 @@
-{{- /* Landing page: hero, section pillars, activity timeline, featured course, recent writing.
-      Every string is either translated through i18n/*.yaml or comes from the per-language
-      [params.hero] block, so the page is fully bilingual. */ -}}
-{{- $author := site.Language.Params.Author -}}
-{{- $hero := site.Language.Params.hero | default dict -}}
-{{- $avatar := "" -}}
-{{- with $author.image }}{{ with resources.Get . }}{{ $avatar = (.Resize "320x webp q90").RelPermalink }}{{ end }}{{ end -}}
+{{- /* Landing page: hero, section pillars, activity timeline, featured course,
+      recent writing.
+
+      Everything the page says about the owner comes from data/profile.yaml, not
+      from the site configuration — that is the file the admin interface can
+      write. Every field is optional; a blank one is simply not rendered, so an
+      unfilled profile produces a bare page rather than a placeholder. */ -}}
+{{- $profile := hugo.Data.profile | default dict -}}
+{{- $me := index $profile site.Language.Lang | default dict -}}
+{{- $hero := $me.hero | default dict -}}
+{{- $name := site.Language.Params.Author.name | default site.Title -}}
+{{- $photo := $profile.photo -}}
 {{- $research := site.GetPage "/research" -}}
 {{- $activities := site.GetPage "/activities" -}}
 {{- $outreach := site.GetPage "/outreach" -}}
@@ -21,23 +26,23 @@
       {{- with $hero.tagline }}<p class="hero__tagline">{{ . | markdownify }}</p>{{ end }}
       <div class="hero__cta">
         {{- with $research }}
-          <a class="btn btn--solid" href="{{ .RelPermalink }}">{{ $hero.ctaPrimary | default .Title }}</a>
+          <a class="btn btn--solid" href="{{ .RelPermalink }}">{{ .Title }}</a>
         {{- end }}
         {{- with $outreach }}
-          <a class="btn btn--ghost" href="{{ .RelPermalink }}">{{ $hero.ctaSecondary | default .Title }}</a>
+          <a class="btn btn--ghost" href="{{ .RelPermalink }}">{{ .Title }}</a>
         {{- end }}
       </div>
-      <div class="hero__links">{{ partial "author-links.html" . }}</div>
+      <div class="hero__links">{{ partial "profile-links.html" . }}</div>
     </div>
 
     <aside class="hero__card">
       <span class="hero__halo" aria-hidden="true"></span>
-      {{- with $avatar }}
-        <img class="hero__avatar" src="{{ . }}" width="160" height="160" alt="{{ $author.name }}">
+      {{- with $photo }}
+        <img class="hero__avatar" src="{{ . | relURL }}" width="160" height="160" alt="{{ $name }}">
       {{- end }}
-      <p class="hero__name">{{ $author.name | default site.Title }}</p>
-      {{- with $author.headline }}<p class="hero__headline">{{ . | markdownify }}</p>{{ end }}
-      {{- with $author.bio }}<p class="hero__bio">{{ . | markdownify }}</p>{{ end }}
+      <p class="hero__name">{{ $name }}</p>
+      {{- with $me.headline }}<p class="hero__headline">{{ . | markdownify }}</p>{{ end }}
+      {{- with $me.bio }}<p class="hero__bio">{{ . | markdownify }}</p>{{ end }}
     </aside>
   </div>
 
@@ -76,7 +81,7 @@
 </section>
 
 {{/* ---------------- LATEST ACTIVITY ---------------- */}}
-{{- with hugo.Data.news }}
+{{- with hugo.Data.news.items }}
 <section class="home-section home-news">
   <header class="home-section__head">
     <h2 class="home-section__title">{{ i18n "home.latest" }}</h2>
@@ -103,22 +108,29 @@
 </section>
 {{- end }}
 
-{{/* ---------------- FEATURED COURSE ---------------- */}}
-{{- with (site.GetPage "/outreach/courses/dft") }}
+{{/* ---------------- FEATURED COURSE ----------------
+      The first course in the catalog, whatever it is. This used to point at a
+      hard-coded page, which meant the homepage advertised a course that had
+      been deleted. */}}
+{{- with (site.GetPage "/outreach/courses") }}
+  {{- with .Sections.ByWeight }}
+    {{- $course := index . 0 }}
 <section class="home-section">
   <header class="home-section__head">
     <h2 class="home-section__title">{{ i18n "home.featured" }}</h2>
   </header>
-  <a class="course-feature" href="{{ .RelPermalink }}">
-    <span class="course-feature__media" style="background-image:url('{{ (.Params.cover | default "/img/covers/dft.jpg") | relURL }}')" aria-hidden="true"></span>
+  <a class="course-feature" href="{{ $course.RelPermalink }}">
+    <span class="course-feature__media{{ if not $course.Params.cover }} course-feature__media--blank{{ end }}"
+      {{ with $course.Params.cover }}style="background-image:url('{{ . | relURL }}')"{{ end }} aria-hidden="true"></span>
     <span class="course-feature__body">
       <span class="course-feature__eyebrow">{{ i18n "outreach.courses" }}</span>
-      <span class="course-feature__title">{{ .Title }}</span>
-      <span class="course-feature__desc">{{ .Params.summary | default .Description }}</span>
+      <span class="course-feature__title">{{ $course.Title }}</span>
+      <span class="course-feature__desc">{{ $course.Params.summary | default $course.Description }}</span>
       <span class="course-feature__cta">{{ i18n "course.start" }} <span aria-hidden="true">&rarr;</span></span>
     </span>
   </a>
 </section>
+  {{- end }}
 {{- end }}
 
 {{/* ---------------- RECENT WRITING ---------------- */}}

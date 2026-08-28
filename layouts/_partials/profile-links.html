@@ -1,0 +1,21 @@
+{{- /* Social / contact links, read from data/profile.yaml so they can be edited
+      from /admin/ rather than from the site configuration. Congo's own
+      author-links.html reads the TOML config instead, which the CMS cannot
+      write. An unknown icon name falls back to a generic link glyph. */ -}}
+{{- with hugo.Data.profile }}
+  {{- with .links }}
+    <ul class="profile-links">
+      {{- range . }}
+        {{- if .url }}
+          <li>
+            <a href="{{ .url }}"
+               {{ if not (hasPrefix .url "mailto:") }}target="_blank" rel="noopener me"{{ end }}
+               aria-label="{{ .label | default .icon }}" title="{{ .label | default .icon }}">
+              {{ partial "icon.html" (.icon | default "link") }}
+            </a>
+          </li>
+        {{- end }}
+      {{- end }}
+    </ul>
+  {{- end }}
+{{- end }}

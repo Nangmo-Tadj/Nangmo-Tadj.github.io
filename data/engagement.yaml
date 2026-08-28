@@ -1,9 +1,11 @@
 # Engagement entries on /outreach/ and /fr/outreach/.
 # EMPTY ON PURPOSE — see data/publications.yaml.
 #
-# Schema for one entry:
+# Schema for one entry, under `items:`:
 #
 # - icon: "🎓"
 #   url: "https://..."          (optional)
 #   en: { title: "...", summary: "..." }
 #   fr: { title: "...", summary: "..." }
+
+items: []

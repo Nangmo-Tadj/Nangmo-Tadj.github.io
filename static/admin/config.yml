@@ -1,0 +1,446 @@
+# =============================================================================
+# Sveltia CMS — the admin interface served at /admin/
+#
+# It signs you in with your GitHub account and writes ordinary commits to this
+# repository. Each save triggers the existing Pages workflow, so a change is
+# live about a minute later. Nothing is published that you did not type.
+#
+# TO SIGN IN you can either paste a GitHub personal access token — which needs
+# no setup at all — or use the "Sign in with GitHub" button, which needs the
+# `base_url` relay below because GitHub Pages cannot run the OAuth exchange
+# itself. The token route works without touching that line. See ADMIN.md.
+# =============================================================================
+
+backend:
+  name: github
+  repo: Nangmo-Tadj/Nangmo-Tadj.github.io
+  branch: main
+  # Only needed for the "Sign in with GitHub" button. Until it points at a real
+  # relay, sign in with a personal access token instead — see ADMIN.md.
+  base_url: https://REPLACE-WITH-YOUR-OAUTH-RELAY.workers.dev
+
+# Uploads land here and are served from /img/uploads/.
+media_folder: static/img/uploads
+public_folder: /img/uploads
+
+site_url: https://nangmo-tadj.github.io
+display_url: https://nangmo-tadj.github.io
+
+# Both languages, one file each: post.en.md and post.fr.md — the shape Hugo
+# already reads.
+i18n:
+  structure: multiple_files
+  locales: [en, fr]
+  default_locale: en
+
+collections:
+  # ---------------------------------------------------------------------------
+  # You
+  # ---------------------------------------------------------------------------
+  - name: profile
+    label: Profile
+    files:
+      - name: profile
+        label: Your profile
+        file: data/profile.yaml
+        description: >-
+          Your photo, your links, and the words that appear under your name.
+          Everything here is shown verbatim on the site.
+        fields:
+          - { name: photo, label: Photo, widget: image, required: false }
+          - name: links
+            label: Links
+            label_singular: Link
+            widget: list
+            required: false
+            summary: "{{fields.label}}"
+            fields:
+              - name: icon
+                label: Icon
+                widget: select
+                options:
+                  - email
+                  - github
+                  - gitlab
+                  - orcid
+                  - google-scholar
+                  - researchgate
+                  - mendeley
+                  - linkedin
+                  - youtube
+                  - mastodon
+                  - bluesky
+                  - x-twitter
+                  - telegram
+                  - whatsapp
+                  - globe
+                  - link
+                  - rss
+                  - phone
+              - { name: label, label: Label, widget: string }
+              - { name: url, label: URL, widget: string }
+          - name: en
+            label: English
+            widget: object
+            collapsed: false
+            fields:
+              - { name: headline, label: Headline, widget: string, required: false }
+              - { name: bio, label: Bio, widget: text, required: false }
+              - name: hero
+                label: Landing page
+                widget: object
+                fields:
+                  - { name: eyebrow, label: Small label, widget: string, required: false }
+                  - { name: titleLead, label: "Title, first line", widget: string, required: false }
+                  - { name: titleAccent, label: "Title, second line (coloured)", widget: string, required: false }
+                  - { name: tagline, label: Tagline, widget: text, required: false }
+                  - name: stats
+                    label: Figures
+                    label_singular: Figure
+                    widget: list
+                    required: false
+                    summary: "{{fields.value}} — {{fields.label}}"
+                    fields:
+                      - { name: value, label: Number, widget: string }
+                      - { name: label, label: Caption, widget: string }
+          - name: fr
+            label: Français
+            widget: object
+            collapsed: false
+            fields:
+              - { name: headline, label: Accroche, widget: string, required: false }
+              - { name: bio, label: Biographie, widget: text, required: false }
+              - name: hero
+                label: Page d'accueil
+                widget: object
+                fields:
+                  - { name: eyebrow, label: Petit libellé, widget: string, required: false }
+                  - { name: titleLead, label: "Titre, première ligne", widget: string, required: false }
+                  - { name: titleAccent, label: "Titre, deuxième ligne (en couleur)", widget: string, required: false }
+                  - { name: tagline, label: Phrase d'accroche, widget: text, required: false }
+                  - name: stats
+                    label: Chiffres
+                    label_singular: Chiffre
+                    widget: list
+                    required: false
+                    summary: "{{fields.value}} — {{fields.label}}"
+                    fields:
+                      - { name: value, label: Nombre, widget: string }
+                      - { name: label, label: Légende, widget: string }
+
+  # ---------------------------------------------------------------------------
+  # The record: publications, activities, news, engagement
+  # ---------------------------------------------------------------------------
+  - name: publications
+    label: Publications
+    files:
+      - name: publications
+        label: Publications
+        file: data/publications.yaml
+        description: Shown on /research/ and /fr/research/, newest year first.
+        fields:
+          - name: items
+            label: Publications
+            label_singular: Publication
+            widget: list
+            required: false
+            summary: "{{fields.year}} · {{fields.en.title}}"
+            fields:
+              - { name: year, label: Year, widget: number, value_type: int, min: 1900, max: 2100 }
+              - name: type
+                label: Type
+                widget: select
+                options: [article, preprint, proceedings, thesis, software, chapter]
+              - name: status
+                label: Status
+                widget: select
+                required: false
+                options: [published, accepted, submitted, in-preparation]
+              - name: authors
+                label: Authors
+                widget: string
+                hint: "Put your own name between ** ** to bold it, e.g. A. Author, **W. Tadjeugue**"
+              - { name: venue, label: Journal / venue, widget: string, required: false }
+              - name: links
+                label: Links
+                label_singular: Link
+                widget: list
+                required: false
+                summary: "{{fields.label}}"
+                fields:
+                  - { name: label, label: Label, widget: string, hint: "DOI, PDF, Code, arXiv…" }
+                  - { name: url, label: URL, widget: string }
+              - name: en
+                label: English
+                widget: object
+                fields:
+                  - { name: title, label: Title, widget: string }
+                  - { name: summary, label: One-line summary, widget: text, required: false }
+              - name: fr
+                label: Français
+                widget: object
+                required: false
+                fields:
+                  - { name: title, label: Titre, widget: string, required: false }
+                  - { name: summary, label: Résumé en une ligne, widget: text, required: false }
+
+  - name: activities
+    label: Scientific activities
+    files:
+      - name: activities
+        label: Scientific activities
+        file: data/activities.yaml
+        description: Shown on /activities/ and /fr/activities/, grouped by year.
+        fields:
+          - name: items
+            label: Activities
+            label_singular: Activity
+            widget: list
+            required: false
+            summary: "{{fields.date}} · {{fields.en.title}}"
+            fields:
+              - { name: date, label: Date, widget: datetime, type: date, format: YYYY-MM-DD }
+              - name: kind
+                label: Kind
+                widget: select
+                options: [talk, poster, conference, school, teaching, review, service]
+              - { name: where, label: Where, widget: string, required: false, hint: "Venue — City, Country" }
+              - { name: url, label: Link, widget: string, required: false }
+              - name: en
+                label: English
+                widget: object
+                fields:
+                  - { name: title, label: Title, widget: string }
+                  - { name: summary, label: Summary, widget: text, required: false }
+              - name: fr
+                label: Français
+                widget: object
+                required: false
+                fields:
+                  - { name: title, label: Titre, widget: string, required: false }
+                  - { name: summary, label: Résumé, widget: text, required: false }
+
+  - name: news
+    label: Activity feed
+    files:
+      - name: news
+        label: Activity feed
+        file: data/news.yaml
+        description: The timeline on the homepage. Newest first.
+        fields:
+          - name: items
+            label: Entries
+            label_singular: Entry
+            widget: list
+            required: false
+            summary: "{{fields.date}} · {{fields.en.title}}"
+            fields:
+              - { name: date, label: Date, widget: datetime, type: date, format: YYYY-MM-DD }
+              - name: category
+                label: Category
+                widget: select
+                options: [preprint, paper, talk, conference, award, teaching, outreach, misc]
+              - { name: url, label: Link, widget: string, required: false }
+              - name: en
+                label: English
+                widget: object
+                fields:
+                  - { name: title, label: Title, widget: string }
+                  - { name: summary, label: Summary, widget: text, required: false }
+              - name: fr
+                label: Français
+                widget: object
+                required: false
+                fields:
+                  - { name: title, label: Titre, widget: string, required: false }
+                  - { name: summary, label: Résumé, widget: text, required: false }
+
+  - name: engagement
+    label: Engagement
+    files:
+      - name: engagement
+        label: Engagement
+        file: data/engagement.yaml
+        description: The cards at the bottom of /outreach/.
+        fields:
+          - name: items
+            label: Entries
+            label_singular: Entry
+            widget: list
+            required: false
+            summary: "{{fields.en.title}}"
+            fields:
+              - { name: icon, label: Emoji, widget: string, required: false }
+              - { name: url, label: Link, widget: string, required: false }
+              - name: en
+                label: English
+                widget: object
+                fields:
+                  - { name: title, label: Title, widget: string }
+                  - { name: summary, label: Summary, widget: text, required: false }
+              - name: fr
+                label: Français
+                widget: object
+                required: false
+                fields:
+                  - { name: title, label: Titre, widget: string, required: false }
+                  - { name: summary, label: Résumé, widget: text, required: false }
+
+  # ---------------------------------------------------------------------------
+  # Written pages
+  #
+  # `filter` keeps the section landing pages (_index.*.md) out of these lists:
+  # only entries carrying the hidden `cms` marker appear, which is exactly what
+  # this interface creates. The marker is inert as far as Hugo is concerned.
+  # ---------------------------------------------------------------------------
+  - name: blog
+    label: Blog posts
+    folder: content/outreach/blog
+    create: true
+    extension: md
+    format: yaml-frontmatter
+    slug: "{{slug}}"
+    i18n: true
+    filter: { field: cms, value: post }
+    summary: "{{title}}"
+    sortable_fields: [date, title]
+    fields:
+      - { name: cms, widget: hidden, default: post }
+      - { name: title, label: Title, widget: string, i18n: true }
+      - { name: date, label: Date, widget: datetime, i18n: duplicate }
+      - { name: draft, label: Draft (not published), widget: boolean, default: true, i18n: duplicate }
+      - { name: summary, label: Summary, widget: text, required: false, i18n: true }
+      - { name: description, label: Search-engine description, widget: string, required: false, i18n: true }
+      - { name: tags, label: Tags, widget: list, required: false, i18n: true }
+      - { name: showTableOfContents, label: Table of contents, widget: boolean, default: false, i18n: duplicate }
+      - { name: body, label: Body, widget: markdown, i18n: true }
+
+  - name: videos
+    label: Videos
+    folder: content/outreach/videos
+    create: true
+    extension: md
+    format: yaml-frontmatter
+    slug: "{{slug}}"
+    i18n: true
+    filter: { field: cms, value: video }
+    summary: "{{title}}"
+    sortable_fields: [date, title]
+    fields:
+      - { name: cms, widget: hidden, default: video }
+      - { name: title, label: Title, widget: string, i18n: true }
+      - { name: date, label: Date, widget: datetime, i18n: duplicate }
+      - { name: draft, label: Draft (not published), widget: boolean, default: true, i18n: duplicate }
+      - { name: summary, label: Summary, widget: text, required: false, i18n: true }
+      - { name: tags, label: Tags, widget: list, required: false, i18n: true }
+      - name: body
+        label: Body
+        widget: markdown
+        i18n: true
+        hint: >-
+          Embed a video with the shortcode {{< video youtube="VIDEO_ID" >}} —
+          the ID is the part after v= in the YouTube address.
+
+  - name: courses
+    label: Courses
+    folder: content/outreach/courses
+    create: true
+    path: "{{slug}}/_index"
+    extension: md
+    format: yaml-frontmatter
+    i18n: true
+    filter: { field: cms, value: course }
+    summary: "{{title}}"
+    fields:
+      - { name: cms, widget: hidden, default: course }
+      - { name: title, label: Title, widget: string, i18n: true }
+      - { name: draft, label: Draft (not published), widget: boolean, default: true, i18n: duplicate }
+      - { name: summary, label: Summary, widget: text, required: false, i18n: true }
+      - { name: cover, label: Cover image, widget: image, required: false, i18n: duplicate }
+      - { name: level, label: Level, widget: string, required: false, i18n: true }
+      - { name: duration, label: Duration, widget: string, required: false, i18n: true }
+      - { name: weight, label: Order, widget: number, default: 1, value_type: int, i18n: duplicate }
+      - { name: body, label: Introduction, widget: markdown, required: false, i18n: true }
+
+  - name: lessons
+    label: Course lessons
+    folder: content/outreach/courses
+    create: true
+    path: "{{course}}/{{slug}}"
+    extension: md
+    format: yaml-frontmatter
+    i18n: true
+    filter: { field: cms, value: lesson }
+    summary: "{{course}} · {{title}}"
+    fields:
+      - { name: cms, widget: hidden, default: lesson }
+      - name: course
+        label: Course folder
+        widget: string
+        i18n: duplicate
+        hint: >-
+          The folder name of the course this lesson belongs to — the last part
+          of its address. A lesson of /outreach/courses/dft/ takes: dft
+      - { name: title, label: Title, widget: string, i18n: true }
+      - { name: draft, label: Draft (not published), widget: boolean, default: true, i18n: duplicate }
+      - { name: summary, label: Summary, widget: text, required: false, i18n: true }
+      - { name: duration, label: Duration, widget: string, required: false, i18n: true }
+      - { name: weight, label: Order in the course, widget: number, default: 1, value_type: int, i18n: duplicate }
+      - { name: body, label: Body, widget: markdown, i18n: true }
+
+  # ---------------------------------------------------------------------------
+  # Fixed pages and section titles
+  # ---------------------------------------------------------------------------
+  - name: pages
+    label: Pages
+    files:
+      - name: about
+        label: About
+        file: content/about.en.md
+        i18n: true
+        fields:
+          - { name: title, label: Title, widget: string, i18n: true }
+          - { name: description, label: Search-engine description, widget: string, required: false, i18n: true }
+          - { name: showDate, widget: hidden, default: false }
+          - { name: showReadingTime, widget: hidden, default: false }
+          - { name: showAuthor, widget: hidden, default: false }
+          - { name: showTableOfContents, label: Table of contents, widget: boolean, default: false, i18n: duplicate }
+          - { name: body, label: Body, widget: markdown, i18n: true }
+
+      - name: home
+        label: Home — title and description
+        file: content/_index.en.md
+        i18n: true
+        fields:
+          - { name: title, label: Title, widget: string, i18n: true }
+          - { name: description, label: Search-engine description, widget: string, required: false, i18n: true }
+
+      - name: research
+        label: Research & publications — heading
+        file: content/research/_index.en.md
+        i18n: true
+        fields:
+          - { name: title, label: Title, widget: string, i18n: true }
+          - { name: description, label: Search-engine description, widget: string, required: false, i18n: true }
+          - { name: layout, widget: hidden, default: hub }
+          - { name: body, label: Introduction, widget: markdown, required: false, i18n: true }
+
+      - name: activities
+        label: Scientific activities — heading
+        file: content/activities/_index.en.md
+        i18n: true
+        fields:
+          - { name: title, label: Title, widget: string, i18n: true }
+          - { name: description, label: Search-engine description, widget: string, required: false, i18n: true }
+          - { name: layout, widget: hidden, default: hub }
+          - { name: body, label: Introduction, widget: markdown, required: false, i18n: true }
+
+      - name: outreach
+        label: Outreach & engagement — heading
+        file: content/outreach/_index.en.md
+        i18n: true
+        fields:
+          - { name: title, label: Title, widget: string, i18n: true }
+          - { name: description, label: Search-engine description, widget: string, required: false, i18n: true }
+          - { name: layout, widget: hidden, default: hub }
+          - { name: body, label: Introduction, widget: markdown, required: false, i18n: true }

@@ -1,7 +1,7 @@
 # Scientific activities rendered on /activities/ and /fr/activities/.
 # EMPTY ON PURPOSE — see data/publications.yaml.
 #
-# Schema for one entry:
+# Schema for one entry, under `items:`:
 #
 # - date: 2026-06-02
 #   kind: talk | poster | conference | school | teaching | review | service
@@ -9,3 +9,5 @@
 #   url: "https://..."          (optional)
 #   en: { title: "...", summary: "..." }
 #   fr: { title: "...", summary: "..." }
+
+items: []

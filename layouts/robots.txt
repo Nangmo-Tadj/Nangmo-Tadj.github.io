@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+{{/* The editing interface is not content; keep it out of the index. It is not
+     a secret — anyone can open the page — but signing in requires the GitHub
+     account that owns this repository. */}}
+Disallow: /admin/
+Sitemap: {{ "sitemap.xml" | absURL }}

@@ -9,6 +9,18 @@ The visual language — azure and amber on a fixed decor of soft halos, content 
 blue-tinted shadows, Outfit + Plus Jakarta Sans — matches the sibling projects
 (`essentiel_prepa`, `web.lyamo.app`).
 
+## Editing the site
+
+Everything the site says about you lives in files this repository owns, and
+there is a form-based editor for them at **`/admin/`** — see
+**[ADMIN.md](ADMIN.md)** for how to sign in (a personal access token works
+immediately; a one-click GitHub button takes ten minutes to set up).
+
+Nothing is written for you. `data/profile.yaml`, `data/publications.yaml`,
+`data/activities.yaml`, `data/news.yaml` and `data/engagement.yaml` ship empty,
+with their schema documented in comments. Pages show an empty state until you
+put something in them.
+
 ## Prerequisites
 
 - **Hugo extended** ≥ 0.164 (`brew install hugo`)
@@ -31,43 +43,44 @@ hugo server
 ```
 config/_default/     Site configuration (split by concern)
   hugo.toml            baseURL, languages, outputs, taxonomies
-  languages.en.toml    English: title, author, bio, social links, hero copy
-  languages.fr.toml    French: the same, translated
-  menus.en.toml        English navigation (+ the EN/FR toggle and search entries)
+  languages.en.toml    English: site title, name, copyright
+  languages.fr.toml    French: the same
+  menus.en.toml        English navigation (+ EN/FR toggle and search entries)
   menus.fr.toml        French navigation
-  params.toml          theme options (colour scheme, homepage layout, article settings)
+  params.toml          theme options (colour scheme, homepage layout, articles)
   markup.toml          math + code-highlighting settings (do not remove)
 i18n/
   en.yaml, fr.yaml     strings used by this site's own layouts
-content/
-  _index.md            home (hero + pillars + activity, rendered by the custom layout)
-  about.md             about / bio
-  research/            RESEARCH & PUBLICATIONS
-    _index.md            hub: the publication list (from data/publications.yaml)
-    interests.md         longer write-up
-    projects/            long-form manuscripts with code
-      dft-from-scratch/    the flagship DFT series
-  activities/          SCIENTIFIC ACTIVITIES
-    _index.md            hub: talks, posters, schools, teaching (data/activities.yaml)
-  outreach/            OUTREACH & ENGAGEMENT
-    _index.md            hub: the three channels + engagement (data/engagement.yaml)
-    blog/                statistics-in-science essays
-    videos/              programming screencasts
-    courses/             hands-on formations, lesson by lesson
-data/                  bilingual content that isn't a page (see below)
+data/                  everything the CMS writes, bilingual (see below)
+  profile.yaml           photo, links, headline, bio, landing-page wording
+  publications.yaml      the publication list
+  activities.yaml        talks, posters, schools, teaching, service
+  news.yaml              the homepage timeline
+  engagement.yaml        the cards at the bottom of /outreach/
+content/               one file per language: page.en.md and page.fr.md
+  _index.*.md            home
+  about.*.md             about
+  research/              RESEARCH & PUBLICATIONS
+    projects/              long-form manuscripts with code
+  activities/            SCIENTIFIC ACTIVITIES
+  outreach/              OUTREACH & ENGAGEMENT
+    blog/  videos/  courses/
 layouts/
-  research/hub.html    the three hub layouts
+  research/hub.html    the three section layouts
   activities/hub.html
   outreach/hub.html
   courses/             course catalog, course landing, lesson layouts
-  _partials/home/custom.html   the landing page
-  _partials/translations.html  the EN/FR pill toggle
+  robots.txt           keeps /admin/ out of search indexes
+  _partials/home/custom.html     the landing page
+  _partials/profile-links.html   contact links, read from data/profile.yaml
+  _partials/translations.html    the EN/FR pill toggle
 assets/css/
   custom.css           the whole visual layer
-  schemes/tadjeugue.css  the azure + amber palette
+  schemes/tadjeugue.css  the muted azure + amber palette
+static/
+  admin/               the editing interface (index.html + config.yml)
+  img/uploads/         where pictures uploaded from /admin/ land
 themes/congo/          the theme (git submodule — don't edit directly)
-assets/img/author.png  square photo used for the homepage avatar
-static/                files served verbatim (e.g. static/cv.pdf)
 ```
 
 ## Both languages
@@ -79,15 +92,17 @@ has no counterpart yet, to that language's homepage.
 **Adding a page:** create both files. A page that exists in only one language still builds,
 it just won't appear in the other language's navigation.
 
-**Data files** (`data/*.yaml`) hold publications, activities, news and engagement entries.
-Each entry carries language sub-maps, so a date or a DOI is written once:
+**Data files** (`data/*.yaml`) hold publications, activities, news and engagement entries
+under an `items:` key — the shape the editing interface reads and writes. Each entry
+carries language sub-maps, so a date or a DOI is written once:
 
 ```yaml
-- date: 2026-06-02
-  kind: conference
-  where: "Summer School — Location, Country"
-  en: { title: "…", summary: "…" }
-  fr: { title: "…", summary: "…" }
+items:
+  - date: 2026-06-02
+    kind: conference
+    where: "Venue — City, Country"
+    en: { title: "…", summary: "…" }
+    fr: { title: "…", summary: "…" }
 ```
 
 Category and status labels (`conference`, `preprint`, `submitted`, …) are translated in
@@ -120,11 +135,10 @@ Source → GitHub Actions** (one-time setup).
 Add your domain in **Settings → Pages → Custom domain**, create a `static/CNAME` file
 containing the domain, and point your DNS at GitHub Pages.
 
-## Personalisation checklist
+## What's left to fill in
 
-- [ ] Replace placeholder social links in `config/_default/languages.{en,fr}.toml`
-- [ ] Replace the homepage photo at `assets/img/author.png`
-- [ ] Fill in `data/publications.yaml` and `data/activities.yaml` with real records
-- [ ] Rewrite the hero copy in the `[params.hero]` block of each language file
-- [ ] Fill in real research, bio, and CV (`static/cv.pdf`)
-- [ ] Replace the sample blog post, video, and DFT chapters with your own
+- [ ] Sign in at `/admin/` — see [ADMIN.md](ADMIN.md)
+- [ ] Profile: photo, links, headline, bio, landing-page wording (both languages)
+- [ ] Publications, activities, the news feed — all empty on purpose
+- [ ] The About page
+- [ ] Optional: `static/cv.pdf`, then link it from About

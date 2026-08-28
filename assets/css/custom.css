@@ -1564,3 +1564,40 @@ body > header .text-2xl {
 }
 body > header .text-2xl,
 body > header .text-xl { font-size: 1.15rem; }
+
+/* A course with no cover image gets the brand gradient rather than a broken
+   background-image or a picture borrowed from another course. */
+.course-card__media--blank,
+.course-feature__media--blank {
+  background-image: linear-gradient(135deg, rgb(var(--color-primary-700)), rgb(var(--color-primary-900)));
+}
+.course-hero:not([style]) {
+  background-image: linear-gradient(135deg, rgb(var(--color-primary-700)), rgb(var(--color-primary-950)));
+}
+
+/* Profile links (layouts/_partials/profile-links.html). Congo's own
+   author-links reads the TOML config, which the admin interface cannot write,
+   so these are rendered from data/profile.yaml instead. */
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.profile-links a {
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: rgb(var(--color-neutral-400));
+  transition: color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.profile-links a:hover {
+  color: rgb(var(--color-primary-600));
+  transform: translateY(-2px);
+}
+.dark .profile-links a { color: rgb(var(--color-neutral-500)); }
+.dark .profile-links a:hover { color: rgb(var(--color-primary-300)); }
+.profile-links svg { width: 100%; height: 100%; }

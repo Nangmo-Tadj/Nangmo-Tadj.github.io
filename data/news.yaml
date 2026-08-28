@@ -1,10 +1,12 @@
 # Activity feed on the homepage. Newest first.
 # EMPTY ON PURPOSE — see data/publications.yaml.
 #
-# Schema for one entry:
+# Schema for one entry, under `items:`:
 #
 # - date: 2026-07-15
 #   category: preprint | paper | talk | conference | award | teaching | outreach | misc
 #   url: "https://..."          (optional)
 #   en: { title: "...", summary: "..." }
 #   fr: { title: "...", summary: "..." }
+
+items: []

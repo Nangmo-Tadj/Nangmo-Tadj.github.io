@@ -8,7 +8,8 @@
   <div class="course-grid">
     {{ range .Sections }}
       <a class="course-card" href="{{ .RelPermalink }}">
-        <span class="course-card__media" style="background-image:url('{{ (.Params.cover | default "/img/covers/dft.jpg") | relURL }}')" aria-hidden="true">
+        <span class="course-card__media{{ if not .Params.cover }} course-card__media--blank{{ end }}"
+          {{ with .Params.cover }}style="background-image:url('{{ . | relURL }}')"{{ end }} aria-hidden="true">
           {{ with .Params.level }}<span class="course-card__level">{{ . }}</span>{{ end }}
         </span>
         <span class="course-card__body">
@@ -26,7 +27,7 @@
   {{/* ---------------- COURSE LANDING (/outreach/courses/<name>/) ---------------- */}}
   {{ $lessons := .RegularPages.ByWeight }}
   <article>
-    <div class="course-hero" style="background-image:url('{{ (.Params.cover | default "/img/covers/dft.jpg") | relURL }}')">
+    <div class="course-hero" {{ with .Params.cover }}style="background-image:url('{{ . | relURL }}')"{{ end }}>
       <span class="course-hero__scrim" aria-hidden="true"></span>
       <div class="course-hero__content">
         <h1 class="course-hero__title">{{ .Title }}</h1>
