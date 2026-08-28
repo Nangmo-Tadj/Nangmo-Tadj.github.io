@@ -1,0 +1,32 @@
+# ---------------------------------------------------------------------------
+# Outreach & engagement entries rendered on /outreach/ (and /fr/outreach/).
+#   icon:  a single emoji
+#   url:   optional link
+# ---------------------------------------------------------------------------
+
+- icon: "🎓"
+  url: "#"
+  en:
+    title: "Mentoring students in scientific computing"
+    summary: "Placeholder — one-to-one guidance for students starting out in Python and numerical physics."
+  fr:
+    title: "Accompagnement d'étudiants en calcul scientifique"
+    summary: "Exemple à remplacer — accompagnement individuel d'étudiants qui démarrent en Python et en physique numérique."
+
+- icon: "🌍"
+  url: "#"
+  en:
+    title: "Science in French and English"
+    summary: "Everything I publish here exists in both languages, so the material stays usable across francophone and anglophone audiences."
+  fr:
+    title: "La science en français et en anglais"
+    summary: "Tout ce que je publie ici existe dans les deux langues, pour rester utilisable des deux côtés du public francophone et anglophone."
+
+- icon: "🛠️"
+  url: "https://github.com/Nangmo-Tadj"
+  en:
+    title: "Open code and open notes"
+    summary: "Solvers, notebooks and figures published openly — readable first, fast second."
+  fr:
+    title: "Code ouvert, notes ouvertes"
+    summary: "Solveurs, carnets et figures publiés ouvertement — lisibles d'abord, rapides ensuite."

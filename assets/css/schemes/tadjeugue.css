@@ -1,0 +1,44 @@
+/* Tadjeugue scheme — azure + amber on charcoal.
+   Same palette as the sibling sites (essentiel_prepa / lyamo): a signature azure
+   for anything interactive, amber for accents, and a cool charcoal ramp for text
+   and surfaces. Values are RGB triplets because Congo composes them with Tailwind's
+   alpha syntax, e.g. rgb(var(--color-primary-500) / 0.4). */
+:root {
+  --color-neutral: 255, 255, 255;
+  /* Charcoal / cool grey */
+  --color-neutral-50: 246, 248, 250;
+  --color-neutral-100: 238, 241, 243;
+  --color-neutral-200: 226, 231, 234;
+  --color-neutral-300: 203, 211, 217;
+  --color-neutral-400: 139, 146, 156;
+  --color-neutral-500: 85, 92, 102;
+  --color-neutral-600: 60, 65, 74;
+  --color-neutral-700: 38, 42, 49;
+  --color-neutral-800: 23, 33, 46;
+  --color-neutral-900: 13, 21, 31;
+  --color-neutral-950: 8, 14, 21;
+  /* Azure — the signature colour */
+  --color-primary-50: 236, 248, 254;
+  --color-primary-100: 209, 239, 252;
+  --color-primary-200: 168, 224, 248;
+  --color-primary-300: 108, 196, 236;
+  --color-primary-400: 56, 176, 239;
+  --color-primary-500: 28, 159, 224;
+  --color-primary-600: 20, 136, 198;
+  --color-primary-700: 14, 122, 181;
+  --color-primary-800: 12, 79, 120;
+  --color-primary-900: 10, 63, 95;
+  --color-primary-950: 6, 40, 62;
+  /* Amber — accents, chips, highlights */
+  --color-secondary-50: 254, 247, 235;
+  --color-secondary-100: 253, 238, 209;
+  --color-secondary-200: 251, 222, 166;
+  --color-secondary-300: 247, 200, 119;
+  --color-secondary-400: 244, 180, 84;
+  --color-secondary-500: 232, 162, 61;
+  --color-secondary-600: 202, 133, 40;
+  --color-secondary-700: 166, 104, 30;
+  --color-secondary-800: 130, 82, 28;
+  --color-secondary-900: 106, 68, 26;
+  --color-secondary-950: 60, 37, 12;
+}

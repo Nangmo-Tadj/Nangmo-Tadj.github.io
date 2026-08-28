@@ -1,0 +1,93 @@
+# Custom strings used by the site's own layouts (Congo ships its own en.yaml).
+
+hero:
+  skip: "Skip to content"
+
+home:
+  explore: "Explore"
+  exploreSub: "Three ways into the work."
+  latest: "Latest activity"
+  latestSub: "Papers, talks, conferences and posts."
+  recent: "Recent writing"
+  featured: "Featured course"
+  seeAll: "See all"
+  readMore: "Read more"
+
+nav:
+  language: "Language"
+
+section:
+  research:
+    title: "Research & publications"
+    tagline: "Electronic-structure theory, numerical methods, and the software that turns one into the other."
+  activities:
+    title: "Scientific activities"
+    tagline: "Talks, posters, conferences, schools, teaching and service."
+  outreach:
+    title: "Outreach & engagement"
+    tagline: "Writing, video and courses that put computational physics within reach."
+
+research:
+  interests: "Research interests"
+  publications: "Publications"
+  publicationsSub: "Peer-reviewed articles, preprints and proceedings."
+  publicationsEmpty: "Publications will be listed here."
+  code: "Code & manuscripts"
+  codeSub: "Long-form work where the theory and the program are developed side by side."
+
+activities:
+  all: "All"
+  empty: "Activities will be listed here."
+  upcoming: "Upcoming"
+
+outreach:
+  blog: "Blog"
+  blogSub: "Essays on the statistics behind good science."
+  videos: "Videos"
+  videosSub: "Programming and computational-physics screencasts."
+  courses: "Courses"
+  coursesSub: "Hands-on formations mixing text, code, video and documents."
+  engagement: "Engagement"
+  engagementSub: "What I do beyond the papers."
+
+course:
+  lessons: "lessons"
+  lessonList: "Lessons"
+  start: "Start lesson 1"
+  lessonOf: "Lesson {{ .n }} of {{ .total }}"
+  previous: "Previous"
+  next: "Next"
+  backTo: "Back to"
+
+cat:
+  preprint: "Preprint"
+  paper: "Paper"
+  talk: "Talk"
+  conference: "Conference"
+  award: "Award"
+  teaching: "Teaching"
+  outreach: "Outreach"
+  misc: "News"
+
+kind:
+  talk: "Talk"
+  poster: "Poster"
+  conference: "Conference"
+  school: "School"
+  teaching: "Teaching"
+  review: "Peer review"
+  service: "Service"
+
+pub:
+  article: "Journal article"
+  preprint: "Preprint"
+  proceedings: "Proceedings"
+  thesis: "Thesis"
+  software: "Software"
+  chapter: "Book chapter"
+
+status:
+  published: "Published"
+  accepted: "Accepted"
+  submitted: "Submitted"
+  in-preparation: "In preparation"

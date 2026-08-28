@@ -1,0 +1,84 @@
+{{ define "main" }}
+  {{- $blog := site.GetPage "/outreach/blog" -}}
+  {{- $videos := site.GetPage "/outreach/videos" -}}
+  {{- $courses := site.GetPage "/outreach/courses" -}}
+
+  <header class="page-head">
+    <h1 class="page-head__title">{{ .Title }}</h1>
+    <p class="page-head__lead">{{ i18n "section.outreach.tagline" }}</p>
+    {{- with .Content }}<div class="page-head__intro prose dark:prose-invert">{{ . }}</div>{{ end }}
+  </header>
+
+  {{/* ---------------- THE THREE CHANNELS ---------------- */}}
+  <div class="ui-cards ui-cards--3">
+    {{- range slice
+        (dict "page" $blog    "icon" "✍️" "key" "blog")
+        (dict "page" $videos  "icon" "🎬" "key" "videos")
+        (dict "page" $courses "icon" "🎓" "key" "courses") }}
+      {{- $item := . -}}
+      {{- with $item.page }}
+        <a class="ui-card" href="{{ .RelPermalink }}">
+          <span class="ui-card__body">
+            <span class="ui-card__icon">{{ $item.icon }}</span>
+            <span class="ui-card__title">{{ .Title }}</span>
+            <span class="ui-card__text">{{ i18n (printf "outreach.%sSub" $item.key) | default .Description }}</span>
+            <span class="ui-card__more">{{ i18n "home.readMore" }} &rarr;</span>
+          </span>
+        </a>
+      {{- end }}
+    {{- end }}
+  </div>
+
+  {{/* ---------------- LATEST WRITING & VIDEO ---------------- */}}
+  {{- $posts := where site.RegularPages "Type" "outreach" -}}
+  {{- with first 6 $posts.ByDate.Reverse }}
+    <section class="section-block">
+      <header class="section-block__head">
+        <h2 class="section-block__title">{{ i18n "home.recent" }}</h2>
+      </header>
+      <div class="post-grid">
+        {{- range . }}
+          <a class="post-card" href="{{ .RelPermalink }}">
+            <span class="post-card__date">{{ .Date | time.Format (site.Params.dateFormat | default "2 January 2006") }}</span>
+            <span class="post-card__title">{{ .Title }}</span>
+            <span class="post-card__desc">{{ .Params.summary | default .Description | default .Summary }}</span>
+          </a>
+        {{- end }}
+      </div>
+    </section>
+  {{- end }}
+
+  {{/* ---------------- ENGAGEMENT ---------------- */}}
+  {{- with hugo.Data.engagement }}
+    <section class="section-block">
+      <header class="section-block__head">
+        <h2 class="section-block__title">{{ i18n "outreach.engagement" }}</h2>
+        <p class="section-block__sub">{{ i18n "outreach.engagementSub" }}</p>
+      </header>
+      <div class="ui-cards ui-cards--3">
+        {{- range . }}
+          {{- $t := partial "functions/tr.html" . }}
+          {{- $href := .url | default "" }}
+          {{- if and $href (ne $href "#") }}
+            <a class="ui-card" href="{{ $href }}"{{ if hasPrefix $href "http" }} target="_blank" rel="noopener"{{ end }}>
+              <span class="ui-card__body">
+                <span class="ui-card__icon">{{ .icon }}</span>
+                <span class="ui-card__title">{{ $t.title }}</span>
+                <span class="ui-card__text">{{ $t.summary }}</span>
+                <span class="ui-card__more">{{ i18n "home.readMore" }} &rarr;</span>
+              </span>
+            </a>
+          {{- else }}
+            <div class="ui-card">
+              <span class="ui-card__body">
+                <span class="ui-card__icon">{{ .icon }}</span>
+                <span class="ui-card__title">{{ $t.title }}</span>
+                <span class="ui-card__text">{{ $t.summary }}</span>
+              </span>
+            </div>
+          {{- end }}
+        {{- end }}
+      </div>
+    </section>
+  {{- end }}
+{{ end }}

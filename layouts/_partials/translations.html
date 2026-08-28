@@ -1,0 +1,30 @@
+{{- /* Language toggle — a two-pill switch, always visible (Congo's stock partial only
+      appears on pages that happen to be translated, which hides the control exactly
+      when a visitor is most likely to want it).
+
+      A page that has no counterpart in the other language falls back to that
+      language's homepage rather than to a 404. */ -}}
+{{- if hugo.IsMultilingual -}}
+  {{- $cur := page -}}
+  {{- $urls := dict -}}
+  {{- with $cur }}
+    {{- range .AllTranslations }}{{ $urls = merge $urls (dict .Lang .RelPermalink) }}{{ end -}}
+  {{- end -}}
+  {{- range site.Home.AllTranslations }}
+    {{- if not (isset $urls .Lang) }}{{ $urls = merge $urls (dict .Lang .RelPermalink) }}{{ end -}}
+  {{- end -}}
+  <div class="lang-toggle" role="group" aria-label="{{ i18n "nav.language" | default "Language" }}">
+    {{- range hugo.Sites }}
+      {{- $code := .Language.Lang -}}
+      {{- $href := index $urls $code -}}
+      {{- $isCurrent := eq $code site.Language.Lang -}}
+      <a
+        class="lang-toggle__item{{ if $isCurrent }} is-active{{ end }}"
+        href="{{ $href | default (printf "/%s/" $code) }}"
+        hreflang="{{ $code }}"
+        title="{{ .Language.Label | default .Language.Lang }}"
+        {{ if $isCurrent }}aria-current="true"{{ end }}
+      >{{ $code | upper }}</a>
+    {{- end }}
+  </div>
+{{- end -}}

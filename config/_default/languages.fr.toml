@@ -1,0 +1,47 @@
+locale = "fr"
+label = "Français"
+direction = "ltr"
+weight = 2
+
+title = "Wilfried Tadjeugue"
+copyright = "© Wilfried Tadjeugue. Contenus sous licence CC BY 4.0 sauf mention contraire."
+
+[params]
+  dateFormat = "2 January 2006"
+  description = "Doctorant en physique computationnelle — recherche et publications, activités scientifiques, vulgarisation et engagement."
+  # Sections feeding "recent" lists and the search index.
+  mainSections = ["outreach", "research", "activities"]
+
+[params.author]
+  name = "Wilfried Tadjeugue"
+  image = "img/author.png"
+  headline = "Doctorant · Physique computationnelle · Vulgarisateur scientifique"
+  bio = "Je construis et j'explique la physique computationnelle à partir des premiers principes — je développe actuellement un code DFT depuis zéro — et j'écris sur les statistiques qui font la qualité d'une science honnête."
+  links = [
+    { email = "mailto:wilfriedtadjeugue@gmail.com" },
+    { github = "https://github.com/Nangmo-Tadj" },
+    { google-scholar = "https://scholar.google.com/citations?user=REPLACE_ME" },
+    { orcid = "https://orcid.org/0000-0000-0000-0000" },
+    { linkedin = "https://linkedin.com/in/REPLACE_ME" },
+    { youtube = "https://youtube.com/@REPLACE_ME" },
+    { researchgate = "https://www.researchgate.net/profile/REPLACE_ME" },
+  ]
+
+# -- Bandeau d'accueil (français) --
+[params.hero]
+  eyebrow = "Physique computationnelle"
+  titleLead = "Construire la physique"
+  titleAccent = "à partir des premiers principes"
+  tagline = "Théorie de la structure électronique, les méthodes numériques qui la font tourner, et les écrits, le code et les vidéos qui la rendent partageable."
+  ctaPrimary = "Recherche & publications"
+  ctaSecondary = "Vulgarisation & engagement"
+
+[[params.hero.stats]]
+  value = "DFT"
+  label = "Un solveur écrit depuis zéro"
+[[params.hero.stats]]
+  value = "2"
+  label = "Langues de travail (FR · EN)"
+[[params.hero.stats]]
+  value = "Ouvert"
+  label = "Code, notes et figures"

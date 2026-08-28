@@ -1,0 +1,51 @@
+{{ define "main" }}
+  {{- $items := hugo.Data.activities -}}
+
+  <header class="page-head">
+    <h1 class="page-head__title">{{ .Title }}</h1>
+    <p class="page-head__lead">{{ i18n "section.activities.tagline" }}</p>
+    {{- with .Content }}<div class="page-head__intro prose dark:prose-invert">{{ . }}</div>{{ end }}
+  </header>
+
+  {{- if $items }}
+    {{/* Group by year so a long record stays readable. */}}
+    {{- $sorted := sort $items "date" "desc" -}}
+    <section class="section-block">
+      {{- /* Distinct years, newest first — Hugo has no group-by for data files. */ -}}
+      {{- $years := slice -}}
+      {{- range $sorted }}
+        {{- $y := time.Format "2006" .date -}}
+        {{- if not (in $years $y) }}{{ $years = $years | append $y }}{{ end -}}
+      {{- end }}
+
+      {{- range $years }}
+        {{- $year := . }}
+        <div class="year-block">
+          <h2 class="year-block__title">{{ $year }}</h2>
+          <ul class="activity-list">
+            {{- range $sorted }}
+              {{- if eq (time.Format "2006" .date) $year }}
+                {{- $t := partial "functions/tr.html" . }}
+                <li class="activity-item activity--{{ .kind }}">
+                  <div class="activity-item__aside">
+                    <span class="chip chip--primary">{{ i18n (printf "kind.%s" .kind) | default .kind }}</span>
+                    <time datetime="{{ time.Format "2006-01-02" .date }}">{{ time.Format (site.Params.dateFormat | default "2 January 2006") .date }}</time>
+                  </div>
+                  <div class="activity-item__body">
+                    <h3 class="activity-item__title">
+                      {{- with .url }}{{ if ne . "#" }}<a href="{{ . }}"{{ if hasPrefix . "http" }} target="_blank" rel="noopener"{{ end }}>{{ $t.title }}</a>{{ else }}{{ $t.title }}{{ end }}{{ else }}{{ $t.title }}{{ end -}}
+                    </h3>
+                    {{- with .where }}<p class="activity-item__where">{{ . }}</p>{{ end }}
+                    {{- with $t.summary }}<p class="activity-item__summary">{{ . }}</p>{{ end }}
+                  </div>
+                </li>
+              {{- end }}
+            {{- end }}
+          </ul>
+        </div>
+      {{- end }}
+    </section>
+  {{- else }}
+    <p class="empty-note">{{ i18n "activities.empty" }}</p>
+  {{- end }}
+{{ end }}

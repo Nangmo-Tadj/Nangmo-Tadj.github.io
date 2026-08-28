@@ -1,0 +1,59 @@
+# ---------------------------------------------------------------------------
+# Scientific activities rendered on /activities/ (and /fr/activities/).
+#   kind: talk | poster | conference | school | teaching | review | service
+#         (labels translated in i18n/*.yaml under `kind.*`)
+#   date: YYYY-MM-DD (unquoted).  Newest first is not required — the template sorts.
+# ---------------------------------------------------------------------------
+
+- date: 2026-06-02
+  kind: conference
+  where: "Computational Physics Summer School — Location, Country"
+  url: "#"
+  en:
+    title: "Efficient mixing schemes for self-consistent field loops"
+    summary: "Poster session. Early results on convergence acceleration for real-space DFT."
+  fr:
+    title: "Schémas de mélange efficaces pour les boucles auto-cohérentes"
+    summary: "Session poster. Premiers résultats sur l'accélération de la convergence en DFT en espace réel."
+
+- date: 2026-04-20
+  kind: talk
+  where: "Group seminar — Institution"
+  url: "#"
+  en:
+    title: "Statistics traps in computational science"
+    summary: "Why permutation tests and honest error bars beat borrowed distributional assumptions."
+  fr:
+    title: "Les pièges statistiques de la science computationnelle"
+    summary: "Pourquoi les tests de permutation et des barres d'erreur honnêtes valent mieux que des hypothèses de distribution empruntées."
+
+- date: 2026-02-01
+  kind: teaching
+  where: "Institution — undergraduate programme"
+  en:
+    title: "Teaching assistant — Numerical methods for physicists"
+    summary: "Tutorials and lab sessions: quadrature, linear algebra, ODE solvers in Python."
+  fr:
+    title: "Chargé de travaux dirigés — Méthodes numériques pour physiciens"
+    summary: "TD et TP : quadrature, algèbre linéaire, résolution d'EDO en Python."
+
+- date: 2025-09-15
+  kind: school
+  where: "Doctoral school — Location, Country"
+  url: "#"
+  en:
+    title: "Advanced electronic-structure methods (summer school)"
+    summary: "Two weeks on pseudopotentials, plane-wave codes and high-performance implementations."
+  fr:
+    title: "Méthodes avancées de structure électronique (école d'été)"
+    summary: "Deux semaines sur les pseudopotentiels, les codes à ondes planes et les implémentations haute performance."
+
+- date: 2025-06-10
+  kind: service
+  where: "Institution"
+  en:
+    title: "Co-organiser — PhD students' computational seminar"
+    summary: "Monthly informal seminar where students present work in progress and code."
+  fr:
+    title: "Co-organisateur — séminaire computationnel des doctorants"
+    summary: "Séminaire informel mensuel où les doctorants présentent travaux en cours et code."

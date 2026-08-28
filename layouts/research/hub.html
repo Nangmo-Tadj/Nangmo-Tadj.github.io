@@ -1,0 +1,79 @@
+{{ define "main" }}
+  {{- $pub := hugo.Data.publications -}}
+
+  <header class="page-head">
+    <h1 class="page-head__title">{{ .Title }}</h1>
+    <p class="page-head__lead">{{ i18n "section.research.tagline" }}</p>
+    {{- with .Content }}<div class="page-head__intro prose dark:prose-invert">{{ . }}</div>{{ end }}
+  </header>
+
+  {{/* ---------------- PUBLICATIONS ---------------- */}}
+  <section class="section-block">
+    <header class="section-block__head">
+      <h2 class="section-block__title">{{ i18n "research.publications" }}</h2>
+      <p class="section-block__sub">{{ i18n "research.publicationsSub" }}</p>
+    </header>
+
+    {{- if $pub }}
+      <ol class="pub-list">
+        {{- range sort $pub "year" "desc" }}
+          {{- $t := partial "functions/tr.html" . }}
+          <li class="pub-item">
+            <span class="pub-item__year">{{ .year }}</span>
+            <div class="pub-item__body">
+              <div class="pub-item__tags">
+                <span class="chip chip--primary">{{ i18n (printf "pub.%s" .type) | default .type }}</span>
+                {{- with .status }}<span class="chip">{{ i18n (printf "status.%s" .) | default . }}</span>{{ end }}
+              </div>
+              <h3 class="pub-item__title">{{ $t.title }}</h3>
+              {{- with .authors }}<p class="pub-item__authors">{{ . | markdownify }}</p>{{ end }}
+              {{- with .venue }}<p class="pub-item__venue">{{ . }}</p>{{ end }}
+              {{- with $t.summary }}<p class="pub-item__summary">{{ . }}</p>{{ end }}
+              {{- with .links }}
+                <p class="pub-item__links">
+                  {{- range . }}<a class="pill-link" href="{{ .url }}"{{ if hasPrefix .url "http" }} target="_blank" rel="noopener"{{ end }}>{{ .label }}</a>{{ end }}
+                </p>
+              {{- end }}
+            </div>
+          </li>
+        {{- end }}
+      </ol>
+    {{- else }}
+      <p class="empty-note">{{ i18n "research.publicationsEmpty" }}</p>
+    {{- end }}
+  </section>
+
+  {{/* ---------------- CODE & MANUSCRIPTS + LONGER WRITE-UPS ---------------- */}}
+  {{- $subsections := .Sections -}}
+  {{- $pages := .RegularPages -}}
+  {{- if or $subsections $pages }}
+    <section class="section-block">
+      <header class="section-block__head">
+        <h2 class="section-block__title">{{ i18n "research.code" }}</h2>
+        <p class="section-block__sub">{{ i18n "research.codeSub" }}</p>
+      </header>
+      <div class="ui-cards ui-cards--2">
+        {{- range $subsections }}
+          <a class="ui-card" href="{{ .RelPermalink }}">
+            <span class="ui-card__body">
+              <span class="ui-card__icon">🧪</span>
+              <span class="ui-card__title">{{ .Title }}</span>
+              <span class="ui-card__text">{{ .Params.summary | default .Description }}</span>
+              <span class="ui-card__more">{{ i18n "home.readMore" }} &rarr;</span>
+            </span>
+          </a>
+        {{- end }}
+        {{- range $pages }}
+          <a class="ui-card" href="{{ .RelPermalink }}">
+            <span class="ui-card__body">
+              <span class="ui-card__icon">📄</span>
+              <span class="ui-card__title">{{ .Title }}</span>
+              <span class="ui-card__text">{{ .Params.summary | default .Description }}</span>
+              <span class="ui-card__more">{{ i18n "home.readMore" }} &rarr;</span>
+            </span>
+          </a>
+        {{- end }}
+      </div>
+    </section>
+  {{- end }}
+{{ end }}

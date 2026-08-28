@@ -1,9 +1,10 @@
 {{ define "main" }}
-{{ if .Parent.IsHome }}
-  {{/* ---------------- COURSE CATALOG (/courses/) ---------------- */}}
+{{ if .Params.catalog }}
+  {{/* ---------------- COURSE CATALOG (/outreach/courses/) ---------------- */}}
   <header class="page-head">
+    <span class="page-head__eyebrow">{{ i18n "outreach.coursesSub" }}</span>
     <h1 class="page-head__title">{{ .Title }}</h1>
-    {{ with .Content }}<div class="prose max-w-none dark:prose-invert">{{ . }}</div>{{ end }}
+    {{ with .Content }}<div class="page-head__intro prose dark:prose-invert">{{ . }}</div>{{ end }}
   </header>
   <div class="course-grid">
     {{ range .Sections }}
@@ -15,7 +16,7 @@
           <span class="course-card__title">{{ .Title }}</span>
           <span class="course-card__desc">{{ .Params.summary | default .Description }}</span>
           <span class="course-card__meta">
-            <span>📚 {{ len .RegularPages }} lessons</span>
+            <span>📚 {{ len .RegularPages }} {{ i18n "course.lessons" }}</span>
             {{ with .Params.duration }}<span>⏱ {{ . }}</span>{{ end }}
           </span>
         </span>
@@ -23,7 +24,7 @@
     {{ end }}
   </div>
 {{ else }}
-  {{/* ---------------- COURSE LANDING (/courses/<name>/) ---------------- */}}
+  {{/* ---------------- COURSE LANDING (/outreach/courses/<name>/) ---------------- */}}
   {{ $lessons := .RegularPages.ByWeight }}
   <article>
     <div class="course-hero" style="background-image:url('{{ (.Params.cover | default "/img/covers/dft.jpg") | relURL }}')">
@@ -32,17 +33,17 @@
         <h1 class="course-hero__title">{{ .Title }}</h1>
         {{ with .Params.summary }}<p class="course-hero__sub">{{ . }}</p>{{ end }}
         <div class="course-hero__meta">
-          <span>📚 {{ len $lessons }} lessons</span>
+          <span>📚 {{ len $lessons }} {{ i18n "course.lessons" }}</span>
           {{ with .Params.level }}<span>🎯 {{ . }}</span>{{ end }}
           {{ with .Params.duration }}<span>⏱ {{ . }}</span>{{ end }}
         </div>
-        {{ with $lessons }}<a class="btn-hero btn-hero--solid" href="{{ (index . 0).RelPermalink }}">Start lesson 1 →</a>{{ end }}
+        {{ with $lessons }}<a class="btn btn--solid" href="{{ (index . 0).RelPermalink }}">{{ i18n "course.start" }} &rarr;</a>{{ end }}
       </div>
     </div>
 
     {{ with .Content }}<div class="prose max-w-none dark:prose-invert course-intro">{{ . }}</div>{{ end }}
 
-    <h2 class="course-toc__heading">Lessons</h2>
+    <h2 class="course-toc__heading">{{ i18n "course.lessonList" }}</h2>
     <ol class="course-toc">
       {{ range $i, $p := $lessons }}
         <li class="course-toc__item">

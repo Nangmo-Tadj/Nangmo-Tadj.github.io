@@ -1,0 +1,52 @@
+# ---------------------------------------------------------------------------
+# Publications rendered on /research/ (and /fr/research/).
+#   type:     article | preprint | proceedings | thesis | software | chapter
+#             (labels translated in i18n/*.yaml under `pub.*`)
+#   status:   published | accepted | submitted | in-preparation  (optional)
+#   authors:  string — put your own name between ** ** to bold it
+#   links:    list of { label, url }
+# Replace every placeholder below with your real record.
+# ---------------------------------------------------------------------------
+
+- year: 2026
+  type: preprint
+  status: submitted
+  authors: "**W. Tadjeugue**, A. Author, B. Author"
+  venue: "arXiv:2607.XXXXX"
+  links:
+    - { label: "arXiv", url: "#" }
+    - { label: "Code", url: "https://github.com/Nangmo-Tadj" }
+  en:
+    title: "A transparent Kohn–Sham solver for teaching electronic structure"
+    summary: "Placeholder — a compact real-space DFT implementation designed to be read, not just run."
+  fr:
+    title: "Un solveur Kohn–Sham transparent pour enseigner la structure électronique"
+    summary: "Exemple à remplacer — une implémentation DFT compacte en espace réel, conçue pour être lue autant qu'exécutée."
+
+- year: 2026
+  type: article
+  status: accepted
+  authors: "A. Author, **W. Tadjeugue**, C. Author"
+  venue: "Journal of Computational Physics, vol. XX, pp. XX–XX"
+  links:
+    - { label: "DOI", url: "#" }
+    - { label: "PDF", url: "#" }
+  en:
+    title: "Placeholder title — first-author paper"
+    summary: "Replace with your real publication: the result in one honest sentence."
+  fr:
+    title: "Titre d'exemple — article en premier auteur"
+    summary: "À remplacer par votre vraie publication : le résultat en une phrase honnête."
+
+- year: 2025
+  type: proceedings
+  authors: "**W. Tadjeugue**, D. Author"
+  venue: "Proceedings of the XXth Conference on Computational Materials"
+  links:
+    - { label: "PDF", url: "#" }
+  en:
+    title: "Placeholder — conference proceedings entry"
+    summary: "Short methodological contribution presented at the conference."
+  fr:
+    title: "Exemple — communication publiée dans des actes de conférence"
+    summary: "Courte contribution méthodologique présentée à la conférence."

@@ -1,35 +1,14 @@
 ---
-title: "Research"
-description: "Research activities, interests, and publications."
+title: "Research & publications"
+description: "Electronic-structure theory, numerical methods, and the publications that come out of them."
+layout: "hub"
 cascade:
   showReadingTime: false
 ---
 
-My research sits at the intersection of **electronic-structure theory**, **numerical methods**,
-and **scientific software**. Below are my current interests and outputs.
+My research sits at the intersection of **electronic-structure theory**, **numerical methods**
+and **scientific software**: understanding a method well enough to implement it, and
+implementing it well enough to trust the numbers that come out.
 
-> _Placeholder overview — replace with a paragraph on your thesis topic and its motivation._
-
-## Research interests
-
-- **Density Functional Theory (DFT)** — exchange–correlation functionals, self-consistency,
-  and efficient implementations.
-- **Numerical linear algebra** for large eigenvalue problems.
-- **Reproducible scientific computing** — turning methods into tested, documented code.
-
-## Selected pages
-
-- [Research interests in depth](interests/) — a longer write-up.
-
-## Publications
-
-_Placeholder — list your papers here. A simple pattern:_
-
-1. **Author, A., Tadjeugue, W.** (20XX). *Title of the paper.* **Journal**, vol(issue), pp.
-   [doi](#) · [pdf](#) · [code](#)
-
-_Tip: you can also generate this list automatically from a BibTeX file later._
-
-## Talks & posters
-
-_Placeholder — conferences, seminars, posters._
+> _Placeholder overview — replace this with a paragraph on your thesis topic, your group, and
+> the question that motivates the work._

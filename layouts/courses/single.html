@@ -23,9 +23,9 @@
     {{ partial "breadcrumbs.html" . }}
     <h1 class="lesson-title">{{ .Title }}</h1>
     <div class="lesson-meta">
-      {{ if ge $cur 0 }}<span>Lesson {{ add $cur 1 }} of {{ len $lessons }}</span>{{ end }}
+      {{ if ge $cur 0 }}<span>{{ i18n "course.lessonOf" (dict "n" (add $cur 1) "total" (len $lessons)) }}</span>{{ end }}
       {{ with .Params.duration }}<span>⏱ {{ . }}</span>{{ end }}
-      {{ if .Params.date }}<span>{{ .Date | time.Format "Jan 2, 2006" }}</span>{{ end }}
+      {{ if .Params.date }}<span>{{ .Date | time.Format (site.Params.dateFormat | default "2 January 2006") }}</span>{{ end }}
     </div>
 
     <div class="prose max-w-none dark:prose-invert lesson-content">{{ .Content }}</div>
@@ -34,14 +34,14 @@
       {{ if gt $cur 0 }}
         {{ $prev := index $lessons (sub $cur 1) }}
         <a class="lesson-pager__link lesson-pager__prev" href="{{ $prev.RelPermalink }}">
-          <span class="lesson-pager__dir">&larr; Previous</span>
+          <span class="lesson-pager__dir">&larr; {{ i18n "course.previous" }}</span>
           <span class="lesson-pager__name">{{ $prev.Title }}</span>
         </a>
       {{ else }}<span></span>{{ end }}
       {{ if and (ge $cur 0) (lt $cur (sub (len $lessons) 1)) }}
         {{ $next := index $lessons (add $cur 1) }}
         <a class="lesson-pager__link lesson-pager__next" href="{{ $next.RelPermalink }}">
-          <span class="lesson-pager__dir">Next &rarr;</span>
+          <span class="lesson-pager__dir">{{ i18n "course.next" }} &rarr;</span>
           <span class="lesson-pager__name">{{ $next.Title }}</span>
         </a>
       {{ end }}

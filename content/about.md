@@ -20,9 +20,9 @@ explaining both the physics and the code clearly.
 
 - **Research** — electronic-structure methods and the numerical machinery behind them.
 - **Teaching by building** — I write manuscripts that pair theory with working code, such as a
-  [DFT engine built from scratch](/projects/dft-from-scratch/).
-- **Science communication** — [blog posts](/blog/) on statistics in science and
-  [videos](/videos/) on scientific programming.
+  [DFT engine built from scratch](/research/projects/dft-from-scratch/).
+- **Science communication** — [blog posts](/outreach/blog/) on statistics in science and
+  [videos](/outreach/videos/) on scientific programming.
 
 ## Timeline
 

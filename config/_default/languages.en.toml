@@ -8,14 +8,14 @@ copyright = "© Wilfried Tadjeugue. Content licensed CC BY 4.0 unless noted."
 
 [params]
   dateFormat = "2 January 2006"
-  description = "PhD student in computational physics — research, statistical analysis of science, programming videos, and hands-on manuscripts (including a DFT code built from scratch)."
-  # Homepage "recent" + list pages pull from these sections:
-  mainSections = ["blog", "projects", "videos"]
+  description = "PhD student in computational physics — research and publications, scientific activities, outreach and engagement."
+  # Sections feeding "recent" lists and the search index.
+  mainSections = ["outreach", "research", "activities"]
 
 [params.author]
   name = "Wilfried Tadjeugue"
   image = "img/author.png"  # replace assets/img/author.png with your real square photo
-  headline = "PhD student · Computational Physics · Science communicator"
+  headline = "PhD student · Computational physics · Science communicator"
   bio = "I build and explain computational physics from first principles — currently developing a DFT code from scratch — and write about the statistics behind good science."
   links = [
     { email = "mailto:wilfriedtadjeugue@gmail.com" },
@@ -27,3 +27,22 @@ copyright = "© Wilfried Tadjeugue. Content licensed CC BY 4.0 unless noted."
     { youtube = "https://youtube.com/@REPLACE_ME" },
     { researchgate = "https://www.researchgate.net/profile/REPLACE_ME" },
   ]
+
+# -- Hero / landing copy (English) --
+[params.hero]
+  eyebrow = "Computational physics"
+  titleLead = "Building physics"
+  titleAccent = "from first principles"
+  tagline = "Electronic-structure theory, the numerics that make it run, and the writing, code and video that make it shareable."
+  ctaPrimary = "Research & publications"
+  ctaSecondary = "Outreach & engagement"
+
+[[params.hero.stats]]
+  value = "DFT"
+  label = "Solver written from scratch"
+[[params.hero.stats]]
+  value = "2"
+  label = "Working languages (EN · FR)"
+[[params.hero.stats]]
+  value = "Open"
+  label = "Code, notes and figures"

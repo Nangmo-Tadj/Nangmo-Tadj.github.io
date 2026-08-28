@@ -1,0 +1,7 @@
+{{- /* Pick the current language's block out of a bilingual data entry.
+      Data files carry `en:` and `fr:` sub-maps; this returns the right one,
+      falling back to English so a half-translated entry still renders.
+      Usage:  {{ $t := partial "functions/tr.html" $item }}{{ $t.title }} */ -}}
+{{- $out := index . site.Language.Lang -}}
+{{- if not $out }}{{ $out = index . "en" }}{{ end -}}
+{{- return (default (dict) $out) -}}

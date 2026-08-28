@@ -1,97 +1,147 @@
-{{- /* Bold landing homepage: hero + feature grid + featured course + activity + recent.
-      `.` is the home Page. New components are styled by custom classes in custom.css. */ -}}
+{{- /* Landing page: hero, section pillars, activity timeline, featured course, recent writing.
+      Every string is either translated through i18n/*.yaml or comes from the per-language
+      [params.hero] block, so the page is fully bilingual. */ -}}
 {{- $author := site.Language.Params.Author -}}
+{{- $hero := site.Language.Params.hero | default dict -}}
 {{- $avatar := "" -}}
-{{- with $author.image }}{{ with resources.Get . }}{{ $avatar = (.Resize "240x webp q90").RelPermalink }}{{ end }}{{ end -}}
+{{- with $author.image }}{{ with resources.Get . }}{{ $avatar = (.Resize "320x webp q90").RelPermalink }}{{ end }}{{ end -}}
+{{- $research := site.GetPage "/research" -}}
+{{- $activities := site.GetPage "/activities" -}}
+{{- $outreach := site.GetPage "/outreach" -}}
 
 {{/* ---------------- HERO ---------------- */}}
 <section class="hero">
-  <span class="hero__bg" aria-hidden="true"></span>
-  <div class="hero__inner">
-    {{- with $avatar }}<img class="hero__avatar" src="{{ . }}" width="120" height="120" alt="{{ $author.name }}">{{ end }}
-    <h1 class="hero__name">{{ $author.name | default site.Title }}</h1>
-    {{- with $author.headline }}<p class="hero__headline">{{ . | markdownify }}</p>{{ end }}
-    {{- with $author.bio }}<p class="hero__bio">{{ . | markdownify }}</p>{{ end }}
-    <div class="hero__cta">
-      <a class="btn-hero btn-hero--solid" href="{{ "courses/" | relURL }}">Explore courses</a>
-      <a class="btn-hero" href="{{ "blog/" | relURL }}">Read the blog</a>
+  <div class="hero__grid">
+    <div class="hero__copy">
+      {{- with $hero.eyebrow }}<span class="hero__eyebrow">{{ . }}</span>{{ end }}
+      <h1 class="hero__title">
+        {{- with $hero.titleLead }}<span class="hero__title-lead">{{ . }}</span>{{ end }}
+        {{- with $hero.titleAccent }}<span class="hero__title-accent">{{ . }}</span>{{ end }}
+      </h1>
+      {{- with $hero.tagline }}<p class="hero__tagline">{{ . | markdownify }}</p>{{ end }}
+      <div class="hero__cta">
+        {{- with $research }}
+          <a class="btn btn--solid" href="{{ .RelPermalink }}">{{ $hero.ctaPrimary | default .Title }}</a>
+        {{- end }}
+        {{- with $outreach }}
+          <a class="btn btn--ghost" href="{{ .RelPermalink }}">{{ $hero.ctaSecondary | default .Title }}</a>
+        {{- end }}
+      </div>
+      <div class="hero__links">{{ partial "author-links.html" . }}</div>
     </div>
-    <div class="hero__links">{{ partial "author-links.html" . }}</div>
+
+    <aside class="hero__card">
+      <span class="hero__halo" aria-hidden="true"></span>
+      {{- with $avatar }}
+        <img class="hero__avatar" src="{{ . }}" width="160" height="160" alt="{{ $author.name }}">
+      {{- end }}
+      <p class="hero__name">{{ $author.name | default site.Title }}</p>
+      {{- with $author.headline }}<p class="hero__headline">{{ . | markdownify }}</p>{{ end }}
+      {{- with $author.bio }}<p class="hero__bio">{{ . | markdownify }}</p>{{ end }}
+    </aside>
+  </div>
+
+  {{- with $hero.stats }}
+  <ul class="hero__stats">
+    {{- range . }}
+      <li class="stat-card">
+        <span class="stat-card__value">{{ .value }}</span>
+        <span class="stat-card__label">{{ .label }}</span>
+      </li>
+    {{- end }}
+  </ul>
+  {{- end }}
+</section>
+
+{{/* ---------------- THE THREE SECTIONS ---------------- */}}
+<section class="home-section">
+  <header class="home-section__head">
+    <h2 class="home-section__title">{{ i18n "home.explore" }}</h2>
+    <p class="home-section__sub">{{ i18n "home.exploreSub" }}</p>
+  </header>
+  <div class="pillar-grid">
+    {{- range slice
+        (dict "page" $research   "icon" "🔬" "key" "research"   "mod" "a")
+        (dict "page" $activities "icon" "🎙️" "key" "activities" "mod" "b")
+        (dict "page" $outreach   "icon" "🌍" "key" "outreach"   "mod" "c") }}
+      {{- $item := . -}}
+      {{- with $item.page }}
+        <a class="pillar pillar--{{ $item.mod }}" href="{{ .RelPermalink }}">
+          <span class="pillar__icon" aria-hidden="true">{{ $item.icon }}</span>
+          <span class="pillar__title">{{ .Title }}</span>
+          <span class="pillar__desc">{{ i18n (printf "section.%s.tagline" $item.key) | default .Description }}</span>
+          <span class="pillar__more">{{ i18n "home.readMore" }} <span aria-hidden="true">&rarr;</span></span>
+        </a>
+      {{- end }}
+    {{- end }}
   </div>
 </section>
 
-{{/* ---------------- EXPLORE (feature grid) ---------------- */}}
-<section class="home-section">
-  <h2 class="home-section__title">Explore</h2>
-  <div class="feature-grid">
-    <a class="feature feature--a" href="{{ "research/" | relURL }}">
-      <span class="feature__icon">🔬</span>
-      <span class="feature__title">Research</span>
-      <span class="feature__desc">Electronic-structure theory &amp; the numerics behind it.</span>
-    </a>
-    <a class="feature feature--b" href="{{ "courses/" | relURL }}">
-      <span class="feature__icon">🎓</span>
-      <span class="feature__title">Courses</span>
-      <span class="feature__desc">Hands-on “formations” mixing text, code, video &amp; docs.</span>
-    </a>
-    <a class="feature feature--c" href="{{ "blog/" | relURL }}">
-      <span class="feature__icon">✍️</span>
-      <span class="feature__title">Blog</span>
-      <span class="feature__desc">Essays on the statistics behind good science.</span>
-    </a>
-    <a class="feature feature--d" href="{{ "videos/" | relURL }}">
-      <span class="feature__icon">🎬</span>
-      <span class="feature__title">Videos</span>
-      <span class="feature__desc">Programming &amp; computational-physics screencasts.</span>
-    </a>
-  </div>
+{{/* ---------------- LATEST ACTIVITY ---------------- */}}
+{{- with hugo.Data.news }}
+<section class="home-section home-news">
+  <header class="home-section__head">
+    <h2 class="home-section__title">{{ i18n "home.latest" }}</h2>
+    <p class="home-section__sub">{{ i18n "home.latestSub" }}</p>
+  </header>
+  <ol class="news-timeline">
+    {{- range first 5 (sort . "date" "desc") }}
+      {{- $t := partial "functions/tr.html" . }}
+      <li class="news-item news--{{ .category | lower }}">
+        <span class="news-dot" aria-hidden="true"></span>
+        <div class="news-card">
+          <div class="news-meta">
+            <span class="news-chip">{{ i18n (printf "cat.%s" (.category | lower)) | default .category }}</span>
+            <time datetime="{{ time.Format "2006-01-02" .date }}">{{ time.Format (site.Params.dateFormat | default "2 January 2006") .date }}</time>
+          </div>
+          <h3 class="news-title">
+            {{- $title := $t.title -}}
+            {{- with .url }}{{ if ne . "#" }}<a href="{{ . | relLangURL }}">{{ $title }}</a>{{ else }}{{ $title }}{{ end }}{{ else }}{{ $title }}{{ end -}}
+          </h3>
+          {{- with $t.summary }}<p class="news-summary">{{ . }}</p>{{ end }}
+        </div>
+      </li>
+    {{- end }}
+  </ol>
 </section>
+{{- end }}
 
 {{/* ---------------- FEATURED COURSE ---------------- */}}
-{{- with (site.GetPage "/courses/dft") }}
+{{- with (site.GetPage "/outreach/courses/dft") }}
 <section class="home-section">
-  <h2 class="home-section__title">Featured course</h2>
+  <header class="home-section__head">
+    <h2 class="home-section__title">{{ i18n "home.featured" }}</h2>
+  </header>
   <a class="course-feature" href="{{ .RelPermalink }}">
     <span class="course-feature__media" style="background-image:url('{{ (.Params.cover | default "/img/covers/dft.jpg") | relURL }}')" aria-hidden="true"></span>
     <span class="course-feature__body">
-      <span class="course-feature__eyebrow">Computational physics</span>
+      <span class="course-feature__eyebrow">{{ i18n "outreach.courses" }}</span>
       <span class="course-feature__title">{{ .Title }}</span>
       <span class="course-feature__desc">{{ .Params.summary | default .Description }}</span>
-      <span class="course-feature__cta">Start the course <span aria-hidden="true">→</span></span>
+      <span class="course-feature__cta">{{ i18n "course.start" }} <span aria-hidden="true">&rarr;</span></span>
     </span>
   </a>
 </section>
 {{- end }}
 
-{{/* ---------------- LATEST ACTIVITY ---------------- */}}
-{{- with site.Data.news }}
-<section class="home-section home-news">
-  <h2 class="home-section__title">Latest activity</h2>
-  <p class="home-section__sub">Papers, talks, conferences &amp; more.</p>
-  <ol class="news-timeline">
-    {{ range sort . "date" "desc" }}
-      <li class="news-item news--{{ .category | lower }}">
-        <span class="news-dot" aria-hidden="true"></span>
-        <div class="news-card">
-          <div class="news-meta">
-            <span class="news-chip">{{ .category }}</span>
-            <time datetime="{{ time.Format "2006-01-02" .date }}">{{ time.Format "Jan 2, 2006" .date }}</time>
-          </div>
-          <h3 class="news-title">
-            {{- $t := .title -}}
-            {{- with .url }}{{ if ne . "#" }}<a href="{{ . }}">{{ $t }}</a>{{ else }}{{ $t }}{{ end }}{{ else }}{{ $t }}{{ end -}}
-          </h3>
-          {{ with .summary }}<p class="news-summary">{{ . }}</p>{{ end }}
-        </div>
-      </li>
-    {{ end }}
-  </ol>
-</section>
-{{- end }}
-
-{{/* ---------------- RECENT POSTS ---------------- */}}
-{{- if .Site.Params.homepage.showRecent | default false }}
+{{/* ---------------- RECENT WRITING ---------------- */}}
+{{- /* Type "outreach" = blog posts and video pages; course lessons carry type "courses". */ -}}
+{{- $recent := where site.RegularPages "Type" "outreach" -}}
+{{- $recent = $recent.ByDate.Reverse -}}
+{{- with first (site.Params.homepage.recentLimit | default 4) $recent }}
 <section class="home-section">
-  {{ partial "recent-articles.html" . }}
+  <header class="home-section__head">
+    <h2 class="home-section__title">{{ i18n "home.recent" }}</h2>
+    <a class="home-section__link" href="{{ with $outreach }}{{ .RelPermalink }}{{ end }}">{{ i18n "home.seeAll" }} &rarr;</a>
+  </header>
+  <div class="post-grid">
+    {{- range . }}
+      <a class="post-card" href="{{ .RelPermalink }}">
+        <span class="post-card__date">{{ .Date | time.Format (site.Params.dateFormat | default "2 January 2006") }}</span>
+        <span class="post-card__title">{{ .Title }}</span>
+        <span class="post-card__desc">{{ .Params.summary | default .Description | default .Summary }}</span>
+      </a>
+    {{- end }}
+  </div>
 </section>
 {{- end }}

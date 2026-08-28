@@ -1,6 +1,6 @@
 ---
-title: "Projects"
-description: "Hands-on computational-physics manuscripts with runnable code."
+title: "Code & manuscripts"
+description: "Long-form computational-physics manuscripts with runnable code."
 ---
 
 Long-form **manuscripts** where I develop a piece of computational physics from first

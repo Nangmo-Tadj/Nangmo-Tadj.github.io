@@ -5,7 +5,10 @@ baseURL = "https://nangmo-tadj.github.io/"
 
 theme = "congo"
 
+# -- Languages --
+# English is served at the root, French under /fr/.
 defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
 
 enableRobotsTXT = true
 summaryLength = 30

@@ -35,4 +35,4 @@ $$
 - How far can simple functionals be pushed before they break?
 - What is the right trade-off between accuracy and cost for large systems?
 
-See the hands-on side of this in [**DFT from scratch**](/projects/dft-from-scratch/).
+See the hands-on side of this in [**DFT from scratch**](/research/projects/dft-from-scratch/).

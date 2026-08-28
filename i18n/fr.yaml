@@ -1,0 +1,93 @@
+# Chaînes propres aux gabarits du site (Congo fournit déjà son fr.yaml).
+
+hero:
+  skip: "Aller au contenu"
+
+home:
+  explore: "Explorer"
+  exploreSub: "Trois portes d'entrée vers le travail."
+  latest: "Actualité récente"
+  latestSub: "Articles, exposés, conférences et publications."
+  recent: "Écrits récents"
+  featured: "Formation à la une"
+  seeAll: "Tout voir"
+  readMore: "Lire la suite"
+
+nav:
+  language: "Langue"
+
+section:
+  research:
+    title: "Recherche & publications"
+    tagline: "Théorie de la structure électronique, méthodes numériques, et le logiciel qui transforme l'une en l'autre."
+  activities:
+    title: "Activités scientifiques"
+    tagline: "Exposés, posters, conférences, écoles, enseignement et responsabilités collectives."
+  outreach:
+    title: "Vulgarisation & engagement"
+    tagline: "Écrits, vidéos et formations qui mettent la physique computationnelle à portée."
+
+research:
+  interests: "Axes de recherche"
+  publications: "Publications"
+  publicationsSub: "Articles à comité de lecture, prépublications et actes de conférence."
+  publicationsEmpty: "Les publications seront listées ici."
+  code: "Code & manuscrits"
+  codeSub: "Travaux longs où la théorie et le programme se construisent côte à côte."
+
+activities:
+  all: "Toutes"
+  empty: "Les activités seront listées ici."
+  upcoming: "À venir"
+
+outreach:
+  blog: "Blog"
+  blogSub: "Des articles sur les statistiques qui font la qualité d'une science honnête."
+  videos: "Vidéos"
+  videosSub: "Captures d'écran commentées : programmation et physique computationnelle."
+  courses: "Formations"
+  coursesSub: "Des formations pratiques mêlant texte, code, vidéo et documents."
+  engagement: "Engagement"
+  engagementSub: "Ce que je fais au-delà des articles."
+
+course:
+  lessons: "leçons"
+  lessonList: "Leçons"
+  start: "Commencer la leçon 1"
+  lessonOf: "Leçon {{ .n }} sur {{ .total }}"
+  previous: "Précédent"
+  next: "Suivant"
+  backTo: "Retour à"
+
+cat:
+  preprint: "Prépublication"
+  paper: "Article"
+  talk: "Exposé"
+  conference: "Conférence"
+  award: "Distinction"
+  teaching: "Enseignement"
+  outreach: "Vulgarisation"
+  misc: "Actualité"
+
+kind:
+  talk: "Exposé"
+  poster: "Poster"
+  conference: "Conférence"
+  school: "École"
+  teaching: "Enseignement"
+  review: "Relecture"
+  service: "Responsabilités"
+
+pub:
+  article: "Article de revue"
+  preprint: "Prépublication"
+  proceedings: "Actes de conférence"
+  thesis: "Thèse"
+  software: "Logiciel"
+  chapter: "Chapitre d'ouvrage"
+
+status:
+  published: "Publié"
+  accepted: "Accepté"
+  submitted: "Soumis"
+  in-preparation: "En préparation"

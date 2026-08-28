@@ -41,5 +41,5 @@ print(trapezoid(np.sin, 0, np.pi, 1000))  # ≈ 1.9999983...
 ## Resources
 
 - Full code: _(placeholder — link a GitHub repo or Gist)_
-- Related manuscript: [DFT from scratch](/projects/dft-from-scratch/) uses these ideas for
+- Related manuscript: [DFT from scratch](/research/projects/dft-from-scratch/) uses these ideas for
   integrating the electron density.

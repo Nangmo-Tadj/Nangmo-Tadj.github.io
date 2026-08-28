@@ -1,33 +1,48 @@
 # ---------------------------------------------------------------------------
-# Activity / news feed shown on the homepage.
-# To add an item, copy a block below and put it at the TOP (newest first).
+# Activity / news feed shown on the homepage.  Newest first.
 #   date:     YYYY-MM-DD (unquoted)
-#   category: Paper | Talk | Conference | Award | Preprint | Teaching | Misc
-#   title:    the headline
-#   summary:  one line of context (optional)
+#   category: preprint | paper | talk | conference | award | teaching | outreach | misc
+#             (labels are translated in i18n/en.yaml and i18n/fr.yaml under `cat.*`)
 #   url:      link to paper / slides / event (optional)
+#   en / fr:  title + summary in each language
 # ---------------------------------------------------------------------------
 
 - date: 2026-07-15
-  category: Preprint
-  title: "A from-scratch Kohn–Sham DFT solver for teaching"
-  summary: "New preprint accompanying the DFT-from-scratch series — code and benchmarks."
+  category: preprint
   url: "#"
+  en:
+    title: "A from-scratch Kohn–Sham DFT solver for teaching"
+    summary: "New preprint accompanying the DFT-from-scratch series — code and benchmarks."
+  fr:
+    title: "Un solveur DFT Kohn–Sham écrit depuis zéro, pour l'enseignement"
+    summary: "Nouvelle prépublication accompagnant la série « DFT depuis zéro » — code et tests de performance."
 
 - date: 2026-06-02
-  category: Conference
-  title: "Poster at the Computational Physics Summer School 2026"
-  summary: "Presented early results on efficient self-consistency mixing."
+  category: conference
   url: "#"
+  en:
+    title: "Poster at the Computational Physics Summer School 2026"
+    summary: "Presented early results on efficient self-consistency mixing."
+  fr:
+    title: "Poster à l'école d'été de physique computationnelle 2026"
+    summary: "Présentation de premiers résultats sur un mélange efficace en boucle auto-cohérente."
 
 - date: 2026-04-20
-  category: Talk
-  title: "Invited seminar: “Statistics traps in computational science”"
-  summary: "Group seminar on permutation tests and honest uncertainty reporting."
+  category: talk
   url: "#"
+  en:
+    title: "Invited seminar: “Statistics traps in computational science”"
+    summary: "Group seminar on permutation tests and honest uncertainty reporting."
+  fr:
+    title: "Séminaire invité : « Les pièges statistiques de la science computationnelle »"
+    summary: "Séminaire de groupe sur les tests de permutation et la déclaration honnête des incertitudes."
 
 - date: 2026-02-10
-  category: Paper
-  title: "First-author paper accepted (placeholder)"
-  summary: "Replace with your real publication — title, venue, and DOI link."
-  url: "#"
+  category: outreach
+  url: "/outreach/blog/permutation-tests-in-science/"
+  en:
+    title: "New essay: the quiet power of permutation tests"
+    summary: "An assumption-light way to get p-values when the textbook formulas don't apply."
+  fr:
+    title: "Nouvel article : la force tranquille des tests de permutation"
+    summary: "Obtenir des p-valeurs sans hypothèses lourdes, quand les formules classiques ne tiennent plus."

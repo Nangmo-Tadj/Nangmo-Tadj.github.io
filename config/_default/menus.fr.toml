@@ -1,21 +1,21 @@
-# -- Main navigation (header) — English --
+# -- Navigation principale (en-tête) — français --
 [[main]]
-  name = "Research & publications"
+  name = "Recherche & publications"
   pageRef = "research"
   weight = 10
 
 [[main]]
-  name = "Scientific activities"
+  name = "Activités scientifiques"
   pageRef = "activities"
   weight = 20
 
 [[main]]
-  name = "Outreach & engagement"
+  name = "Vulgarisation & engagement"
   pageRef = "outreach"
   weight = 30
 
 [[main]]
-  name = "About"
+  name = "À propos"
   pageRef = "about"
   weight = 40
 
@@ -37,23 +37,23 @@
   [main.params]
     action = "appearance"
 
-# -- Footer navigation --
+# -- Navigation de pied de page --
 [[footer]]
-  name = "Research & publications"
+  name = "Recherche & publications"
   pageRef = "research"
   weight = 10
 
 [[footer]]
-  name = "Scientific activities"
+  name = "Activités scientifiques"
   pageRef = "activities"
   weight = 20
 
 [[footer]]
-  name = "Outreach & engagement"
+  name = "Vulgarisation & engagement"
   pageRef = "outreach"
   weight = 30
 
 [[footer]]
   name = "RSS"
-  url = "/index.xml"
+  url = "/fr/index.xml"
   weight = 40
