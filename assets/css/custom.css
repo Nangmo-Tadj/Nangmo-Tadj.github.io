@@ -228,12 +228,12 @@ header .text-xl {
 .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 .btn--solid {
   border-color: transparent;
-  background-image: linear-gradient(135deg, rgb(var(--color-primary-600)), rgb(var(--color-primary-900)));
+  background-image: linear-gradient(135deg, rgb(var(--color-primary-700)), rgb(var(--color-primary-950)));
   color: #fff;
 }
 .btn--ghost { background: transparent; }
 .dark .btn { color: rgb(var(--color-primary-200)); background: rgba(255, 255, 255, 0.05); }
-.dark .btn--solid { color: #fff; background-image: linear-gradient(135deg, rgb(var(--color-primary-600)), rgb(var(--color-primary-900))); }
+.dark .btn--solid { color: #fff; background-image: linear-gradient(135deg, rgb(var(--color-primary-700)), rgb(var(--color-primary-950))); }
 
 /* Congo's own buttons, matched to the same shape. */
 .button,
@@ -1380,7 +1380,7 @@ main article.mt-6.flex:hover {
 }
 .doc-card__btn:hover { background: rgba(var(--color-primary-500), 0.1); }
 .doc-card__btn--solid {
-  background-image: linear-gradient(135deg, rgb(var(--color-primary-600)), rgb(var(--color-primary-900)));
+  background-image: linear-gradient(135deg, rgb(var(--color-primary-700)), rgb(var(--color-primary-950)));
   border-color: transparent;
   color: #fff;
 }
