@@ -6,6 +6,7 @@ summary: "A screencast building three classic quadrature rules in Python and mea
 tags: ["python", "numerical-methods", "video", "tutorial"]
 categories: ["programming"]
 showTableOfContents: true
+draft: true   # sample content — not published until you say so
 ---
 
 _Placeholder video page — swap the embed ID below for your own upload._

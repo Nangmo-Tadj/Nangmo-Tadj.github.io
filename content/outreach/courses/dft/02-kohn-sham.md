@@ -3,6 +3,7 @@ title: "The Kohn–Sham idea"
 summary: "How an impossible many-body problem becomes a solvable set of single-particle equations."
 duration: "25 min"
 weight: 2
+draft: true   # sample content — not published until you say so
 ---
 
 {{< katex >}}

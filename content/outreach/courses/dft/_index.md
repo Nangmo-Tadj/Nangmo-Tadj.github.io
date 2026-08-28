@@ -5,6 +5,7 @@ cover: /img/covers/dft.jpg
 level: "Intermediate"
 duration: "~3 hours"
 weight: 1
+draft: true   # sample content — not published until you say so
 ---
 
 {{< lead >}}

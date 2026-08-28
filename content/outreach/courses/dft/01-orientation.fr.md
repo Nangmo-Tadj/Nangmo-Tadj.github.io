@@ -3,6 +3,7 @@ title: "Orientation & outils"
 summary: "Ce que l'on va construire, comment la formation fonctionne, et les médias utilisés en chemin."
 duration: "15 min"
 weight: 1
+draft: true   # sample content — not published until you say so
 ---
 
 {{< lead >}}

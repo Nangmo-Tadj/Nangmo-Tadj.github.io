@@ -3,6 +3,7 @@ title: "Discretising space"
 summary: "Turn the Laplacian into a matrix on a real-space grid."
 duration: "20 min"
 weight: 3
+draft: true   # sample content — not published until you say so
 ---
 
 {{< katex >}}

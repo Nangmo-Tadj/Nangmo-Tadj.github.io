@@ -6,6 +6,7 @@ date: 2026-04-01
 tags: ["dft", "physique-computationnelle", "python", "structure-electronique"]
 categories: ["projets"]
 showTableOfContents: true
+draft: true   # sample content — not published until you say so
 ---
 
 Cette série construit un code de **théorie de la fonctionnelle de la densité** en partant de

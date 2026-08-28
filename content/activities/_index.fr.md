@@ -1,6 +1,6 @@
 ---
 title: "Activités scientifiques"
-description: "Exposés, posters, conférences, écoles d'été, enseignement et responsabilités collectives."
+description: "Activités scientifiques."
 layout: "hub"
 cascade:
   showReadingTime: false

@@ -6,6 +6,7 @@ summary: "Une introduction pratique aux tests de permutation — une façon peu 
 tags: ["statistiques", "tests-d-hypotheses", "python", "reproductibilite"]
 categories: ["statistiques"]
 showTableOfContents: true
+draft: true   # sample content — not published until you say so
 ---
 
 {{< katex >}}

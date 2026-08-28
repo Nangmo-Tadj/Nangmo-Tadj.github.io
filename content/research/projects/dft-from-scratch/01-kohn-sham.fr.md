@@ -7,6 +7,7 @@ tags: ["dft", "physique-computationnelle", "theorie"]
 categories: ["projets"]
 weight: 1
 showTableOfContents: true
+draft: true   # sample content — not published until you say so
 ---
 
 {{< katex >}}

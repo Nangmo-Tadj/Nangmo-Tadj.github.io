@@ -5,6 +5,7 @@ description: "A longer look at the methods I work on."
 tags: ["dft", "numerical-methods", "electronic-structure"]
 categories: ["research"]
 showTableOfContents: true
+draft: true   # sample content — not published until you say so
 ---
 
 {{< katex >}}

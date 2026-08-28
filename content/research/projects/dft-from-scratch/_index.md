@@ -6,6 +6,7 @@ date: 2026-04-01
 tags: ["dft", "computational-physics", "python", "electronic-structure"]
 categories: ["projects"]
 showTableOfContents: true
+draft: true   # sample content — not published until you say so
 ---
 
 This series builds a **Density Functional Theory** code from the ground up. The goal isn't to

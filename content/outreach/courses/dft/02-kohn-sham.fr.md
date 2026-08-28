@@ -3,6 +3,7 @@ title: "L'idée de Kohn–Sham"
 summary: "Comment un problème à N corps insoluble devient un jeu d'équations à une particule."
 duration: "25 min"
 weight: 2
+draft: true   # sample content — not published until you say so
 ---
 
 {{< katex >}}

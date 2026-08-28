@@ -3,6 +3,7 @@ title: "Orientation & tools"
 summary: "What we'll build, how the course works, and the media you'll use along the way."
 duration: "15 min"
 weight: 1
+draft: true   # sample content — not published until you say so
 ---
 
 {{< lead >}}

@@ -6,6 +6,7 @@ summary: "Une vidéo qui construit trois règles de quadrature classiques en Pyt
 tags: ["python", "methodes-numeriques", "video", "tutoriel"]
 categories: ["programmation"]
 showTableOfContents: true
+draft: true   # sample content — not published until you say so
 ---
 
 _Page vidéo d'exemple — remplacez l'identifiant d'intégration ci-dessous par celui de votre

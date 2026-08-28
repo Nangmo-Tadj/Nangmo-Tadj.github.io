@@ -8,40 +8,39 @@ copyright = "© Wilfried Tadjeugue. Contenus sous licence CC BY 4.0 sauf mention
 
 [params]
   dateFormat = "2 January 2006"
-  description = "Doctorant en physique computationnelle — recherche et publications, activités scientifiques, vulgarisation et engagement."
+  # Description meta : ce qu'un moteur de recherche affiche sous votre nom. À vous de l'écrire.
+  description = "Wilfried Tadjeugue — site personnel."
   # Sections feeding "recent" lists and the search index.
   mainSections = ["outreach", "research", "activities"]
 
 [params.author]
   name = "Wilfried Tadjeugue"
   image = "img/author.png"
-  headline = "Doctorant · Physique computationnelle · Vulgarisateur scientifique"
-  bio = "Je construis et j'explique la physique computationnelle à partir des premiers principes — je développe actuellement un code DFT depuis zéro — et j'écris sur les statistiques qui font la qualité d'une science honnête."
+  # headline / bio : À ÉCRIRE PAR VOUS. Volontairement vides — le site ne doit
+  # rien affirmer à votre sujet que vous n'ayez pas écrit vous-même. Les deux
+  # sont facultatifs ; le bandeau omet simplement ce qui est vide.
+  headline = ""
+  bio = ""
+  # Uniquement les liens qui aboutissent réellement. Ajoutez les autres quand
+  # les profils existeront — une URL d'exemple sur un site en ligne, c'est un
+  # lien mort qui porte votre nom.
   links = [
     { email = "mailto:wilfriedtadjeugue@gmail.com" },
     { github = "https://github.com/Nangmo-Tadj" },
-    { google-scholar = "https://scholar.google.com/citations?user=REPLACE_ME" },
-    { orcid = "https://orcid.org/0000-0000-0000-0000" },
-    { linkedin = "https://linkedin.com/in/REPLACE_ME" },
-    { youtube = "https://youtube.com/@REPLACE_ME" },
-    { researchgate = "https://www.researchgate.net/profile/REPLACE_ME" },
   ]
 
-# -- Bandeau d'accueil (français) --
+# -- Bandeau d'accueil (français). Tout ceci est à vous d'écrire. --
 [params.hero]
-  eyebrow = "Physique computationnelle"
-  titleLead = "Construire la physique"
-  titleAccent = "à partir des premiers principes"
-  tagline = "Théorie de la structure électronique, les méthodes numériques qui la font tourner, et les écrits, le code et les vidéos qui la rendent partageable."
+  eyebrow = ""
+  titleLead = ""
+  titleAccent = ""
+  tagline = ""
   ctaPrimary = "Recherche & publications"
   ctaSecondary = "Vulgarisation & engagement"
 
-[[params.hero.stats]]
-  value = "DFT"
-  label = "Un solveur écrit depuis zéro"
-[[params.hero.stats]]
-  value = "2"
-  label = "Langues de travail (FR · EN)"
-[[params.hero.stats]]
-  value = "Ouvert"
-  label = "Code, notes et figures"
+# Les blocs [[params.hero.stats]] affichent les trois cartes sous le bandeau.
+# Aucun n'est défini, donc la rangée n'apparaît pas. Ajoutez-les quand vous
+# aurez des chiffres que vous pouvez assumer :
+# [[params.hero.stats]]
+#   value = "12"
+#   label = "Articles à comité de lecture"

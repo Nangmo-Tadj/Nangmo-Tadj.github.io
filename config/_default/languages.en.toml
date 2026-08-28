@@ -8,41 +8,38 @@ copyright = "© Wilfried Tadjeugue. Content licensed CC BY 4.0 unless noted."
 
 [params]
   dateFormat = "2 January 2006"
-  description = "PhD student in computational physics — research and publications, scientific activities, outreach and engagement."
+  # Meta description: what a search engine prints under your name. Yours to write.
+  description = "Wilfried Tadjeugue — personal website."
   # Sections feeding "recent" lists and the search index.
   mainSections = ["outreach", "research", "activities"]
 
 [params.author]
   name = "Wilfried Tadjeugue"
-  image = "img/author.png"  # replace assets/img/author.png with your real square photo
-  headline = "PhD student · Computational physics · Science communicator"
-  bio = "I build and explain computational physics from first principles — currently developing a DFT code from scratch — and write about the statistics behind good science."
+  image = "img/author.png"
+  # headline / bio: WRITE YOUR OWN. Left empty on purpose — the site must not
+  # assert anything about you that you did not write yourself. Both are
+  # optional; the hero simply omits whatever is blank.
+  headline = ""
+  bio = ""
+  # Only links that actually resolve. Add the others when the profiles exist —
+  # a placeholder URL on a live site is a broken link with your name on it.
   links = [
     { email = "mailto:wilfriedtadjeugue@gmail.com" },
     { github = "https://github.com/Nangmo-Tadj" },
-    # --- Fill these in when ready (placeholders) ---
-    { google-scholar = "https://scholar.google.com/citations?user=REPLACE_ME" },
-    { orcid = "https://orcid.org/0000-0000-0000-0000" },
-    { linkedin = "https://linkedin.com/in/REPLACE_ME" },
-    { youtube = "https://youtube.com/@REPLACE_ME" },
-    { researchgate = "https://www.researchgate.net/profile/REPLACE_ME" },
   ]
 
-# -- Hero / landing copy (English) --
+# -- Hero copy (English). Everything here is yours to write. --
 [params.hero]
-  eyebrow = "Computational physics"
-  titleLead = "Building physics"
-  titleAccent = "from first principles"
-  tagline = "Electronic-structure theory, the numerics that make it run, and the writing, code and video that make it shareable."
+  eyebrow = ""
+  titleLead = ""
+  titleAccent = ""
+  tagline = ""
   ctaPrimary = "Research & publications"
   ctaSecondary = "Outreach & engagement"
 
-[[params.hero.stats]]
-  value = "DFT"
-  label = "Solver written from scratch"
-[[params.hero.stats]]
-  value = "2"
-  label = "Working languages (EN · FR)"
-[[params.hero.stats]]
-  value = "Open"
-  label = "Code, notes and figures"
+# [[params.hero.stats]] blocks render the three cards under the hero.
+# None are defined, so the row does not appear. Add them when you have
+# figures you can stand behind:
+# [[params.hero.stats]]
+#   value = "12"
+#   label = "Peer-reviewed articles"

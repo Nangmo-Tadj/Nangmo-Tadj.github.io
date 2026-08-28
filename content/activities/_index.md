@@ -1,6 +1,6 @@
 ---
 title: "Scientific activities"
-description: "Talks, posters, conferences, summer schools, teaching and service."
+description: "Scientific activities."
 layout: "hub"
 cascade:
   showReadingTime: false

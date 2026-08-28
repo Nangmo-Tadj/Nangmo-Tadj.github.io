@@ -6,6 +6,7 @@ summary: "A worked introduction to permutation testing — an assumption-light w
 tags: ["statistics", "hypothesis-testing", "python", "reproducibility"]
 categories: ["statistics"]
 showTableOfContents: true
+draft: true   # sample content — not published until you say so
 ---
 
 {{< katex >}}

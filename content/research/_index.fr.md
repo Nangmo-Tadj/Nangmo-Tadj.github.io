@@ -1,6 +1,6 @@
 ---
 title: "Recherche & publications"
-description: "Théorie de la structure électronique, méthodes numériques, et les publications qui en découlent."
+description: "Recherche et publications."
 layout: "hub"
 cascade:
   showReadingTime: false

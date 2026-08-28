@@ -1,6 +1,6 @@
 ---
 title: "Research & publications"
-description: "Electronic-structure theory, numerical methods, and the publications that come out of them."
+description: "Research and publications."
 layout: "hub"
 cascade:
   showReadingTime: false

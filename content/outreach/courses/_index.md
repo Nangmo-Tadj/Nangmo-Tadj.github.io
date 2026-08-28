@@ -1,6 +1,6 @@
 ---
 title: "Courses"
-description: "Hands-on formations mixing text, code, video, and documents."
+description: "Courses."
 catalog: true
 type: "courses"
 cascade:

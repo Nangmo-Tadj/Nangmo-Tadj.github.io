@@ -3,6 +3,7 @@ title: "Discrétiser l'espace"
 summary: "Transformer le laplacien en matrice sur une grille en espace réel."
 duration: "20 min"
 weight: 3
+draft: true   # sample content — not published until you say so
 ---
 
 {{< katex >}}
