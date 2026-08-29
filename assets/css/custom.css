@@ -139,13 +139,27 @@ body > header {
   z-index: 50;
   margin-inline: -1.5rem;
   padding-inline: 1.5rem;
+  border-bottom: 1px solid var(--hairline);
+}
+
+/* The glass sits on a pseudo-element, NOT on the header itself.
+   `backdrop-filter` makes an element the containing block for any
+   position: fixed descendant, and Congo's hamburger menu is exactly that — a
+   fixed, full-screen overlay nested inside the header. With the filter on the
+   header, that overlay was contained by the header and clipped to its height:
+   one menu item, cut off. Painting the glass behind the content instead leaves
+   the fixed overlay anchored to the viewport, where it belongs. */
+body > header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   backdrop-filter: saturate(1.7) blur(14px);
   -webkit-backdrop-filter: saturate(1.7) blur(14px);
   background: rgba(255, 255, 255, 0.72);
-  border-bottom: 1px solid var(--hairline);
-  transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+  transition: background 0.3s var(--ease);
 }
-.dark body > header {
+.dark body > header::before {
   background: rgba(var(--color-neutral-900), 0.75);
 }
 @media (min-width: 640px) {
@@ -165,12 +179,26 @@ header nav button {
 header nav a:not(.button):hover { color: rgb(var(--color-primary-600)); }
 .dark header nav a:not(.button):hover { color: rgb(var(--color-primary-300)); }
 
-/* Site title reads as the brand mark. */
+/* The first element is the link home, and it now reads "Home" / "Accueil"
+   rather than the owner's name (see layouts/_partials/logo.html). It is a
+   navigation item like the others, so it is set like them — Congo's own
+   heading classes would make it a brand mark twice the weight of its
+   neighbours. */
 header .text-2xl,
 header .text-xl {
   font-family: var(--font-head);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Congo lays the header out as logo | menu with `justify-between`. With the
+   menu now on a single line it reaches all the way across and butts against
+   the home link, so the row needs a gap of its own. */
+body > header > nav {
+  gap: 1.75rem;
+}
+body > header > nav > div:first-child {
+  flex: none;
 }
 
 /* ------------------------------------------------------------------ *
@@ -1562,8 +1590,6 @@ body > header .text-2xl {
   font-size: 1.0625rem;
   line-height: 1.4;
 }
-body > header .text-2xl,
-body > header .text-xl { font-size: 1.15rem; }
 
 /* A course with no cover image gets the brand gradient rather than a broken
    background-image or a picture borrowed from another course. */
@@ -1601,3 +1627,35 @@ body > header .text-xl { font-size: 1.15rem; }
 .dark .profile-links a { color: rgb(var(--color-neutral-500)); }
 .dark .profile-links a:hover { color: rgb(var(--color-primary-300)); }
 .profile-links svg { width: 100%; height: 100%; }
+
+/* Navigation on one line. Each item stays whole — "Research & publications"
+   used to break across two lines, and "À propos" split between the accent and
+   the word. The row itself may still wrap between items on a narrow screen;
+   below Congo's `sm` breakpoint the menu becomes a hamburger anyway. */
+body > header nav a,
+body > header nav button { white-space: nowrap; }
+
+/* ------------------------------------------------------------------ *
+ * Header: one row, or none                                            *
+ *                                                                     *
+ * Keeping each item unbroken means the row can no longer shrink to    *
+ * fit, so it has to be made to fit. Congo spaces items 1.75rem apart  *
+ * and switches to the hamburger at 640px — with five items, two of    *
+ * them three words long, and longer still in French, that leaves the  *
+ * row overflowing its container across the whole tablet-to-laptop     *
+ * range. Tighter spacing and a slightly smaller size buy back enough  *
+ * width for a 1280px laptop — the French labels are the long ones and *
+ * set the threshold. Below that the hamburger takes over, which is    *
+ * the honest answer for a row that cannot fit.                        *
+ * ------------------------------------------------------------------ */
+@media (min-width: 1280px) {
+  body > header > nav > ul > li { margin-inline-end: 1rem; }
+  body > header > nav > ul a,
+  body > header > nav > ul button { font-size: 0.94rem; }
+}
+@media (max-width: 1279px) {
+  /* !important: Congo sets these with `sm:` utilities, whose specificity
+     beats an element selector. */
+  body > header > nav > ul { display: none !important; }
+  body > header > nav > label#menu-button { display: block !important; }
+}

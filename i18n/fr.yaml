@@ -12,6 +12,7 @@ home:
   readMore: "Lire la suite"
 
 nav:
+  home: "Accueil"
   language: "Langue"
 
 research:
