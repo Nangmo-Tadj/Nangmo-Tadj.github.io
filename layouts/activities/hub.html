@@ -36,6 +36,19 @@
                     </h3>
                     {{- with .where }}<p class="activity-item__where">{{ . }}</p>{{ end }}
                     {{- with $t.summary }}<p class="activity-item__summary">{{ . }}</p>{{ end }}
+                    {{- with .image }}
+                      <figure class="activity-item__figure">
+                        <img src="{{ . | relURL }}" alt="{{ $t.title }}" loading="lazy" decoding="async">
+                      </figure>
+                    {{- end }}
+                    {{- with $t.abstract }}
+                      {{/* Folded: an abstract runs to a thousand characters and
+                           would bury the next entry in the list. */}}
+                      <details class="activity-item__abstract">
+                        <summary>{{ i18n "activities.abstract" }}</summary>
+                        <p>{{ . }}</p>
+                      </details>
+                    {{- end }}
                   </div>
                 </li>
               {{- end }}

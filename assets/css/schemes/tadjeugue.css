@@ -1,5 +1,5 @@
-/* Tadjeugue scheme — muted azure + muted amber on charcoal.
-   Same hues as the sibling sites (essentiel_prepa / lyamo), taken down to
+/* Tadjeugue scheme — one muted azure on charcoal.
+   The sibling sites' azure, taken down to
    65% of their original saturation: the colour still carries the brand,
    it just stops shouting over the text. Regenerate with
    scratchpad/desat.py <factor> if the balance needs retuning.
@@ -32,16 +32,18 @@
   --color-primary-800: 31, 74, 101;
   --color-primary-900: 25, 59, 80;
   --color-primary-950: 16, 38, 52;
-  /* Amber — accents, chips, highlights */
-  --color-secondary-50: 251, 246, 238;
-  --color-secondary-100: 245, 236, 217;
-  --color-secondary-200: 236, 217, 181;
-  --color-secondary-300: 225, 194, 141;
-  --color-secondary-400: 216, 174, 112;
-  --color-secondary-500: 202, 157, 91;
-  --color-secondary-600: 174, 129, 68;
-  --color-secondary-700: 142, 102, 54;
-  --color-secondary-800: 112, 81, 46;
-  --color-secondary-900: 92, 67, 40;
-  --color-secondary-950: 52, 37, 20;
+  /* No second hue. Congo expects a `secondary` ramp, so it is the same
+     azure as `primary` — the site carries one colour besides black and
+     white, and nothing can reintroduce amber by reaching for a token. */
+  --color-secondary-50: 239, 247, 251;
+  --color-secondary-100: 217, 236, 244;
+  --color-secondary-200: 182, 218, 234;
+  --color-secondary-300: 130, 188, 214;
+  --color-secondary-400: 88, 166, 207;
+  --color-secondary-500: 62, 147, 190;
+  --color-secondary-600: 51, 127, 167;
+  --color-secondary-700: 43, 113, 152;
+  --color-secondary-800: 31, 74, 101;
+  --color-secondary-900: 25, 59, 80;
+  --color-secondary-950: 16, 38, 52;
 }

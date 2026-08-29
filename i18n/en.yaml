@@ -22,6 +22,7 @@ research:
 
 activities:
   empty: "Activities will be listed here."
+  abstract: "Abstract"
 
 outreach:
   blog: "Blog"

@@ -5,7 +5,7 @@ colorScheme = "tadjeugue"      # custom azure + amber palette (assets/css/scheme
 defaultAppearance = "light"    # light or dark
 autoSwitchAppearance = true    # follow the visitor's OS preference
 
-defaultThemeColor = "#1c9fe0"
+defaultThemeColor = "#3e93be"   # the one accent colour, muted azure
 
 enableSearch = true            # header search (needs JSON output, configured in hugo.toml)
 enableCodeCopy = true          # copy button on code blocks

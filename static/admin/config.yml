@@ -214,19 +214,22 @@ collections:
                 options: [talk, poster, conference, school, teaching, review, service]
               - { name: where, label: Where, widget: string, required: false, hint: "Venue — City, Country" }
               - { name: url, label: Link, widget: string, required: false }
+              - { name: image, label: Illustration, widget: image, required: false }
               - name: en
                 label: English
                 widget: object
                 fields:
                   - { name: title, label: Title, widget: string }
-                  - { name: summary, label: Summary, widget: text, required: false }
+                  - { name: summary, label: One-line summary, widget: text, required: false }
+                  - { name: abstract, label: Abstract, widget: text, required: false, hint: "Folded behind a disclosure on the page." }
               - name: fr
                 label: Français
                 widget: object
                 required: false
                 fields:
                   - { name: title, label: Titre, widget: string, required: false }
-                  - { name: summary, label: Résumé, widget: text, required: false }
+                  - { name: summary, label: Résumé en une ligne, widget: text, required: false }
+                  - { name: abstract, label: Résumé long, widget: text, required: false }
 
   - name: news
     label: Activity feed

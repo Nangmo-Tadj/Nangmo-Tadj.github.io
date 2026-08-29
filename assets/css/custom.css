@@ -20,10 +20,11 @@
   --radius-lg: 1.625rem;
   --pill: 999px;
 
-  /* Floating shadows: soft, wide, faintly blue — the signature of the family. */
+  /* Floating shadows: soft, wide, tinted with the accent's own dark end so
+     the page holds to one hue plus greys. */
   --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.04);
-  --shadow: 0 18px 40px -18px rgba(34, 67, 122, 0.22), 0 6px 14px -8px rgba(34, 67, 122, 0.12);
-  --shadow-lg: 0 40px 80px -24px rgba(34, 67, 122, 0.32), 0 12px 28px -12px rgba(34, 67, 122, 0.18);
+  --shadow: 0 18px 40px -18px rgba(25, 59, 80, 0.22), 0 6px 14px -8px rgba(25, 59, 80, 0.12);
+  --shadow-lg: 0 40px 80px -24px rgba(25, 59, 80, 0.32), 0 12px 28px -12px rgba(25, 59, 80, 0.18);
 
   --surface: rgba(255, 255, 255, 0.82);
   --surface-solid: #ffffff;
@@ -89,14 +90,14 @@ body.flex::before {
   pointer-events: none;
   background:
     radial-gradient(44rem 32rem at 8% 0%, rgba(var(--color-primary-500), 0.13), transparent 62%),
-    radial-gradient(40rem 32rem at 98% 12%, rgba(var(--color-secondary-500), 0.10), transparent 62%),
+    radial-gradient(40rem 32rem at 98% 12%, rgba(var(--color-primary-400), 0.09), transparent 62%),
     radial-gradient(38rem 40rem at 84% 100%, rgba(var(--color-primary-500), 0.09), transparent 60%),
     linear-gradient(160deg, rgb(var(--color-neutral-50)) 0%, rgb(var(--color-neutral)) 52%, rgb(var(--color-neutral-100)) 100%);
 }
 .dark body.flex::before {
   background:
     radial-gradient(44rem 32rem at 8% 0%, rgba(var(--color-primary-500), 0.20), transparent 62%),
-    radial-gradient(40rem 32rem at 98% 12%, rgba(var(--color-secondary-500), 0.10), transparent 62%),
+    radial-gradient(40rem 32rem at 98% 12%, rgba(var(--color-primary-400), 0.10), transparent 62%),
     radial-gradient(38rem 40rem at 84% 100%, rgba(var(--color-primary-500), 0.14), transparent 60%),
     linear-gradient(160deg, rgb(var(--color-neutral-950)) 0%, rgb(var(--color-neutral-900)) 52%, rgb(var(--color-neutral-950)) 100%);
 }
@@ -428,7 +429,7 @@ a.button {
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 14px 30px -12px rgba(34, 67, 122, 0.5);
+  box-shadow: 0 14px 30px -12px rgba(25, 59, 80, 0.5);
   animation: floaty 7s ease-in-out infinite;
 }
 .dark .hero__avatar { border-color: rgba(255, 255, 255, 0.14); }
@@ -530,7 +531,7 @@ a.button {
   height: 3px;
   margin-top: 0.5rem;
   border-radius: var(--pill);
-  background-image: linear-gradient(90deg, rgb(var(--color-primary-500)), rgb(var(--color-secondary-500)));
+  background-image: linear-gradient(90deg, rgb(var(--color-primary-600)), rgb(var(--color-primary-300)));
 }
 .home-section__sub,
 .section-block__sub {
@@ -623,8 +624,9 @@ a.button {
   height: 4px;
   background-image: linear-gradient(90deg, rgb(var(--color-primary-500)), rgb(var(--color-primary-300)));
 }
-.pillar--b::before { background-image: linear-gradient(90deg, rgb(var(--color-secondary-500)), rgb(var(--color-secondary-300))); }
-.pillar--c::before { background-image: linear-gradient(90deg, rgb(var(--color-primary-700)), rgb(var(--color-secondary-400))); }
+/* The three cards differ by depth of the same azure, not by hue. */
+.pillar--b::before { background-image: linear-gradient(90deg, rgb(var(--color-primary-700)), rgb(var(--color-primary-400))); }
+.pillar--c::before { background-image: linear-gradient(90deg, rgb(var(--color-primary-800)), rgb(var(--color-primary-500))); }
 .pillar:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
@@ -675,7 +677,7 @@ a.button {
   bottom: 0.6rem;
   width: 2px;
   border-radius: var(--pill);
-  background-image: linear-gradient(180deg, rgba(var(--color-primary-500), 0.5), rgba(var(--color-secondary-500), 0.25));
+  background-image: linear-gradient(180deg, rgba(var(--color-primary-500), 0.5), rgba(var(--color-primary-500), 0.12));
 }
 .news-item { position: relative; margin-bottom: 1rem; }
 .news-dot {
@@ -689,7 +691,7 @@ a.button {
   box-shadow: 0 0 0 4px rgba(var(--color-primary-500), 0.16);
 }
 .news--conference .news-dot,
-.news--talk .news-dot { background: rgb(var(--color-secondary-500)); box-shadow: 0 0 0 4px rgba(var(--color-secondary-500), 0.16); }
+.news--talk .news-dot { background: rgb(var(--color-primary-400)); box-shadow: 0 0 0 4px rgba(var(--color-primary-400), 0.16); }
 .news--teaching .news-dot,
 .news--outreach .news-dot { background: rgb(var(--color-primary-700)); box-shadow: 0 0 0 4px rgba(var(--color-primary-700), 0.16); }
 
@@ -1083,7 +1085,7 @@ a.ui-card:hover {
 .course-hero__scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(31, 74, 101, 0.92), rgba(31, 74, 101, 0.55) 55%, rgba(202, 157, 91, 0.35));
+  background: linear-gradient(135deg, rgba(25, 59, 80, 0.94), rgba(31, 74, 101, 0.6) 55%, rgba(62, 147, 190, 0.35));
 }
 .course-hero__content { position: relative; max-width: 40rem; }
 .course-hero__title {
@@ -1385,14 +1387,14 @@ main article.mt-6.flex:hover {
   display: grid;
   place-items: center;
   width: 2.2rem;
-  color: rgb(var(--color-secondary-700));
+  color: rgb(var(--color-primary-700));
   font-family: var(--font-head);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.06em;
 }
-.dark .doc-card__badge { color: rgb(var(--color-secondary-300)); }
-.dark .doc-card__badge { color: rgb(var(--color-secondary-300)); }
+.dark .doc-card__badge { color: rgb(var(--color-primary-300)); }
+.dark .doc-card__badge { color: rgb(var(--color-primary-300)); }
 .doc-card__meta { display: flex; flex-direction: column; min-width: 0; }
 .doc-card__title { font-family: var(--font-head); font-weight: 700; }
 .doc-card__desc { font-size: 0.86rem; color: rgb(var(--color-neutral-500)); }
@@ -1563,7 +1565,7 @@ body > div > footer {
 /* Congo's profile avatar, when the profile homepage layout is used */
 img.w-36.rounded-full,
 .profile img {
-  box-shadow: 0 14px 30px -12px rgba(34, 67, 122, 0.5);
+  box-shadow: 0 14px 30px -12px rgba(25, 59, 80, 0.5);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1695,8 +1697,8 @@ body > header nav button { white-space: nowrap; }
 .dark .ui-card__icon svg {
   color: rgb(var(--color-primary-300));
 }
-.pillar--b .pillar__icon svg { color: rgb(var(--color-secondary-600)); }
-.dark .pillar--b .pillar__icon svg { color: rgb(var(--color-secondary-400)); }
+.pillar--b .pillar__icon svg { color: rgb(var(--color-primary-700)); }
+.dark .pillar--b .pillar__icon svg { color: rgb(var(--color-primary-200)); }
 .pillar--c .pillar__icon svg { color: rgb(var(--color-primary-700)); }
 .dark .pillar--c .pillar__icon svg { color: rgb(var(--color-primary-200)); }
 
@@ -1732,4 +1734,59 @@ body > header nav button { white-space: nowrap; }
 .hero--solo .hero__cta {
   justify-content: center;
   margin-top: 1.35rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * Activity: illustration and folded abstract                          *
+ * ------------------------------------------------------------------ */
+.activity-item__figure {
+  margin: 0.9rem 0 0;
+}
+.activity-item__figure img {
+  display: block;
+  width: 100%;
+  max-width: 34rem;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--hairline);
+}
+.activity-item__abstract {
+  margin-top: 0.9rem;
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: rgb(var(--color-neutral-500));
+}
+.dark .activity-item__abstract { color: rgb(var(--color-neutral-400)); }
+.activity-item__abstract > summary {
+  cursor: pointer;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-head);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(var(--color-primary-700));
+}
+.dark .activity-item__abstract > summary { color: rgb(var(--color-primary-300)); }
+.activity-item__abstract > summary::-webkit-details-marker { display: none; }
+/* A caret drawn in CSS so the control reads as expandable without an image. */
+.activity-item__abstract > summary::after {
+  content: "";
+  width: 0.42rem;
+  height: 0.42rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-1px) rotate(45deg);
+  transition: transform 0.2s var(--ease);
+}
+.activity-item__abstract[open] > summary::after {
+  transform: translateY(2px) rotate(-135deg);
+}
+.activity-item__abstract > p {
+  max-width: 46rem;
+  margin: 0.6rem 0 0;
 }

@@ -1,13 +1,63 @@
 # Scientific activities rendered on /activities/ and /fr/activities/.
-# EMPTY ON PURPOSE — see data/publications.yaml.
 #
 # Schema for one entry, under `items:`:
 #
 # - date: 2026-06-02
 #   kind: talk | poster | conference | school | teaching | review | service
 #   where: "Venue — City, Country"
-#   url: "https://..."          (optional)
-#   en: { title: "...", summary: "..." }
-#   fr: { title: "...", summary: "..." }
+#   url: "https://..."                    (optional)
+#   image: "/img/uploads/photo.jpg"       (optional illustration)
+#   en: { title: "...", summary: "...", abstract: "..." }
+#   fr: { title: "...", summary: "...", abstract: "..." }
+#
+# `summary` is one line shown in the list; `abstract` is the long text, folded
+# behind a disclosure so the list stays scannable.
 
-items: []
+items:
+  - date: 2026-03-10
+    kind: talk
+    where: "DPG Spring Meeting 2026"
+    image: "/img/uploads/dpg-2026-grain-boundaries.jpg"
+    en:
+      title: "Multiscale Simulation of Charge Transport Across Grain Boundaries in Organic Polycrystalline Thin-Film Semiconductors"
+      summary: "With Prof. Harald Oberhofer. BayBatt, University of Bayreuth."
+      # Verbatim as supplied, with the line-end hyphenation of the copied PDF
+      # closed up (corre-lates, simu-lations, en-ergetic, fun-damental,
+      # pro-vide). Nothing else was changed.
+      abstract: >-
+        Grain boundaries (GBs) are known to critically limit charge carrier
+        mobility in organic polycrystalline semiconductors as already used in
+        e.g. organic field effect transistors. In our contribution, we address
+        Technologies with a multiscale computational framework that correlates
+        a GB's morphology with its influence on the charge transport
+        properties. Our approach is, at its core, based on phase-field
+        simulations of grain growth to generate realistic GB networks.
+        Electronic structure calculations then reveal deep trap states and
+        significant energetic disorder at the GB, leading to substantial
+        injection barriers. Charge transfer rates across GBs are then
+        calculated from a hopping model which are finally fed into kinetic
+        Monte Carlo simulations to demonstrate the device level influence of
+        GBs. They elucidate the fundamental role of grain boundaries in
+        limiting charge transport and provide critical guidelines for the
+        development of future high-performance organic electronics devices.
+    fr:
+      title: "Simulation multi-échelle du transport de charge à travers les joints de grains dans les semi-conducteurs organiques polycristallins en couches minces"
+      summary: "Avec le Pr Harald Oberhofer. BayBatt, Université de Bayreuth."
+      # Le résumé reste en anglais : c'est le texte tel qu'il a été soumis, et
+      # une traduction d'un texte scientifique n'est pas à faire à votre place.
+      abstract: >-
+        Grain boundaries (GBs) are known to critically limit charge carrier
+        mobility in organic polycrystalline semiconductors as already used in
+        e.g. organic field effect transistors. In our contribution, we address
+        Technologies with a multiscale computational framework that correlates
+        a GB's morphology with its influence on the charge transport
+        properties. Our approach is, at its core, based on phase-field
+        simulations of grain growth to generate realistic GB networks.
+        Electronic structure calculations then reveal deep trap states and
+        significant energetic disorder at the GB, leading to substantial
+        injection barriers. Charge transfer rates across GBs are then
+        calculated from a hopping model which are finally fed into kinetic
+        Monte Carlo simulations to demonstrate the device level influence of
+        GBs. They elucidate the fundamental role of grain boundaries in
+        limiting charge transport and provide critical guidelines for the
+        development of future high-performance organic electronics devices.
