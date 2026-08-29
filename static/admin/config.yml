@@ -221,6 +221,7 @@ collections:
                 fields:
                   - { name: title, label: Title, widget: string }
                   - { name: summary, label: One-line summary, widget: text, required: false }
+                  - { name: where, label: Where (overrides the shared field), widget: string, required: false }
                   - { name: abstract, label: Abstract, widget: text, required: false, hint: "Folded behind a disclosure on the page." }
               - name: fr
                 label: Français
@@ -229,6 +230,7 @@ collections:
                 fields:
                   - { name: title, label: Titre, widget: string, required: false }
                   - { name: summary, label: Résumé en une ligne, widget: text, required: false }
+                  - { name: where, label: Lieu (remplace le champ commun), widget: string, required: false }
                   - { name: abstract, label: Résumé long, widget: text, required: false }
 
   - name: news

@@ -4,11 +4,11 @@
 #
 # - date: 2026-06-02
 #   kind: talk | poster | conference | school | teaching | review | service
-#   where: "Venue — City, Country"
+#   where: "Venue — City, Country"      shared; a language block may override it
 #   url: "https://..."                    (optional)
 #   image: "/img/uploads/photo.jpg"       (optional illustration)
-#   en: { title: "...", summary: "...", abstract: "..." }
-#   fr: { title: "...", summary: "...", abstract: "..." }
+#   en: { title: "...", summary: "...", abstract: "...", where: "..." }
+#   fr: { title: "...", summary: "...", abstract: "...", where: "..." }
 #
 # `summary` is one line shown in the list; `abstract` is the long text, folded
 # behind a disclosure so the list stays scannable.
@@ -16,19 +16,21 @@
 items:
   - date: 2026-03-10
     kind: talk
-    where: "DPG Spring Meeting 2026"
+    where: "DPG Spring Meeting 2026 — Dresden, Germany"
     image: "/img/uploads/dpg-2026-grain-boundaries.jpg"
     en:
       title: "Multiscale Simulation of Charge Transport Across Grain Boundaries in Organic Polycrystalline Thin-Film Semiconductors"
       summary: "With Prof. Harald Oberhofer. BayBatt, University of Bayreuth."
-      # Verbatim as supplied, with the line-end hyphenation of the copied PDF
-      # closed up (corre-lates, simu-lations, en-ergetic, fun-damental,
-      # pro-vide). Nothing else was changed.
+      # As supplied, with the copied PDF's line-end hyphenation closed up
+      # (corre-lates, simu-lations, en-ergetic, fun-damental, pro-vide) and
+      # one word corrected on his instruction: "we address Technologies with"
+      # → "we address this with", the stray word having been picked up from a
+      # logo during the copy.
       abstract: >-
         Grain boundaries (GBs) are known to critically limit charge carrier
         mobility in organic polycrystalline semiconductors as already used in
         e.g. organic field effect transistors. In our contribution, we address
-        Technologies with a multiscale computational framework that correlates
+        this with a multiscale computational framework that correlates
         a GB's morphology with its influence on the charge transport
         properties. Our approach is, at its core, based on phase-field
         simulations of grain growth to generate realistic GB networks.
@@ -41,6 +43,7 @@ items:
         limiting charge transport and provide critical guidelines for the
         development of future high-performance organic electronics devices.
     fr:
+      where: "DPG Spring Meeting 2026 — Dresde, Allemagne"
       title: "Simulation multi-échelle du transport de charge à travers les joints de grains dans les semi-conducteurs organiques polycristallins en couches minces"
       summary: "Avec le Pr Harald Oberhofer. BayBatt, Université de Bayreuth."
       # Le résumé reste en anglais : c'est le texte tel qu'il a été soumis, et
@@ -49,7 +52,7 @@ items:
         Grain boundaries (GBs) are known to critically limit charge carrier
         mobility in organic polycrystalline semiconductors as already used in
         e.g. organic field effect transistors. In our contribution, we address
-        Technologies with a multiscale computational framework that correlates
+        this with a multiscale computational framework that correlates
         a GB's morphology with its influence on the charge transport
         properties. Our approach is, at its core, based on phase-field
         simulations of grain growth to generate realistic GB networks.

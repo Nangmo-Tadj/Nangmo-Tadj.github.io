@@ -34,7 +34,7 @@
                     <h3 class="activity-item__title">
                       {{- with .url }}{{ if ne . "#" }}<a href="{{ . }}"{{ if hasPrefix . "http" }} target="_blank" rel="noopener"{{ end }}>{{ $t.title }}</a>{{ else }}{{ $t.title }}{{ end }}{{ else }}{{ $t.title }}{{ end -}}
                     </h3>
-                    {{- with .where }}<p class="activity-item__where">{{ . }}</p>{{ end }}
+                    {{- with ($t.where | default .where) }}<p class="activity-item__where">{{ . }}</p>{{ end }}
                     {{- with $t.summary }}<p class="activity-item__summary">{{ . }}</p>{{ end }}
                     {{- with .image }}
                       <figure class="activity-item__figure">
