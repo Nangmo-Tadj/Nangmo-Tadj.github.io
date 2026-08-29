@@ -1,4 +1,4 @@
 ---
 title: "Accueil"
-description: "Wilfried Tadjeugue — site personnel."
+description: "Doctorant en physique, conception computationnelle de matériaux — BayBatt — Université de Bayreuth."
 ---

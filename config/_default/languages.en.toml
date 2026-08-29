@@ -3,18 +3,18 @@ label = "English"
 direction = "ltr"
 weight = 1
 
-title = "Wilfried Tadjeugue"
-copyright = "© Wilfried Tadjeugue. Content licensed CC BY 4.0 unless noted."
+title = "Junior-Wilfried Tadjeugue-Nangmo"
+copyright = "© Junior-Wilfried Tadjeugue-Nangmo. Content licensed CC BY 4.0 unless noted."
 
 [params]
   dateFormat = "2 January 2006"
   # Meta description: what a search engine prints under your name. Yours to write.
-  description = "Wilfried Tadjeugue — personal website."
+  description = "PhD student in Physics, computational material design — BayBatt — University of Bayreuth."
   # Sections feeding "recent" lists and the search index.
   mainSections = ["outreach", "research", "activities"]
 
 [params.author]
-  name = "Wilfried Tadjeugue"
+  name = "Junior-Wilfried Tadjeugue-Nangmo"
   image = "img/author.png"
   # headline / bio: WRITE YOUR OWN. Left empty on purpose — the site must not
   # assert anything about you that you did not write yourself. Both are

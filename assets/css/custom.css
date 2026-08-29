@@ -1670,3 +1670,66 @@ body > header nav button { white-space: nowrap; }
   body > header > nav > ul { display: none !important; }
   body > header > nav > label#menu-button { display: block !important; }
 }
+
+/* ------------------------------------------------------------------ *
+ * Vector icons                                                        *
+ *                                                                     *
+ * These slots used to hold an emoji, which took its size from
+ * font-size and its colour from the platform. They now hold an inline
+ * SVG from assets/icons/, which takes neither — it needs explicit
+ * dimensions, and it inherits `currentColor`, so the icon finally
+ * belongs to the same palette as everything around it.
+ * ------------------------------------------------------------------ */
+.pillar__icon .icon,
+.ui-card__icon .icon {
+  padding: 0;
+}
+.pillar__icon svg,
+.ui-card__icon svg {
+  display: block;
+  width: 1.65rem;
+  height: 1.65rem;
+  color: rgb(var(--color-primary-600));
+}
+.dark .pillar__icon svg,
+.dark .ui-card__icon svg {
+  color: rgb(var(--color-primary-300));
+}
+.pillar--b .pillar__icon svg { color: rgb(var(--color-secondary-600)); }
+.dark .pillar--b .pillar__icon svg { color: rgb(var(--color-secondary-400)); }
+.pillar--c .pillar__icon svg { color: rgb(var(--color-primary-700)); }
+.dark .pillar--c .pillar__icon svg { color: rgb(var(--color-primary-200)); }
+
+/* The card-only hero: what the landing page is until the hero copy is
+   written. One centred column instead of two, with the name as the heading. */
+.hero--solo .hero__grid {
+  /* 38rem, not 34: the two French labels are wide enough that a narrower
+     card broke them onto separate rows. */
+  grid-template-columns: minmax(0, 38rem);
+  justify-content: center;
+}
+.hero--solo .hero__card {
+  padding: 2.5rem 2rem 2.25rem;
+}
+.hero--solo .hero__avatar {
+  width: 9rem;
+  height: 9rem;
+}
+.hero--solo .hero__name {
+  font-size: 1.7rem;
+  line-height: 1.2;
+}
+.hero--solo .hero__headline {
+  max-width: 26rem;
+  margin-inline: auto;
+  font-size: 0.95rem;
+}
+.hero--solo .hero__links {
+  justify-content: center;
+  margin-top: 1.35rem;
+}
+.hero--solo .hero__links .profile-links { justify-content: center; }
+.hero--solo .hero__cta {
+  justify-content: center;
+  margin-top: 1.35rem;
+}

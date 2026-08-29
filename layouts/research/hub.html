@@ -53,7 +53,7 @@
         {{- range $subsections }}
           <a class="ui-card" href="{{ .RelPermalink }}">
             <span class="ui-card__body">
-              <span class="ui-card__icon">🧪</span>
+              <span class="ui-card__icon">{{ partial "icon.html" "code-brackets" }}</span>
               <span class="ui-card__title">{{ .Title }}</span>
               <span class="ui-card__text">{{ .Params.summary | default .Description }}</span>
               <span class="ui-card__more">{{ i18n "home.readMore" }} &rarr;</span>
@@ -63,7 +63,7 @@
         {{- range $pages }}
           <a class="ui-card" href="{{ .RelPermalink }}">
             <span class="ui-card__body">
-              <span class="ui-card__icon">📄</span>
+              <span class="ui-card__icon">{{ partial "icon.html" "document" }}</span>
               <span class="ui-card__title">{{ .Title }}</span>
               <span class="ui-card__text">{{ .Params.summary | default .Description }}</span>
               <span class="ui-card__more">{{ i18n "home.readMore" }} &rarr;</span>

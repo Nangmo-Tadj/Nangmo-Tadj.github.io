@@ -14,9 +14,18 @@
 {{- $activities := site.GetPage "/activities" -}}
 {{- $outreach := site.GetPage "/outreach" -}}
 
-{{/* ---------------- HERO ---------------- */}}
-<section class="hero">
+{{/* ---------------- HERO ----------------
+      Two shapes, depending on what has been written.
+
+      With hero copy: a headline on the left, the identity card on the right.
+      Without it: the card alone, centred — which is the state of the site
+      until that copy is written. The two-column version with an empty left
+      column left the page lopsided and, worse, with no <h1> at all, so in the
+      card-only shape the name becomes the heading. */}}
+{{- $hasCopy := or $hero.eyebrow $hero.titleLead $hero.titleAccent $hero.tagline -}}
+<section class="hero{{ if not $hasCopy }} hero--solo{{ end }}">
   <div class="hero__grid">
+    {{- if $hasCopy }}
     <div class="hero__copy">
       {{- with $hero.eyebrow }}<span class="hero__eyebrow">{{ . }}</span>{{ end }}
       <h1 class="hero__title">
@@ -25,24 +34,32 @@
       </h1>
       {{- with $hero.tagline }}<p class="hero__tagline">{{ . | markdownify }}</p>{{ end }}
       <div class="hero__cta">
-        {{- with $research }}
-          <a class="btn btn--solid" href="{{ .RelPermalink }}">{{ .Title }}</a>
-        {{- end }}
-        {{- with $outreach }}
-          <a class="btn btn--ghost" href="{{ .RelPermalink }}">{{ .Title }}</a>
-        {{- end }}
+        {{- with $research }}<a class="btn btn--solid" href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}
+        {{- with $outreach }}<a class="btn btn--ghost" href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}
       </div>
       <div class="hero__links">{{ partial "profile-links.html" . }}</div>
     </div>
+    {{- end }}
 
     <aside class="hero__card">
       <span class="hero__halo" aria-hidden="true"></span>
       {{- with $photo }}
         <img class="hero__avatar" src="{{ . | relURL }}" width="160" height="160" alt="{{ $name }}">
       {{- end }}
-      <p class="hero__name">{{ $name }}</p>
+      {{- if $hasCopy }}
+        <p class="hero__name">{{ $name }}</p>
+      {{- else }}
+        <h1 class="hero__name">{{ $name }}</h1>
+      {{- end }}
       {{- with $me.headline }}<p class="hero__headline">{{ . | markdownify }}</p>{{ end }}
       {{- with $me.bio }}<p class="hero__bio">{{ . | markdownify }}</p>{{ end }}
+      {{- if not $hasCopy }}
+        <div class="hero__links">{{ partial "profile-links.html" . }}</div>
+        <div class="hero__cta">
+          {{- with $research }}<a class="btn btn--solid" href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}
+          {{- with $outreach }}<a class="btn btn--ghost" href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}
+        </div>
+      {{- end }}
     </aside>
   </div>
 
@@ -65,13 +82,13 @@
   </header>
   <div class="pillar-grid">
     {{- range slice
-        (dict "page" $research   "icon" "🔬" "key" "research"   "mod" "a")
-        (dict "page" $activities "icon" "🎙️" "key" "activities" "mod" "b")
-        (dict "page" $outreach   "icon" "🌍" "key" "outreach"   "mod" "c") }}
+        (dict "page" $research   "icon" "flask"        "key" "research"   "mod" "a")
+        (dict "page" $activities "icon" "presentation" "key" "activities" "mod" "b")
+        (dict "page" $outreach   "icon" "globe"        "key" "outreach"   "mod" "c") }}
       {{- $item := . -}}
       {{- with $item.page }}
         <a class="pillar pillar--{{ $item.mod }}" href="{{ .RelPermalink }}">
-          <span class="pillar__icon" aria-hidden="true">{{ $item.icon }}</span>
+          <span class="pillar__icon" aria-hidden="true">{{ partial "icon.html" $item.icon }}</span>
           <span class="pillar__title">{{ .Title }}</span>
           <span class="pillar__more">{{ i18n "home.readMore" }} <span aria-hidden="true">&rarr;</span></span>
         </a>

@@ -60,6 +60,7 @@ collections:
                 widget: select
                 options:
                   - email
+                  - globe
                   - github
                   - gitlab
                   - orcid
@@ -73,10 +74,17 @@ collections:
                   - x-twitter
                   - telegram
                   - whatsapp
-                  - globe
                   - link
                   - rss
                   - phone
+                  - flask
+                  - presentation
+                  - graduation-cap
+                  - play-circle
+                  - document
+                  - code-brackets
+                  - pencil
+                  - lightbulb
               - { name: label, label: Label, widget: string }
               - { name: url, label: URL, widget: string }
           - name: en
@@ -270,7 +278,12 @@ collections:
             required: false
             summary: "{{fields.en.title}}"
             fields:
-              - { name: icon, label: Emoji, widget: string, required: false }
+              - name: icon
+                label: Icon
+                widget: select
+                required: false
+                options: [graduation-cap, globe, flask, presentation, play-circle,
+                          document, code-brackets, pencil, lightbulb, email, github, link]
               - { name: url, label: Link, widget: string, required: false }
               - name: en
                 label: English

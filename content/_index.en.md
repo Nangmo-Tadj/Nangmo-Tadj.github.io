@@ -1,4 +1,4 @@
 ---
 title: "Home"
-description: "Wilfried Tadjeugue — personal website."
+description: "PhD student in Physics, computational material design — BayBatt — University of Bayreuth."
 ---

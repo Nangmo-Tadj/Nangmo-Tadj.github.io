@@ -1,43 +1,44 @@
 # ---------------------------------------------------------------------------
 # Who you are, in your own words.
 #
-# Nothing here is filled in for you. Every field below is displayed verbatim
-# on the site, so whatever you write is what the world reads under your name.
-# Edit it from /admin/ or directly in this file — both write the same commit.
+# Every field below is displayed verbatim on the site, so whatever is written
+# here is what the world reads under your name. Edit it from /admin/ or
+# directly in this file — both write the same commit.
 #
 #   photo  public path to your picture, e.g. /img/uploads/portrait.jpg
 #          (uploads from /admin/ land in static/img/uploads/ and are served
 #          from /img/uploads/). Leave empty to show no picture.
-#   links  one entry per profile. `icon` must be one of the names Congo ships:
-#          email github orcid google-scholar researchgate linkedin youtube
-#          mastodon bluesky x-twitter globe link rss phone telegram ...
+#   links  one entry per profile. `icon` must be one of the names shipped in
+#          assets/icons/ or by the theme: email github orcid google-scholar
+#          researchgate linkedin youtube mastodon bluesky x-twitter globe
+#          link rss phone telegram flask presentation graduation-cap …
 # ---------------------------------------------------------------------------
 
-photo: ""
+photo: "/img/uploads/portrait.jpg"
 
 links:
   - icon: "email"
-    label: "Email"
-    url: "mailto:wilfriedtadjeugue@gmail.com"
+    label: "wilfried.tadjeugue@uni-bayreuth.de"
+    url: "mailto:wilfried.tadjeugue@uni-bayreuth.de"
+  - icon: "globe"
+    label: "University of Bayreuth"
+    url: "https://www.oberhofer.physik.uni-bayreuth.de/en/team/index.html"
   - icon: "github"
     label: "GitHub"
     url: "https://github.com/Nangmo-Tadj"
 
 en:
-  headline: ""      # one line under your name, e.g. a position and a field
-  bio: ""           # a short paragraph
+  headline: "PhD student in Physics, computational material design — BayBatt — University of Bayreuth"
+  bio: ""           # a short paragraph, if you want one under the headline
   hero:
     eyebrow: ""     # small label above the big title
     titleLead: ""   # first line of the big title
     titleAccent: "" # second line, in colour
     tagline: ""     # a sentence under the title
-    # stats: the three cards under the hero. Delete or leave empty for none.
     stats: []
-      # - value: "12"
-      #   label: "Peer-reviewed articles"
 
 fr:
-  headline: ""
+  headline: "Doctorant en physique, conception computationnelle de matériaux — BayBatt — Université de Bayreuth"
   bio: ""
   hero:
     eyebrow: ""

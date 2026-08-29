@@ -11,14 +11,14 @@
   {{/* ---------------- THE THREE CHANNELS ---------------- */}}
   <div class="ui-cards ui-cards--3">
     {{- range slice
-        (dict "page" $blog    "icon" "✍️" "key" "blog")
-        (dict "page" $videos  "icon" "🎬" "key" "videos")
-        (dict "page" $courses "icon" "🎓" "key" "courses") }}
+        (dict "page" $blog    "icon" "pencil"          "key" "blog")
+        (dict "page" $videos  "icon" "play-circle"     "key" "videos")
+        (dict "page" $courses "icon" "graduation-cap"  "key" "courses") }}
       {{- $item := . -}}
       {{- with $item.page }}
         <a class="ui-card" href="{{ .RelPermalink }}">
           <span class="ui-card__body">
-            <span class="ui-card__icon">{{ $item.icon }}</span>
+            <span class="ui-card__icon">{{ partial "icon.html" $item.icon }}</span>
             <span class="ui-card__title">{{ .Title }}</span>
             <span class="ui-card__text">{{ i18n (printf "outreach.%sSub" $item.key) | default .Description }}</span>
             <span class="ui-card__more">{{ i18n "home.readMore" }} &rarr;</span>
@@ -60,7 +60,7 @@
           {{- if and $href (ne $href "#") }}
             <a class="ui-card" href="{{ $href }}"{{ if hasPrefix $href "http" }} target="_blank" rel="noopener"{{ end }}>
               <span class="ui-card__body">
-                <span class="ui-card__icon">{{ .icon }}</span>
+                <span class="ui-card__icon">{{ partial "icon.html" (.icon | default "link") }}</span>
                 <span class="ui-card__title">{{ $t.title }}</span>
                 <span class="ui-card__text">{{ $t.summary }}</span>
                 <span class="ui-card__more">{{ i18n "home.readMore" }} &rarr;</span>
@@ -69,7 +69,7 @@
           {{- else }}
             <div class="ui-card">
               <span class="ui-card__body">
-                <span class="ui-card__icon">{{ .icon }}</span>
+                <span class="ui-card__icon">{{ partial "icon.html" (.icon | default "link") }}</span>
                 <span class="ui-card__title">{{ $t.title }}</span>
                 <span class="ui-card__text">{{ $t.summary }}</span>
               </span>
