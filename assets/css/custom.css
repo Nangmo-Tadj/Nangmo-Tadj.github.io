@@ -178,16 +178,12 @@ body > header::before {
   backdrop-filter: saturate(1.7) blur(14px);
   -webkit-backdrop-filter: saturate(1.7) blur(14px);
   background: rgba(255, 255, 255, 0.72);
-  transition: background 0.3s var(--ease);
 }
 .dark body > header::before {
   background: rgba(var(--color-neutral-900), 0.75);
 }
 .dark body > header { border-color: rgba(255, 255, 255, 0.08); }
 header nav a:not(.button),
-header nav button {
-  transition: color 0.2s var(--ease), background 0.2s var(--ease);
-}
 header nav a:not(.button):hover { color: rgb(var(--color-primary-600)); }
 .dark header nav a:not(.button):hover { color: rgb(var(--color-primary-300)); }
 
@@ -233,7 +229,6 @@ body > header > nav > div:first-child {
   padding: 0.35rem 0.6rem;
   color: rgb(var(--color-neutral-500));
   text-decoration: none;
-  transition: background 0.2s var(--ease), color 0.2s var(--ease);
 }
 .lang-toggle__item:hover { color: rgb(var(--color-primary-600)); }
 .lang-toggle__item.is-active {
@@ -263,9 +258,8 @@ body > header > nav > div:first-child {
   line-height: 1.2;
   text-decoration: none;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease);
 }
-.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.btn:hover { box-shadow: var(--shadow); }
 .btn--solid {
   border-color: transparent;
   background-image: linear-gradient(135deg, rgb(var(--color-primary-700)), rgb(var(--color-primary-950)));
@@ -321,7 +315,6 @@ a.button {
   font-size: 0.82rem;
   font-weight: 600;
   text-decoration: none;
-  transition: background 0.2s var(--ease), color 0.2s var(--ease);
 }
 .pill-link:hover { background: rgb(var(--color-primary-500)); color: #fff; }
 .dark .pill-link { color: rgb(var(--color-primary-200)); }
@@ -430,16 +423,8 @@ a.button {
   object-fit: cover;
   border: 3px solid rgba(255, 255, 255, 0.9);
   box-shadow: 0 14px 30px -12px rgba(25, 59, 80, 0.5);
-  animation: floaty 7s ease-in-out infinite;
 }
 .dark .hero__avatar { border-color: rgba(255, 255, 255, 0.14); }
-@keyframes floaty {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero__avatar { animation: none; }
-}
 .hero__name {
   position: relative;
   font-family: var(--font-head);
@@ -482,9 +467,8 @@ a.button {
   border: 1px solid var(--hairline);
   background: var(--surface);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
-.stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.stat-card:hover { box-shadow: var(--shadow); }
 .stat-card__value {
   display: block;
   font-family: var(--font-head);
@@ -615,7 +599,6 @@ a.button {
   box-shadow: var(--shadow-sm);
   overflow: hidden;
   text-decoration: none;
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
 }
 .pillar::before {
   content: "";
@@ -628,7 +611,6 @@ a.button {
 .pillar--b::before { background-image: linear-gradient(90deg, rgb(var(--color-primary-700)), rgb(var(--color-primary-400))); }
 .pillar--c::before { background-image: linear-gradient(90deg, rgb(var(--color-primary-800)), rgb(var(--color-primary-500))); }
 .pillar:hover {
-  transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
   border-color: rgba(var(--color-primary-500), 0.4);
 }
@@ -655,9 +637,7 @@ a.button {
   font-size: 0.88rem;
   font-weight: 600;
   color: rgb(var(--color-primary-600));
-  transition: transform 0.3s var(--ease);
 }
-.pillar:hover .pillar__more { transform: translateX(3px); }
 .dark .pillar__more { color: rgb(var(--color-primary-300)); }
 
 /* ------------------------------------------------------------------ *
@@ -701,10 +681,8 @@ a.button {
   border: 1px solid var(--hairline);
   background: var(--surface);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
 }
 .news-card:hover {
-  transform: translateX(4px);
   box-shadow: var(--shadow);
   border-color: rgba(var(--color-primary-500), 0.35);
 }
@@ -759,10 +737,8 @@ a.button {
   border: 1px solid var(--hairline);
   background: var(--surface);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
 }
 .pub-item:hover {
-  transform: translateY(-3px);
   box-shadow: var(--shadow);
   border-color: rgba(var(--color-primary-500), 0.35);
 }
@@ -830,10 +806,8 @@ a.button {
   border: 1px solid var(--hairline);
   background: var(--surface);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
 }
 .activity-item:hover {
-  transform: translateY(-3px);
   box-shadow: var(--shadow);
   border-color: rgba(var(--color-primary-500), 0.35);
 }
@@ -894,10 +868,8 @@ a.button {
   background: var(--surface);
   box-shadow: var(--shadow-sm);
   text-decoration: none;
-  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
 }
 .post-card:hover {
-  transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
   border-color: rgba(var(--color-primary-500), 0.4);
 }
@@ -951,10 +923,8 @@ a.button {
   box-shadow: var(--shadow-sm);
   overflow: hidden;
   text-decoration: none;
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
 }
 a.ui-card:hover {
-  transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
   border-color: rgba(var(--color-primary-500), 0.45);
 }
@@ -1014,10 +984,8 @@ a.ui-card:hover {
   box-shadow: var(--shadow-sm);
   overflow: hidden;
   text-decoration: none;
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
 }
 .course-card:hover {
-  transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
   border-color: rgba(var(--color-primary-500), 0.45);
 }
@@ -1134,10 +1102,8 @@ a.ui-card:hover {
   background: var(--surface);
   box-shadow: var(--shadow-sm);
   text-decoration: none;
-  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
 }
 .course-toc__item > a:hover {
-  transform: translateX(4px);
   box-shadow: var(--shadow);
   border-color: rgba(var(--color-primary-500), 0.4);
 }
@@ -1177,9 +1143,8 @@ a.ui-card:hover {
   box-shadow: var(--shadow);
   overflow: hidden;
   text-decoration: none;
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
-.course-feature:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.course-feature:hover { box-shadow: var(--shadow-lg); }
 @media (max-width: 700px) {
   .course-feature { grid-template-columns: 1fr; }
   .course-feature__media { min-height: 11rem; }
@@ -1271,7 +1236,6 @@ a.ui-card:hover {
   font-size: 0.92rem;
   color: rgb(var(--color-neutral-600));
   text-decoration: none;
-  transition: background 0.2s var(--ease), color 0.2s var(--ease);
 }
 .dark .lesson-nav__list a { color: rgb(var(--color-neutral-300)); }
 .lesson-nav__list a:hover { background: rgba(var(--color-primary-500), 0.09); }
@@ -1322,9 +1286,8 @@ a.ui-card:hover {
   border: 1px solid var(--hairline);
   background: var(--surface);
   text-decoration: none;
-  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
-.lesson-pager__link:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.lesson-pager__link:hover { box-shadow: var(--shadow); }
 .lesson-pager__next { text-align: end; margin-inline-start: auto; }
 .lesson-pager__dir {
   font-size: 0.78rem;
@@ -1353,11 +1316,9 @@ main article.mt-6.flex {
   border-radius: var(--radius);
   background: var(--surface);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
 }
 .article-card:hover,
 main article.mt-6.flex:hover {
-  transform: translateY(-4px);
   box-shadow: var(--shadow);
   border-color: rgba(var(--color-primary-500), 0.4);
 }
@@ -1408,7 +1369,6 @@ main article.mt-6.flex:hover {
   color: rgb(var(--color-primary-700));
   text-decoration: none;
   white-space: nowrap;
-  transition: background 0.2s var(--ease), color 0.2s var(--ease);
 }
 .doc-card__btn:hover { background: rgba(var(--color-primary-500), 0.1); }
 .doc-card__btn--solid {
@@ -1440,9 +1400,8 @@ main article.mt-6.flex:hover {
   object-fit: cover;
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
-.gallery img:hover { transform: scale(1.02); box-shadow: var(--shadow); }
+.gallery img:hover { box-shadow: var(--shadow); }
 img.is-zoomable { cursor: zoom-in; }
 
 .media-video { margin: 1.75rem 0; }
@@ -1535,10 +1494,6 @@ pre.chroma,
   box-shadow: var(--shadow-sm);
 }
 
-a[href*="/tags/"] {
-  transition: background 0.2s var(--ease), color 0.2s var(--ease);
-}
-
 body > div > footer {
   margin-top: 4rem;
   padding-top: 2rem;
@@ -1566,15 +1521,6 @@ body > div > footer {
 img.w-36.rounded-full,
 .profile img {
   box-shadow: 0 14px 30px -12px rgba(25, 59, 80, 0.5);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
 }
 
 /* ------------------------------------------------------------------ *
@@ -1631,11 +1577,9 @@ body > header .text-2xl {
   width: 1.5rem;
   height: 1.5rem;
   color: rgb(var(--color-neutral-400));
-  transition: color 0.2s var(--ease), transform 0.2s var(--ease);
 }
 .profile-links a:hover {
   color: rgb(var(--color-primary-600));
-  transform: translateY(-2px);
 }
 .dark .profile-links a { color: rgb(var(--color-neutral-500)); }
 .dark .profile-links a:hover { color: rgb(var(--color-primary-300)); }
@@ -1783,8 +1727,10 @@ body > header nav button { white-space: nowrap; }
   height: 0.42rem;
   border-right: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
+  /* Static geometry, not motion: a chevron is two borders of a square turned
+     45°, and the open state points it the other way. Nothing moves between
+     the two — the caret is simply drawn differently. */
   transform: translateY(-1px) rotate(45deg);
-  transition: transform 0.2s var(--ease);
 }
 .activity-item__abstract[open] > summary::after {
   transform: translateY(2px) rotate(-135deg);
@@ -1792,4 +1738,26 @@ body > header nav button { white-space: nowrap; }
 .activity-item__abstract > p {
   max-width: 46rem;
   margin: 0.6rem 0 0;
+}
+
+/* ------------------------------------------------------------------ *
+ * No motion                                                           *
+ *                                                                     *
+ * The rules above no longer animate anything. This stops the theme
+ * from animating either: Congo fades its menus and colour changes, and
+ * puts `scroll-smooth` on <html>. Hover still changes shadow, colour
+ * and border — it just happens at once instead of over a third of a
+ * second, and nothing slides, lifts or scales.
+ * ------------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* `html.scroll-smooth` rather than `html`: Congo sets this with a utility
+   class, which outranks a bare element selector. */
+html.scroll-smooth {
+  scroll-behavior: auto;
 }
