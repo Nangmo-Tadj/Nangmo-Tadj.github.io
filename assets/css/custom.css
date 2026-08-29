@@ -20,11 +20,10 @@
   --radius-lg: 1.625rem;
   --pill: 999px;
 
-  /* Floating shadows: soft, wide, tinted with the accent's own dark end so
-     the page holds to one hue plus greys. */
-  --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.04);
-  --shadow: 0 18px 40px -18px rgba(25, 59, 80, 0.22), 0 6px 14px -8px rgba(25, 59, 80, 0.12);
-  --shadow-lg: 0 40px 80px -24px rgba(25, 59, 80, 0.32), 0 12px 28px -12px rgba(25, 59, 80, 0.18);
+  /* Shadows are shadow: black at low opacity, no tint. */
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.20), 0 6px 14px -8px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 40px 80px -24px rgba(0, 0, 0, 0.28), 0 12px 28px -12px rgba(0, 0, 0, 0.16);
 
   --surface: rgba(255, 255, 255, 0.82);
   --surface-solid: #ffffff;
@@ -198,7 +197,7 @@ body > header > nav > div:first-child {
   color: #fff;
 }
 .dark .lang-toggle__item { color: rgb(var(--color-neutral-300)); }
-.dark .lang-toggle__item.is-active { background: rgb(var(--color-primary-600)); color: #fff; }
+.dark .lang-toggle__item.is-active { background: rgb(var(--color-primary-700)); color: #fff; }
 
 /* ------------------------------------------------------------------ *
  * Buttons                                                             *
@@ -453,6 +452,8 @@ a.button {
 }
 .dark .home-section__title,
 .dark .section-block__title { color: rgb(var(--color-neutral-50)); }
+.dark .home-section__title::after,
+.dark .section-block__title::after { background: rgb(var(--color-neutral-700)); }
 .home-section__title::after,
 .section-block__title::after {
   content: "";
@@ -461,7 +462,7 @@ a.button {
   height: 3px;
   margin-top: 0.5rem;
   border-radius: var(--pill);
-  background: rgb(var(--color-primary-600));
+  background: rgb(var(--color-neutral-300));
 }
 .home-section__sub,
 .section-block__sub {
@@ -477,7 +478,7 @@ a.button {
   font-family: var(--font-head);
   font-size: 0.92rem;
   font-weight: 600;
-  color: rgb(var(--color-primary-600));
+  color: rgb(var(--color-primary-700));
   text-decoration: none;
 }
 .home-section__link:hover { text-decoration: underline; }
@@ -493,6 +494,7 @@ a.button {
   color: rgb(var(--color-neutral-500));
   text-align: center;
 }
+.dark .empty-note { color: rgb(var(--color-neutral-400)); }
 
 /* Page heads on section (hub) pages */
 .page-head { padding: 2.5rem 0 0.5rem; }
@@ -572,7 +574,7 @@ a.button {
   font-family: var(--font-head);
   font-size: 0.88rem;
   font-weight: 600;
-  color: rgb(var(--color-primary-600));
+  color: rgb(var(--color-primary-700));
 }
 .dark .pillar__more { color: rgb(var(--color-primary-300)); }
 
@@ -685,9 +687,9 @@ a.button {
   font-size: 1.5rem;
   font-weight: 800;
   line-height: 1.2;
-  color: rgb(var(--color-neutral-400));
+  color: rgb(var(--color-neutral-500));
 }
-.dark .pub-item__year { color: rgb(var(--color-neutral-500)); }
+.dark .pub-item__year { color: rgb(var(--color-neutral-400)); }
 .pub-item__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.5rem; }
 .pub-item__title {
   margin: 0;
@@ -728,8 +730,9 @@ a.button {
   font-size: 1.15rem;
   font-weight: 800;
   letter-spacing: 0.08em;
-  color: rgb(var(--color-neutral-400));
+  color: rgb(var(--color-neutral-500));
 }
+.dark .year-block__title { color: rgb(var(--color-neutral-400)); }
 .activity-list { margin: 0; padding: 0; list-style: none; }
 .activity-item {
   display: grid;
@@ -757,6 +760,7 @@ a.button {
   font-size: 0.85rem;
   color: rgb(var(--color-neutral-500));
 }
+.dark .activity-item__aside { color: rgb(var(--color-neutral-400)); }
 @media (max-width: 700px) {
   .activity-item__aside { flex-direction: row; align-items: center; gap: 0.75rem; }
 }
@@ -813,9 +817,9 @@ a.button {
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgb(var(--color-neutral-400));
+  color: rgb(var(--color-neutral-500));
 }
-.dark .post-card__date { color: rgb(var(--color-neutral-500)); }
+.dark .post-card__date { color: rgb(var(--color-neutral-400)); }
 .post-card__title {
   font-family: var(--font-head);
   font-size: 1.1rem;
@@ -897,7 +901,7 @@ a.ui-card:hover {
   font-family: var(--font-head);
   font-size: 0.88rem;
   font-weight: 600;
-  color: rgb(var(--color-primary-600));
+  color: rgb(var(--color-primary-700));
 }
 .dark .ui-card__more { color: rgb(var(--color-primary-300)); }
 
@@ -1047,7 +1051,7 @@ a.ui-card:hover {
   display: grid;
   place-items: center;
   width: 1.75rem;
-  color: rgb(var(--color-neutral-400));
+  color: rgb(var(--color-neutral-500));
   font-family: var(--font-head);
   font-size: 1.15rem;
   font-weight: 800;
@@ -1101,9 +1105,9 @@ a.ui-card:hover {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgb(var(--color-neutral-400));
+  color: rgb(var(--color-neutral-500));
 }
-.dark .course-feature__eyebrow { color: rgb(var(--color-neutral-500)); }
+.dark .course-feature__eyebrow { color: rgb(var(--color-neutral-400)); }
 .course-feature__title {
   font-family: var(--font-head);
   font-size: 1.6rem;
@@ -1123,7 +1127,7 @@ a.ui-card:hover {
   padding-top: 1rem;
   font-family: var(--font-head);
   font-weight: 700;
-  color: rgb(var(--color-primary-600));
+  color: rgb(var(--color-primary-700));
 }
 .dark .course-feature__cta { color: rgb(var(--color-primary-300)); }
 
@@ -1185,11 +1189,11 @@ a.ui-card:hover {
   display: grid;
   place-items: center;
   width: 1.25rem;
-  color: rgb(var(--color-neutral-400));
+  color: rgb(var(--color-neutral-500));
   font-size: 0.8rem;
   font-weight: 800;
 }
-.dark .lesson-nav__num { color: rgb(var(--color-neutral-500)); }
+.dark .lesson-nav__num { color: rgb(var(--color-neutral-400)); }
 .lesson-title {
   margin: 0.75rem 0 0;
   font-size: clamp(1.8rem, 4vw, 2.5rem);
@@ -1289,8 +1293,8 @@ main article.mt-6.flex:hover {
   font-weight: 800;
   letter-spacing: 0.06em;
 }
-.dark .doc-card__badge { color: rgb(var(--color-neutral-500)); }
-.dark .doc-card__badge { color: rgb(var(--color-neutral-500)); }
+.dark .doc-card__badge { color: rgb(var(--color-neutral-400)); }
+.dark .doc-card__badge { color: rgb(var(--color-neutral-400)); }
 .doc-card__meta { display: flex; flex-direction: column; min-width: 0; }
 .doc-card__title { font-family: var(--font-head); font-weight: 700; }
 .doc-card__desc { font-size: 0.86rem; color: rgb(var(--color-neutral-500)); }
@@ -1455,7 +1459,7 @@ body > div > footer {
 /* Congo's profile avatar, when the profile homepage layout is used */
 img.w-36.rounded-full,
 .profile img {
-  box-shadow: 0 14px 30px -12px rgba(25, 59, 80, 0.5);
+  box-shadow: 0 14px 30px -12px rgba(0, 0, 0, 0.35);
 }
 
 /* ------------------------------------------------------------------ *
@@ -1744,3 +1748,13 @@ body > div > footer a:hover {
 
 /* The language pill keeps its filled state: it is the one control in the
    bar showing a current value rather than a destination. */
+
+/* Congo tints its breadcrumb separators with the accent — `px-1 text-primary-500`
+   on the slash between crumbs. At 3.29:1 they are under the threshold, and they
+   are punctuation rather than links, so they take the surrounding grey. */
+main .text-primary-500 {
+  color: rgb(var(--color-neutral-500));
+}
+.dark main .text-primary-500 {
+  color: rgb(var(--color-neutral-400));
+}
