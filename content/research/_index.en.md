@@ -1,5 +1,5 @@
 ---
-title: "Research & publications"
+title: "Research"
 description: "Research and publications."
 layout: "hub"
 cascade:

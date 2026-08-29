@@ -434,7 +434,7 @@ collections:
           - { name: description, label: Search-engine description, widget: string, required: false, i18n: true }
 
       - name: research
-        label: Research & publications — heading
+        label: Research — heading
         file: content/research/_index.en.md
         i18n: true
         fields:

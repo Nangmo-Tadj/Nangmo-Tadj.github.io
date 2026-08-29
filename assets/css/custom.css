@@ -1657,16 +1657,19 @@ body > header nav button { white-space: nowrap; }
  * them three words long, and longer still in French, that leaves the  *
  * row overflowing its container across the whole tablet-to-laptop     *
  * range. Tighter spacing and a slightly smaller size buy back enough  *
- * width for a 1280px laptop — the French labels are the long ones and *
- * set the threshold. Below that the hamburger takes over, which is    *
- * the honest answer for a row that cannot fit.                        *
+ * width for the row to fit. The French labels are the long ones and   *
+ * set the threshold: measured in the browser they need 838px, so a    *
+ * 1200px window — 896px of usable header once the page padding and    *
+ * the bar's own padding are taken out — clears them by 58px. Below    *
+ * that the hamburger takes over, which is the honest answer for a row *
+ * that cannot fit.                                                    *
  * ------------------------------------------------------------------ */
-@media (min-width: 1280px) {
+@media (min-width: 1200px) {
   body > header > nav > ul > li { margin-inline-end: 1rem; }
   body > header > nav > ul a,
   body > header > nav > ul button { font-size: 0.94rem; }
 }
-@media (max-width: 1279px) {
+@media (max-width: 1199px) {
   /* !important: Congo sets these with `sm:` utilities, whose specificity
      beats an element selector. */
   body > header > nav > ul { display: none !important; }

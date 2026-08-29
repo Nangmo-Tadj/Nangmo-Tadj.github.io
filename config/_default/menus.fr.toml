@@ -1,6 +1,6 @@
 # -- Navigation principale (en-tête) — français --
 [[main]]
-  name = "Recherche & publications"
+  name = "Recherche"
   pageRef = "research"
   weight = 10
 
@@ -39,7 +39,7 @@
 
 # -- Navigation de pied de page --
 [[footer]]
-  name = "Recherche & publications"
+  name = "Recherche"
   pageRef = "research"
   weight = 10
 
