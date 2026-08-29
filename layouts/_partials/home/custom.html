@@ -41,25 +41,28 @@
     </div>
     {{- end }}
 
+    {{/* Photo on one side, everything else on the other — the shape of a CV
+         header. The text is wrapped so the two can sit side by side. */}}
     <aside class="hero__card">
-      <span class="hero__halo" aria-hidden="true"></span>
       {{- with $photo }}
-        <img class="hero__avatar" src="{{ . | relURL }}" width="160" height="160" alt="{{ $name }}">
+        <img class="hero__avatar" src="{{ . | relURL }}" width="200" height="200" alt="{{ $name }}">
       {{- end }}
-      {{- if $hasCopy }}
-        <p class="hero__name">{{ $name }}</p>
-      {{- else }}
-        <h1 class="hero__name">{{ $name }}</h1>
-      {{- end }}
-      {{- with $me.headline }}<p class="hero__headline">{{ . | markdownify }}</p>{{ end }}
-      {{- with $me.bio }}<p class="hero__bio">{{ . | markdownify }}</p>{{ end }}
-      {{- if not $hasCopy }}
-        <div class="hero__links">{{ partial "profile-links.html" . }}</div>
-        <div class="hero__cta">
-          {{- with $research }}<a class="btn btn--solid" href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}
-          {{- with $outreach }}<a class="btn btn--ghost" href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}
-        </div>
-      {{- end }}
+      <div class="hero__ident">
+        {{- if $hasCopy }}
+          <p class="hero__name">{{ $name }}</p>
+        {{- else }}
+          <h1 class="hero__name">{{ $name }}</h1>
+        {{- end }}
+        {{- with $me.headline }}<p class="hero__headline">{{ . | markdownify }}</p>{{ end }}
+        {{- with $me.bio }}<p class="hero__bio">{{ . | markdownify }}</p>{{ end }}
+        {{- if not $hasCopy }}
+          <div class="hero__links">{{ partial "profile-links.html" . }}</div>
+          <div class="hero__cta">
+            {{- with $research }}<a class="btn btn--solid" href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}
+            {{- with $outreach }}<a class="btn btn--ghost" href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}
+          </div>
+        {{- end }}
+      </div>
     </aside>
   </div>
 

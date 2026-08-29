@@ -88,47 +88,10 @@ body.flex::before {
   inset: 0;
   z-index: -2;
   pointer-events: none;
-  background:
-    radial-gradient(44rem 32rem at 8% 0%, rgba(var(--color-primary-500), 0.13), transparent 62%),
-    radial-gradient(40rem 32rem at 98% 12%, rgba(var(--color-primary-400), 0.09), transparent 62%),
-    radial-gradient(38rem 40rem at 84% 100%, rgba(var(--color-primary-500), 0.09), transparent 60%),
-    linear-gradient(160deg, rgb(var(--color-neutral-50)) 0%, rgb(var(--color-neutral)) 52%, rgb(var(--color-neutral-100)) 100%);
+  background: linear-gradient(170deg, rgb(var(--color-neutral-50)) 0%, rgb(var(--color-neutral)) 55%, rgb(var(--color-neutral-100)) 100%);
 }
 .dark body.flex::before {
-  background:
-    radial-gradient(44rem 32rem at 8% 0%, rgba(var(--color-primary-500), 0.20), transparent 62%),
-    radial-gradient(40rem 32rem at 98% 12%, rgba(var(--color-primary-400), 0.10), transparent 62%),
-    radial-gradient(38rem 40rem at 84% 100%, rgba(var(--color-primary-500), 0.14), transparent 60%),
-    linear-gradient(160deg, rgb(var(--color-neutral-950)) 0%, rgb(var(--color-neutral-900)) 52%, rgb(var(--color-neutral-950)) 100%);
-}
-
-/* The signature diagonal band, bottom-left, barely there. */
-body.flex::after {
-  content: "";
-  position: fixed;
-  left: -8%;
-  bottom: -14%;
-  width: 46%;
-  height: 130%;
-  z-index: -1;
-  pointer-events: none;
-  transform: rotate(8deg);
-  background: linear-gradient(
-    100deg,
-    transparent 0 40%,
-    rgba(var(--color-neutral-700), 0.035) 40% 47%,
-    rgba(var(--color-primary-500), 0.07) 47% 54%,
-    transparent 54%
-  );
-}
-.dark body.flex::after {
-  background: linear-gradient(
-    100deg,
-    transparent 0 40%,
-    rgba(255, 255, 255, 0.03) 40% 47%,
-    rgba(var(--color-primary-400), 0.09) 47% 54%,
-    transparent 54%
-  );
+  background: linear-gradient(170deg, rgb(var(--color-neutral-950)) 0%, rgb(var(--color-neutral-900)) 55%, rgb(var(--color-neutral-950)) 100%);
 }
 
 /* ------------------------------------------------------------------ *
@@ -183,9 +146,6 @@ body > header::before {
   background: rgba(var(--color-neutral-900), 0.75);
 }
 .dark body > header { border-color: rgba(255, 255, 255, 0.08); }
-header nav a:not(.button),
-header nav a:not(.button):hover { color: rgb(var(--color-primary-600)); }
-.dark header nav a:not(.button):hover { color: rgb(var(--color-primary-300)); }
 
 /* The first element is the link home, and it now reads "Home" / "Accueil"
    rather than the owner's name (see layouts/_partials/logo.html). It is a
@@ -294,9 +254,9 @@ a.button {
   text-transform: uppercase;
   line-height: 1.4;
 }
-.chip--primary { color: rgb(var(--color-primary-700)); }
+.chip--primary { color: rgb(var(--color-neutral-600)); }
 .dark .chip { color: rgb(var(--color-neutral-400)); }
-.dark .chip--primary { color: rgb(var(--color-primary-300)); }
+.dark .chip--primary { color: rgb(var(--color-neutral-300)); }
 /* A dot keeps two adjacent labels from reading as one phrase. */
 .chip + .chip::before {
   content: "·";
@@ -404,27 +364,14 @@ a.button {
   box-shadow: var(--shadow-lg);
   text-align: center;
 }
-.hero__halo {
-  position: absolute;
-  inset: -18% -12% auto -12%;
-  height: 62%;
-  border-radius: 50%;
-  filter: blur(48px);
-  opacity: 0.5;
-  background: radial-gradient(closest-side, rgba(var(--color-primary-400), 0.55), transparent);
-  pointer-events: none;
-}
 .hero__avatar {
-  position: relative;
-  width: 7.5rem;
-  height: 7.5rem;
-  margin: 0 auto 1rem;
-  border-radius: 50%;
+  display: block;
+  width: 9rem;
+  height: 9rem;
+  border-radius: var(--radius);
   object-fit: cover;
-  border: 3px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 14px 30px -12px rgba(25, 59, 80, 0.5);
+  border: 1px solid var(--hairline);
 }
-.dark .hero__avatar { border-color: rgba(255, 255, 255, 0.14); }
 .hero__name {
   position: relative;
   font-family: var(--font-head);
@@ -434,13 +381,12 @@ a.button {
 }
 .dark .hero__name { color: rgb(var(--color-neutral-50)); }
 .hero__headline {
-  position: relative;
-  margin-top: 0.35rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: rgb(var(--color-primary-700));
+  margin-top: 0.4rem;
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: rgb(var(--color-neutral-500));
 }
-.dark .hero__headline { color: rgb(var(--color-primary-300)); }
+.dark .hero__headline { color: rgb(var(--color-neutral-400)); }
 .hero__bio {
   position: relative;
   margin-top: 0.85rem;
@@ -475,9 +421,9 @@ a.button {
   font-size: 1.7rem;
   font-weight: 800;
   line-height: 1.1;
-  color: rgb(var(--color-primary-600));
+  color: rgb(var(--color-neutral-800));
 }
-.dark .stat-card__value { color: rgb(var(--color-primary-300)); }
+.dark .stat-card__value { color: rgb(var(--color-neutral-100)); }
 .stat-card__label {
   display: block;
   margin-top: 0.25rem;
@@ -515,7 +461,7 @@ a.button {
   height: 3px;
   margin-top: 0.5rem;
   border-radius: var(--pill);
-  background-image: linear-gradient(90deg, rgb(var(--color-primary-600)), rgb(var(--color-primary-300)));
+  background: rgb(var(--color-primary-600));
 }
 .home-section__sub,
 .section-block__sub {
@@ -600,16 +546,6 @@ a.button {
   overflow: hidden;
   text-decoration: none;
 }
-.pillar::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 4px;
-  background-image: linear-gradient(90deg, rgb(var(--color-primary-500)), rgb(var(--color-primary-300)));
-}
-/* The three cards differ by depth of the same azure, not by hue. */
-.pillar--b::before { background-image: linear-gradient(90deg, rgb(var(--color-primary-700)), rgb(var(--color-primary-400))); }
-.pillar--c::before { background-image: linear-gradient(90deg, rgb(var(--color-primary-800)), rgb(var(--color-primary-500))); }
 .pillar:hover {
   box-shadow: var(--shadow-lg);
   border-color: rgba(var(--color-primary-500), 0.4);
@@ -664,11 +600,10 @@ a.button {
   position: absolute;
   left: -1.32rem;
   top: 1.35rem;
-  width: 0.7rem;
-  height: 0.7rem;
+  width: 0.55rem;
+  height: 0.55rem;
   border-radius: 50%;
-  background: rgb(var(--color-primary-500));
-  box-shadow: 0 0 0 4px rgba(var(--color-primary-500), 0.16);
+  background: rgb(var(--color-neutral-400));
 }
 .news--conference .news-dot,
 .news--talk .news-dot { background: rgb(var(--color-primary-400)); box-shadow: 0 0 0 4px rgba(var(--color-primary-400), 0.16); }
@@ -696,14 +631,14 @@ a.button {
 }
 .news-chip {
   display: inline-flex;
-  color: rgb(var(--color-primary-700));
+  color: rgb(var(--color-neutral-500));
   font-family: var(--font-head);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.dark .news-chip { color: rgb(var(--color-primary-300)); }
+.dark .news-chip { color: rgb(var(--color-neutral-400)); }
 .news-title {
   margin: 0.45rem 0 0;
   font-family: var(--font-head);
@@ -750,9 +685,9 @@ a.button {
   font-size: 1.5rem;
   font-weight: 800;
   line-height: 1.2;
-  color: rgb(var(--color-primary-600));
+  color: rgb(var(--color-neutral-400));
 }
-.dark .pub-item__year { color: rgb(var(--color-primary-300)); }
+.dark .pub-item__year { color: rgb(var(--color-neutral-500)); }
 .pub-item__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.5rem; }
 .pub-item__title {
   margin: 0;
@@ -839,9 +774,9 @@ a.button {
   margin: 0.25rem 0 0;
   font-size: 0.9rem;
   font-weight: 600;
-  color: rgb(var(--color-primary-700));
+  color: rgb(var(--color-neutral-600));
 }
-.dark .activity-item__where { color: rgb(var(--color-primary-300)); }
+.dark .activity-item__where { color: rgb(var(--color-neutral-300)); }
 .activity-item__summary {
   margin: 0.45rem 0 0;
   font-size: 0.93rem;
@@ -878,9 +813,9 @@ a.button {
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgb(var(--color-primary-600));
+  color: rgb(var(--color-neutral-400));
 }
-.dark .post-card__date { color: rgb(var(--color-primary-300)); }
+.dark .post-card__date { color: rgb(var(--color-neutral-500)); }
 .post-card__title {
   font-family: var(--font-head);
   font-size: 1.1rem;
@@ -1112,7 +1047,7 @@ a.ui-card:hover {
   display: grid;
   place-items: center;
   width: 1.75rem;
-  color: rgb(var(--color-primary-700));
+  color: rgb(var(--color-neutral-400));
   font-family: var(--font-head);
   font-size: 1.15rem;
   font-weight: 800;
@@ -1166,9 +1101,9 @@ a.ui-card:hover {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgb(var(--color-primary-600));
+  color: rgb(var(--color-neutral-400));
 }
-.dark .course-feature__eyebrow { color: rgb(var(--color-primary-300)); }
+.dark .course-feature__eyebrow { color: rgb(var(--color-neutral-500)); }
 .course-feature__title {
   font-family: var(--font-head);
   font-size: 1.6rem;
@@ -1250,11 +1185,11 @@ a.ui-card:hover {
   display: grid;
   place-items: center;
   width: 1.25rem;
-  color: rgb(var(--color-primary-700));
+  color: rgb(var(--color-neutral-400));
   font-size: 0.8rem;
   font-weight: 800;
 }
-.dark .lesson-nav__num { color: rgb(var(--color-primary-300)); }
+.dark .lesson-nav__num { color: rgb(var(--color-neutral-500)); }
 .lesson-title {
   margin: 0.75rem 0 0;
   font-size: clamp(1.8rem, 4vw, 2.5rem);
@@ -1354,8 +1289,8 @@ main article.mt-6.flex:hover {
   font-weight: 800;
   letter-spacing: 0.06em;
 }
-.dark .doc-card__badge { color: rgb(var(--color-primary-300)); }
-.dark .doc-card__badge { color: rgb(var(--color-primary-300)); }
+.dark .doc-card__badge { color: rgb(var(--color-neutral-500)); }
+.dark .doc-card__badge { color: rgb(var(--color-neutral-500)); }
 .doc-card__meta { display: flex; flex-direction: column; min-width: 0; }
 .doc-card__title { font-family: var(--font-head); font-weight: 700; }
 .doc-card__desc { font-size: 0.86rem; color: rgb(var(--color-neutral-500)); }
@@ -1638,49 +1573,58 @@ body > header nav button { white-space: nowrap; }
   display: block;
   width: 1.65rem;
   height: 1.65rem;
-  color: rgb(var(--color-primary-600));
+  color: rgb(var(--color-neutral-400));
 }
 .dark .pillar__icon svg,
 .dark .ui-card__icon svg {
-  color: rgb(var(--color-primary-300));
+  color: rgb(var(--color-neutral-500));
 }
-.pillar--b .pillar__icon svg { color: rgb(var(--color-primary-700)); }
-.dark .pillar--b .pillar__icon svg { color: rgb(var(--color-primary-200)); }
-.pillar--c .pillar__icon svg { color: rgb(var(--color-primary-700)); }
-.dark .pillar--c .pillar__icon svg { color: rgb(var(--color-primary-200)); }
 
-/* The card-only hero: what the landing page is until the hero copy is
-   written. One centred column instead of two, with the name as the heading. */
+/* The card-only hero — what the landing page is until the hero copy is
+   written — is laid out like the head of a CV: the photograph on one side,
+   the name, the position and the ways to reach him on the other, all ranged
+   left rather than centred. */
 .hero--solo .hero__grid {
-  /* 38rem, not 34: the two French labels are wide enough that a narrower
-     card broke them onto separate rows. */
-  grid-template-columns: minmax(0, 38rem);
+  grid-template-columns: minmax(0, 46rem);
   justify-content: center;
 }
 .hero--solo .hero__card {
-  padding: 2.5rem 2rem 2.25rem;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
+  text-align: start;
+  padding: 2rem;
 }
 .hero--solo .hero__avatar {
-  width: 9rem;
-  height: 9rem;
+  width: 10.5rem;
+  height: 10.5rem;
 }
 .hero--solo .hero__name {
-  font-size: 1.7rem;
+  font-size: 1.65rem;
   line-height: 1.2;
 }
 .hero--solo .hero__headline {
-  max-width: 26rem;
-  margin-inline: auto;
-  font-size: 0.95rem;
+  max-width: none;
+  margin-inline: 0;
 }
 .hero--solo .hero__links {
-  justify-content: center;
-  margin-top: 1.35rem;
+  margin-top: 1.1rem;
 }
-.hero--solo .hero__links .profile-links { justify-content: center; }
+.hero--solo .hero__links .profile-links { justify-content: flex-start; }
 .hero--solo .hero__cta {
-  justify-content: center;
-  margin-top: 1.35rem;
+  justify-content: flex-start;
+  margin-top: 1.1rem;
+}
+
+/* Below the fold of a phone the two columns stack, photo first. */
+@media (max-width: 640px) {
+  .hero--solo .hero__card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+    justify-items: start;
+  }
+  .hero--solo .hero__avatar { width: 8rem; height: 8rem; }
 }
 
 /* ------------------------------------------------------------------ *
@@ -1761,3 +1705,42 @@ body > header nav button { white-space: nowrap; }
 html.scroll-smooth {
   scroll-behavior: auto;
 }
+
+/* ------------------------------------------------------------------ *
+ * Colour marks interaction, not navigation                            *
+ *                                                                     *
+ * Congo colours every anchor with the accent, which put the whole
+ * header and footer row in blue — a lot of colour for a set of labels
+ * you read rather than act on. They sit in the text greys and take the
+ * accent on hover, so the colour means "this is what you are pointing
+ * at" instead of "this is a link, and so is everything beside it".
+ * Links inside prose keep the accent: there, colour is the only thing
+ * telling a reader a word is a link at all.
+ * ------------------------------------------------------------------ */
+body > header > nav > div a,
+body > header > nav > ul a,
+body > header > nav > ul button,
+body > div > footer a {
+  color: rgb(var(--color-neutral-700));
+}
+.dark body > header > nav > div a,
+.dark body > header > nav > ul a,
+.dark body > header > nav > ul button,
+.dark body > div > footer a {
+  color: rgb(var(--color-neutral-200));
+}
+body > header > nav > div a:hover,
+body > header > nav > ul a:hover,
+body > header > nav > ul button:hover,
+body > div > footer a:hover {
+  color: rgb(var(--color-primary-700));
+}
+.dark body > header > nav > div a:hover,
+.dark body > header > nav > ul a:hover,
+.dark body > header > nav > ul button:hover,
+.dark body > div > footer a:hover {
+  color: rgb(var(--color-primary-300));
+}
+
+/* The language pill keeps its filled state: it is the one control in the
+   bar showing a current value rather than a destination. */
