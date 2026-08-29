@@ -139,7 +139,20 @@ body > header {
   z-index: 50;
   margin-inline: -1.5rem;
   padding-inline: 1.5rem;
-  border-bottom: 1px solid var(--hairline);
+  border-bottom: 1px solid rgba(var(--color-neutral-400), 0.22);
+}
+
+/* A bar, not a band. Congo pads the header 40px above and below, which built
+   a 109px-tall block around 28px of navigation — most of the header was empty
+   space, and it pushed every page down by that much before a word appeared.
+   `[class]` only lifts the specificity above Tailwind's py-6/sm:py-10; if the
+   theme ever drops those classes this rule stops mattering rather than
+   fighting something else. */
+body > header[class] {
+  padding-block: 0.85rem;
+}
+@media (min-width: 640px) {
+  body > header[class] { padding-block: 1rem; }
 }
 
 /* The glass sits on a pseudo-element, NOT on the header itself.
@@ -162,6 +175,7 @@ body > header::before {
 .dark body > header::before {
   background: rgba(var(--color-neutral-900), 0.75);
 }
+.dark body > header { border-bottom-color: rgba(255, 255, 255, 0.07); }
 @media (min-width: 640px) {
   body > header { margin-inline: -3.5rem; padding-inline: 3.5rem; }
 }
